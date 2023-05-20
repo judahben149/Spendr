@@ -37,7 +37,7 @@
     </style>
 
     <style name="CustomShapeAppearance">
-        <item name="neumorph_cornerFamily">{rounded|oval}</item>
+<!--        <item name="neumorph_cornerFamily">{rounded|oval}</item>-->
         <item name="neumorph_cornerSize">32dp</item>
 
         <!-- Or if wants different radii depending on the corner. -->

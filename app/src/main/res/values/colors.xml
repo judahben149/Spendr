@@ -62,4 +62,9 @@
     <color name="md_theme_dark_surfaceTint">#72D2FF</color>
     <color name="md_theme_dark_outlineVariant">#40484C</color>
     <color name="md_theme_dark_scrim">#000000</color>
+
+    <color name="vivid_sky_blue">#2BD9FE</color>
+    <color name="pigment_green">#52AA5E</color>
+    <color name="blood_red">#6E0E0A</color>
+    <color name="syracuse_red_orange">#D74E09</color>
 </resources>
