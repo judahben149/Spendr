@@ -54,4 +54,7 @@ dependencies {
     //hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    //Neu-morphism library
+    implementation 'com.github.fornewid:neumorphism:0.3.2'
 }
