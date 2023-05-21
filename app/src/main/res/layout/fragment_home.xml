@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".presentation.home.HomeFragment">
 
 
     <soup.neumorphism.NeumorphCardView
-        android:id="@+id/card_ledger_summary"
+        android:id="@+id/card_cash_flow_summary"
         android:layout_width="match_parent"
         android:layout_marginTop="50dp"
         android:layout_height="120dp"
@@ -111,10 +111,11 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/card_visualizer"
-        app:layout_constraintTop_toBottomOf="@id/card_ledger_summary"
+        app:layout_constraintTop_toBottomOf="@id/card_cash_flow_summary"
         app:neumorph_lightSource="leftTop"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
+
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_transaction"
