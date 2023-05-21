@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_homeFragment_to_cashFlowSummaryFragment"
             app:destination="@id/cashFlowSummaryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addCashEntryFragment"
+            app:destination="@id/addCashEntryFragment" />
     </fragment>
     <fragment
         android:id="@+id/cashFlowSummaryFragment"
         android:name="com.judahben149.spendr.presentation.cashflow_summary.CashFlowSummaryFragment"
         android:label="Cash Summary"
         tools:layout="@layout/fragment_cash_flow_summary" />
+    <fragment
+        android:id="@+id/addCashEntryFragment"
+        android:name="com.judahben149.spendr.presentation.add_cash_entry.AddCashEntryFragment"
+        android:label="Add Entry"
+        tools:layout="@layout/fragment_add_cash_entry" />
 </navigation>

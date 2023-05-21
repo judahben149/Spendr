@@ -34,5 +34,9 @@ class HomeFragment : Fragment() {
         binding.cardCashFlowSummary.setOnClickListener {
             navController.navigate(R.id.cashFlowSummaryFragment)
         }
+
+        binding.cardAddEntry.setOnClickListener {
+            navController.navigate(R.id.addCashEntryFragment)
+        }
     }
 }
