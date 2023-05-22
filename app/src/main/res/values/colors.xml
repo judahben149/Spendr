@@ -67,4 +67,16 @@
     <color name="pigment_green">#52AA5E</color>
     <color name="blood_red">#6E0E0A</color>
     <color name="syracuse_red_orange">#D74E09</color>
+
+    //highlighted color for neu-morphic button
+    <color name="neu_btn_highlighted_background">#D8E8F1</color>
+    <color name="neu_btn_highlighted_shadow_color_dark">#ADC7D2</color>
+    <color name="neu_btn_highlighted_shadow_color_light">#F6FCFF</color>
+
+    unhighlighted colour for neu-morphic button
+    <color name="neu_btn_unHighlighted_background">#FFFFFF</color>
+    <color name="neu_btn_unHighlighted_shadow_color_dark">#DEDFDF</color>
+    <color name="neu_btn_unHighlighted_shadow_color_light">#FDFDFD</color>
+
+
 </resources>
