@@ -1,7 +1,17 @@
 package com.judahben149.spendr.presentation.add_cash_entry
 
+import com.judahben149.spendr.domain.model.Category
+
 data class AddCashEntryState(
     val amount: Double = 0.00,
     val isIncome: Boolean = false,
-    val categoryId: Int = 0
+    val categoryId: Int = 0,
+    val date: Long = 0L
+)
+
+data class CategoryListState(
+    val categoryList: List<Category> = emptyList(),
+    val isIncomeSelected: Boolean = false,
+    val isError: Boolean = false,
+    val isLoading: Boolean = false
 )
