@@ -2,6 +2,7 @@ package com.judahben149.spendr
 
 import android.app.Application
 import android.content.SharedPreferences
+import android.widget.Toast
 import com.judahben149.spendr.data.repository.DatabaseRepositoryImpl
 import com.judahben149.spendr.utils.Constants.IS_FIRST_LAUNCH
 import dagger.hilt.android.HiltAndroidApp
@@ -26,12 +27,14 @@ class MainApp: Application() {
     }
 
     private fun preloadCategoryDatabaseOnFirstLaunch() {
-        val isFirstLaunch = appPrefs.getBoolean(IS_FIRST_LAUNCH, false)
+        val isFirstLaunch = appPrefs.getBoolean(IS_FIRST_LAUNCH, true)
 
         if (isFirstLaunch) {
             CoroutineScope(Dispatchers.IO).launch {
                 databaseRepositoryImpl.prefillDefaultCategories(applicationContext)
             }
+            val editor = appPrefs.edit()
+            editor?.putBoolean(IS_FIRST_LAUNCH, false)?.apply()
         } else {
             val editor = appPrefs.edit()
             editor?.putBoolean(IS_FIRST_LAUNCH, false)?.apply()
