@@ -11,4 +11,6 @@ interface CashFlowRepository {
     suspend fun saveNewCategory(categoryEntity: CategoryEntity)
 
     fun getCategories(): Flow<List<CategoryEntity>>
+
+    fun getALlCashEntries(): Flow<List<CashEntryEntity>>
 }

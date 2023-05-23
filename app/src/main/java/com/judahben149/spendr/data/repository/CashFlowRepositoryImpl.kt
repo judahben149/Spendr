@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,12 +25,18 @@ class CashFlowRepositoryImpl @Inject constructor(private val cashFlowDao: CashFl
     }
 
     override fun getCategories(): Flow<List<CategoryEntity>> {
-        CoroutineScope(Dispatchers.IO).launch {
-            cashFlowDao.getCategories().collect { category ->
-                Log.d("TAGM", "Category: $category")
-            }
-        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            cashFlowDao.getCategories().collect { category ->
+//                Log.d("TAGM", "Category: $category")
+//            }
+//        }
 
         return cashFlowDao.getCategories()
     }
+
+    override fun getALlCashEntries(): Flow<List<CashEntryEntity>> {
+        return cashFlowDao.getAllCashEntries()
+    }
+
+
 }

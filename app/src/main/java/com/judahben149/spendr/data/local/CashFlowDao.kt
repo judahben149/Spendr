@@ -19,4 +19,7 @@ interface CashFlowDao {
 
     @Query("SELECT * FROM category ORDER BY categoryName")
     fun getCategories(): Flow<List<CategoryEntity>>
+
+    @Query("SELECT * FROM cashEntry ORDER BY transactionDate DESC")
+    fun getAllCashEntries(): Flow<List<CashEntryEntity>>
 }
