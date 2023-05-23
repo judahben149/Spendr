@@ -31,9 +31,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/md_theme_light_onSecondaryContainer"
                 android:fontFamily="@font/roboto_regular"
                 android:text="May"
+                android:textColor="@color/md_theme_light_onSecondaryContainer"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -44,8 +44,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
                 android:text="N500"
-                android:textSize="22sp"
                 android:textColor="@color/pigment_green"
+                android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/materialDivider"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,11 +57,25 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
                 android:text="Inflow"
-                android:textSize="11sp"
                 android:textColor="@color/pigment_green"
+                android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="@id/tv_inflow_amount"
                 app:layout_constraintStart_toStartOf="@id/tv_inflow_amount"
                 app:layout_constraintTop_toBottomOf="@id/tv_inflow_amount" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/pgBar_inflowAmount"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/materialDivider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                android:indeterminate="true"
+                android:indeterminateBehavior="repeat"
+                app:indicatorColor="@color/pigment_green"
+                android:visibility="visible"/>
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/materialDivider"
@@ -98,6 +112,20 @@
                 app:layout_constraintEnd_toEndOf="@id/tv_outflow_amount"
                 app:layout_constraintStart_toStartOf="@id/tv_outflow_amount"
                 app:layout_constraintTop_toBottomOf="@id/tv_outflow_amount" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/pgBar_outflowAmount"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/materialDivider"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                android:indeterminate="true"
+                android:indeterminateBehavior="repeat"
+                app:indicatorColor="@color/syracuse_red_orange"
+                android:visibility="visible"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
