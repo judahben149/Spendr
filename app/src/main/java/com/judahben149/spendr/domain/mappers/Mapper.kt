@@ -9,5 +9,11 @@ interface Mapper {
 
     fun cashEntryToCashEntryEntity(cashEntry: CashEntry): CashEntryEntity
 
+    fun cashEntryEntityToCashEntry(cashEntryEntity: CashEntryEntity): CashEntry
+
     fun categoryToCategoryEntity(category: Category): CategoryEntity
+
+    fun categoryEntityToCategory(categoryEntity: CategoryEntity): Category
+
+    fun mapCategoryEntityListToCategoryList(entityList: List<CategoryEntity>): List<Category>
 }

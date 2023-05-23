@@ -16,11 +16,33 @@ class MapperImpl: Mapper {
         )
     }
 
+    override fun cashEntryEntityToCashEntry(cashEntryEntity: CashEntryEntity): CashEntry {
+        return CashEntry(
+            id = cashEntryEntity.id,
+            amount = cashEntryEntity.amount,
+            isIncome = cashEntryEntity.isIncome,
+            categoryId = cashEntryEntity.categoryId,
+            transactionDate = cashEntryEntity.transactionDate
+        )
+    }
+
     override fun categoryToCategoryEntity(category: Category): CategoryEntity {
         return CategoryEntity(
             categoryId = category.categoryId,
             categoryName = category.categoryName,
             isIncomeCategory = category.isIncomeCategory
         )
+    }
+
+    override fun categoryEntityToCategory(categoryEntity: CategoryEntity): Category {
+        return Category(
+            categoryId = categoryEntity.categoryId,
+            categoryName = categoryEntity.categoryName,
+            isIncomeCategory = categoryEntity.isIncomeCategory
+        )
+    }
+
+    override fun mapCategoryEntityListToCategoryList(entityList: List<CategoryEntity>): List<Category> {
+        return entityList.map { categoryEntityToCategory(it) }
     }
 }
