@@ -16,15 +16,39 @@
         <action
             android:id="@+id/action_homeFragment_to_addCashEntryFragment"
             app:destination="@id/addCashEntryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_entryListFragment"
+            app:destination="@id/entryListFragment" />
     </fragment>
     <fragment
         android:id="@+id/cashFlowSummaryFragment"
         android:name="com.judahben149.spendr.presentation.cashflow_summary.CashFlowSummaryFragment"
         android:label="Cash Summary"
-        tools:layout="@layout/fragment_cash_flow_summary" />
+        tools:layout="@layout/fragment_cash_flow_summary" >
+        <action
+            android:id="@+id/action_cashFlowSummaryFragment_to_entryListFragment"
+            app:destination="@id/entryListFragment" />
+        <action
+            android:id="@+id/action_cashFlowSummaryFragment_to_entryDetailFragment"
+            app:destination="@id/entryDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addCashEntryFragment"
         android:name="com.judahben149.spendr.presentation.add_cash_entry.AddCashEntryFragment"
         android:label="Add Entry"
         tools:layout="@layout/fragment_add_cash_entry" />
+    <fragment
+        android:id="@+id/entryListFragment"
+        android:name="com.judahben149.spendr.presentation.entry_list.EntryListFragment"
+        android:label="fragment_entry_list"
+        tools:layout="@layout/fragment_entry_list" >
+        <action
+            android:id="@+id/action_entryListFragment_to_entryDetailFragment"
+            app:destination="@id/entryDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entryDetailFragment"
+        android:name="com.judahben149.spendr.presentation.entry_detail.EntryDetailFragment"
+        android:label="fragment_entry_detail"
+        tools:layout="@layout/fragment_entry_detail" />
 </navigation>
