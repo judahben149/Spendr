@@ -1,7 +1,6 @@
 package com.judahben149.spendr.presentation.cashflow_summary.epoxy
 
 import android.util.Log
-import com.airbnb.epoxy.Typed2EpoxyController
 import com.airbnb.epoxy.TypedEpoxyController
 import com.judahben149.spendr.domain.model.CashEntry
 import com.judahben149.spendr.presentation.cashflow_summary.CashFlowSummaryUiState
@@ -37,10 +36,10 @@ class SummaryEpoxyController(
             return
         }
 
-        val income = getTotalIncome(uiState.cashEntryList!!).abbreviateNumber()
-        val expenditure = getTotalExpenditure(uiState.cashEntryList!!).abbreviateNumber()
-        val latestThreeIncome = getLastThreeIncomes(uiState.cashEntryList!!)
-        val latestThreeExpenditure = getLastThreeExpenditures(uiState.cashEntryList!!)
+        val income = getTotalIncome(uiState.cashEntryList).abbreviateNumber()
+        val expenditure = getTotalExpenditure(uiState.cashEntryList).abbreviateNumber()
+        val latestThreeIncome = getLatestThreeIncomes(uiState.cashEntryList)
+        val latestThreeExpenditure = getLatestThreeExpenditures(uiState.cashEntryList)
 
         SummarySpacer(20)
         SummaryHeaderEpoxyModel("Summary").id(-1).addTo(this)
@@ -57,9 +56,10 @@ class SummaryEpoxyController(
             SummaryEntryItemEpoxyModel(
                 amount = cashEntry.amount.abbreviateNumber(),
                 date = DateUtils.formatFriendlyDateTime(cashEntry.transactionDate),
-                category = "Salary",
-                { onEntryItemClicked(cashEntry.id) }
-            ).id(cashEntry.id).addTo(this)
+                category = "Salary"
+            ) {
+                onEntryItemClicked(cashEntry.id)
+            }.id("Income_${cashEntry.id}").addTo(this)
         }
 
         SummarySpacer(spacerHeight = 100)
@@ -74,9 +74,10 @@ class SummaryEpoxyController(
             SummaryEntryItemEpoxyModel(
                 amount = cashEntry.amount.abbreviateNumber(),
                 date = DateUtils.formatFriendlyDateTime(cashEntry.transactionDate),
-                category = "Savings",
-                { onEntryItemClicked(cashEntry.id) }
-            ).id(cashEntry.id).addTo(this)
+                category = "Savings"
+            ) {
+                onEntryItemClicked(cashEntry.id)
+            }.id("Expenditure_${cashEntry.id}").addTo(this)
         }
     }
 
@@ -85,9 +86,9 @@ class SummaryEpoxyController(
         var totalIncome = 0.00
 
         cashEntryList.filter { cashEntry ->
-            cashEntry.isIncome == true
+            cashEntry.isIncome
         }.map { cashEntry ->
-            totalIncome = totalIncome + cashEntry.amount
+            totalIncome += cashEntry.amount
         }
         Log.d("TAGM", "getTotalIncome: $totalIncome")
         return totalIncome
@@ -97,17 +98,17 @@ class SummaryEpoxyController(
         var totalExpenditure = 0.00
 
         cashEntryList.filter { cashEntry ->
-            cashEntry.isIncome == false
+            !cashEntry.isIncome
         }.map { cashEntry ->
-            totalExpenditure = totalExpenditure + cashEntry.amount
+            totalExpenditure += cashEntry.amount
         }
         Log.d("TAGM", "getTotalExpenditure: $totalExpenditure")
         return totalExpenditure
     }
 
-    private fun getLastThreeIncomes(cashEntryList: List<CashEntry>): List<CashEntry> {
+    private fun getLatestThreeIncomes(cashEntryList: List<CashEntry>): List<CashEntry> {
         val sortedList = cashEntryList.filter { cashEntry ->
-            cashEntry.isIncome == true
+            cashEntry.isIncome
         }.sortedByDescending {
             it.transactionDate
         }
@@ -116,9 +117,9 @@ class SummaryEpoxyController(
         return sortedList.take(3)
     }
 
-    private fun getLastThreeExpenditures(cashEntryList: List<CashEntry>): List<CashEntry> {
+    private fun getLatestThreeExpenditures(cashEntryList: List<CashEntry>): List<CashEntry> {
         val sortedList = cashEntryList.filter { cashEntry ->
-            cashEntry.isIncome == true
+            !cashEntry.isIncome
         }.sortedByDescending {
             it.transactionDate
         }
