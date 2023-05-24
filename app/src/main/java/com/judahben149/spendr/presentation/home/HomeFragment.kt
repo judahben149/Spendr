@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
             binding.tvOutflowAmount.text = state.outflowBalance.abbreviateNumber()
         }
 
-        binding.cardCashFlowSummary.setOnClickListener {
+        binding.itemSummaryNeumorphicCard.setOnClickListener {
             navController.navigate(R.id.cashFlowSummaryFragment)
         }
 

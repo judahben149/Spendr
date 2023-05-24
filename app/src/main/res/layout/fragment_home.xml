@@ -8,7 +8,7 @@
 
 
     <soup.neumorphism.NeumorphCardView
-        android:id="@+id/card_cash_flow_summary"
+        android:id="@+id/item_summary_neumorphic_card"
         android:layout_width="match_parent"
         android:layout_marginTop="50dp"
         android:layout_height="120dp"
@@ -26,7 +26,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/month_name"
+                android:id="@+id/tv_month_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -139,7 +139,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/card_visualizer"
-        app:layout_constraintTop_toBottomOf="@id/card_cash_flow_summary"
+        app:layout_constraintTop_toBottomOf="@id/item_summary_neumorphic_card"
         app:neumorph_lightSource="leftTop"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
