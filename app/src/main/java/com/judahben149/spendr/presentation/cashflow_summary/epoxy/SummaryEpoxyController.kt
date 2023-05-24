@@ -1,57 +1,85 @@
 package com.judahben149.spendr.presentation.cashflow_summary.epoxy
 
 import android.util.Log
-import com.airbnb.epoxy.EpoxyController
+import com.airbnb.epoxy.Typed2EpoxyController
 import com.airbnb.epoxy.TypedEpoxyController
 import com.judahben149.spendr.domain.model.CashEntry
+import com.judahben149.spendr.presentation.cashflow_summary.CashFlowSummaryUiState
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummaryCardEpoxyModel
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummaryEntryItemEpoxyModel
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummaryExpenditureHeaderEpoxyModel
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummaryHeaderEpoxyModel
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummaryIncomeHeaderEpoxyModel
+import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummaryProgressBarEpoxyModel
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummarySpacer
 import com.judahben149.spendr.utils.DateUtils
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 
-class SummaryEpoxyController: TypedEpoxyController<List<CashEntry>>() {
+class SummaryEpoxyController(
+    val onSeeAllIncomeClicked: () -> Unit,
+    val onSeeAllExpenditureClicked: () -> Unit,
+    val onEntryItemClicked: (id: Int) -> Unit
+) : TypedEpoxyController<CashFlowSummaryUiState>() {
 
 
-    override fun buildModels(data: List<CashEntry>?) {
-        if (data.isNullOrEmpty()) {
-            SummaryHeaderEpoxyModel("Summary").id(1).addTo(this)
-            SummaryCardEpoxyModel("300", "500", "January").id(2).addTo(this)
+    override fun buildModels(uiState: CashFlowSummaryUiState?) {
+
+        //set loading state
+        if (uiState == null || uiState.isLoading) {
+            SummaryProgressBarEpoxyModel().id("pgBar").addTo(this)
             return
         }
 
-        val income = getTotalIncome(data!!).abbreviateNumber()
-        val expenditure = getTotalExpenditure(data!!).abbreviateNumber()
-        val latestThreeIncome = getLastThreeIncomes(data!!)
-        val latestThreeExpenditure = getLastThreeExpenditures(data!!)
+        //set empty list state
+        if (uiState.cashEntryList.isNullOrEmpty()) {
+            SummaryHeaderEpoxyModel("Summary").id("header").addTo(this)
+            SummaryCardEpoxyModel("0", "0", "_").id("card").addTo(this)
+            return
+        }
 
+        val income = getTotalIncome(uiState.cashEntryList!!).abbreviateNumber()
+        val expenditure = getTotalExpenditure(uiState.cashEntryList!!).abbreviateNumber()
+        val latestThreeIncome = getLastThreeIncomes(uiState.cashEntryList!!)
+        val latestThreeExpenditure = getLastThreeExpenditures(uiState.cashEntryList!!)
+
+        SummarySpacer(20)
         SummaryHeaderEpoxyModel("Summary").id(-1).addTo(this)
-        SummaryCardEpoxyModel(income, expenditure, "July").id(-2).addTo(this)
-        SummaryIncomeHeaderEpoxyModel("Income").id(-3).addTo(this)
+        SummaryCardEpoxyModel(income, expenditure, "July").id("card_summary").addTo(this)
+
+        SummaryIncomeHeaderEpoxyModel(
+            incomeTitle = "Income",
+            onSeeAllIncomeClicked = {
+                onSeeAllIncomeClicked()
+            }
+        ).id(-3).addTo(this)
 
         latestThreeIncome.forEach { cashEntry ->
             SummaryEntryItemEpoxyModel(
                 amount = cashEntry.amount.abbreviateNumber(),
                 date = DateUtils.formatFriendlyDateTime(cashEntry.transactionDate),
-                category = "Salary"
+                category = "Salary",
+                { onEntryItemClicked(cashEntry.id) }
             ).id(cashEntry.id).addTo(this)
         }
 
-//        SummarySpacer(spacerHeight = 100)
+        SummarySpacer(spacerHeight = 100)
 
-        SummaryExpenditureHeaderEpoxyModel("Expenditure").id(-4).addTo(this)
+        SummaryExpenditureHeaderEpoxyModel(
+            "Expenditure"
+        ) {
+            onSeeAllExpenditureClicked()
+        }.id(-4).addTo(this)
 
         latestThreeExpenditure.forEach { cashEntry ->
             SummaryEntryItemEpoxyModel(
                 amount = cashEntry.amount.abbreviateNumber(),
                 date = DateUtils.formatFriendlyDateTime(cashEntry.transactionDate),
-                category = "Savings"
+                category = "Savings",
+                { onEntryItemClicked(cashEntry.id) }
             ).id(cashEntry.id).addTo(this)
         }
     }
+
 
     private fun getTotalIncome(cashEntryList: List<CashEntry>): Double {
         var totalIncome = 0.00
@@ -96,6 +124,7 @@ class SummaryEpoxyController: TypedEpoxyController<List<CashEntry>>() {
         }
 
         Log.d("TAGM", "getLastThreeExpenditures: ${sortedList.take(3)}")
-       return sortedList.take(3)
+        return sortedList.take(3)
     }
+
 }

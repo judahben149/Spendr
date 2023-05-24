@@ -9,6 +9,7 @@ data class SummaryEntryItemEpoxyModel(
     val amount: String,
     val date: String,
     val category: String,
+    val onEntryItemClicked:() -> Unit
 ): ViewBindingKotlinModel<EpoxyModelSummaryEntryCardBinding>(R.layout.epoxy_model_summary_entry_card) {
 
     override fun EpoxyModelSummaryEntryCardBinding.bind() {
@@ -17,5 +18,9 @@ data class SummaryEntryItemEpoxyModel(
         tvEntryDate.text = date
 
         imageCategoryIcon.mapCategoryIcon(category)
+
+        cardEntry.setOnClickListener {
+            onEntryItemClicked()
+        }
     }
 }
