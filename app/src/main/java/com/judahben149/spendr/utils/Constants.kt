@@ -12,4 +12,10 @@ object Constants {
     //Keys
     const val ENTRY_TYPE = "ENTRY_TYPE"
     const val ENTRY_ID = "ENTRY_ID"
+
+    //Constants
+    const val INITIAL_PAGE = 0
+    const val PAGE_SIZE = 20
+    const val PREFETCH_DISTANCE = 5
+    const val INITIAL_LOAD_SIZE = 20
 }
