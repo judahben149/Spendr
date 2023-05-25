@@ -1,5 +1,6 @@
 package com.judahben149.spendr.data.repository
 
+import androidx.paging.PagingData
 import com.judahben149.spendr.data.local.entity.CashEntryEntity
 import com.judahben149.spendr.data.local.entity.CategoryEntity
 import kotlinx.coroutines.flow.Flow
@@ -13,4 +14,6 @@ interface CashFlowRepository {
     fun getCategories(): Flow<List<CategoryEntity>>
 
     fun getALlCashEntries(): Flow<List<CashEntryEntity>>
+
+    fun getALlPagedCashEntries(): Flow<PagingData<CashEntryEntity>>
 }
