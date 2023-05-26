@@ -133,7 +133,9 @@ fun ImageView.mapCategoryIcon(categoryName: String) {
         "Utilities" -> {
             this.setImageResource(R.drawable.utility)
         }
-
-
+        else -> {
+            //icon for uncategorized cash entries
+            this.setImageResource(R.drawable.utility)
+        }
     }
 }
