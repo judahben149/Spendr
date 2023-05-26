@@ -7,15 +7,44 @@
     tools:context=".presentation.home.HomeFragment">
 
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingTop="8dp"
+        android:elevation="8dp" >
+
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi, Judah"
+            android:textColor="@color/md_theme_light_onSecondaryContainer"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginStart="30dp" />
+
+        <ImageView
+            android:id="@+id/iv_theme_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_day"
+            android:padding="5dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="30dp" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/item_summary_neumorphic_card"
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
         android:layout_height="120dp"
+        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
         app:neumorph_lightSource="leftTop"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
