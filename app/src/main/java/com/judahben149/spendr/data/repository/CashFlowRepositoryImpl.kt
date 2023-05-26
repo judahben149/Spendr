@@ -35,12 +35,6 @@ class CashFlowRepositoryImpl @Inject constructor(
     }
 
     override fun getCategories(): Flow<List<CategoryEntity>> {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            cashFlowDao.getCategories().collect { category ->
-//                Log.d("TAGM", "Category: $category")
-//            }
-//        }
-
         return cashFlowDao.getCategories()
     }
 
@@ -61,5 +55,10 @@ class CashFlowRepositoryImpl @Inject constructor(
                 CashEntryPagingSource(cashFlowDao)
             }
         ).flow
+    }
+
+
+    override suspend fun getEntryDetail(entryId: Int): CashEntryEntity {
+       return cashFlowDao.getEntryDetail(entryId)
     }
 }

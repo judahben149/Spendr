@@ -25,4 +25,7 @@ interface CashFlowDao {
 
     @Query("SELECT * FROM cashEntry ORDER BY transactionDate DESC LIMIT :limit OFFSET :offset")
     suspend fun getAllPagedCashEntries(limit: Int, offset: Int): List<CashEntryEntity>
+
+    @Query("SELECT * FROM cashEntry WHERE id = :entryId")
+    suspend fun getEntryDetail(entryId: Int): CashEntryEntity
 }

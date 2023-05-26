@@ -16,4 +16,6 @@ interface CashFlowRepository {
     fun getALlCashEntries(): Flow<List<CashEntryEntity>>
 
     fun getALlPagedCashEntries(): Flow<PagingData<CashEntryEntity>>
+
+    suspend fun getEntryDetail(entryId: Int): CashEntryEntity
 }
