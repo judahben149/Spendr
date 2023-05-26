@@ -8,15 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.paging.filter
-import androidx.paging.map
-import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.judahben149.spendr.R
-import com.judahben149.spendr.databinding.FragmentCashFlowSummaryBinding
-import com.judahben149.spendr.databinding.FragmentEntryDetailBinding
 import com.judahben149.spendr.databinding.FragmentEntryListBinding
 import com.judahben149.spendr.domain.model.CashEntry
 import com.judahben149.spendr.presentation.entry_list.epoxy.EntryListController
@@ -35,7 +31,9 @@ class EntryListFragment : Fragment() {
     private lateinit var entryListController: EntryListController
     private lateinit var entryListRv: EpoxyRecyclerView
 
-    var isIncomeEntryType: Boolean? = false
+    val navController by lazy {
+        findNavController()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,50 +46,71 @@ class EntryListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showEntryType()
+        setEntryType()
         setupEpoxyController()
 
         lifecycleScope.launch {
             viewModel.pagedCashEntries.collectLatest { pagedCashEntries ->
                 var entries: PagingData<CashEntry> = pagedCashEntries
 
-                //Because this fragment is reused across both income and expenditure
-                // calling sites, filter for which to display
-                isIncomeEntryType?.let { isIncomeEntryType ->
-                    if (isIncomeEntryType) {
+                //Because this fragment is reused to show both income and expenditure
+                // entries, filter for which to display
+                when(viewModel.state.value!!.entryListType) {
+                    is EntryListType.IncomeEntry -> {
                         val incomeEntries = pagedCashEntries.filter { cashEntry ->
                             cashEntry.isIncome
                         }
                         entries = incomeEntries
-                    } else {
+                    }
+
+                    is EntryListType.ExpenditureEntry -> {
                         val expenditureEntries = pagedCashEntries.filter { cashEntry ->
                             !cashEntry.isIncome
                         }
                         entries = expenditureEntries
                     }
+
+                    is EntryListType.AllEntry -> {
+                        entries = pagedCashEntries
+                    }
                 }
                 entryListController.submitData(entries)
             }
         }
-
     }
 
     private fun setupEpoxyController() {
         entryListRv = binding.epoxyRvEntryList
 
-        entryListController = EntryListController(onEntryItemClicked = {
-            Toast.makeText(requireContext(), "You clicked me", Toast.LENGTH_SHORT).show()
-        })
+        entryListController = EntryListController(onEntryItemClicked = { itemId ->
 
+            handleItemClicks(itemId)
+        })
         entryListRv.setController(entryListController)
     }
 
-    private fun showEntryType() {
-        isIncomeEntryType = arguments?.getBoolean(Constants.ENTRY_TYPE)
+    private fun handleItemClicks(itemId: Int) {
+        val bundle = Bundle().apply {
+            putInt(Constants.ENTRY_ID, itemId)
+        }
+
+        navController.navigate(R.id.entryDetailFragment, bundle)
+    }
+
+    private fun setEntryType() {
+        val isIncomeEntryType = arguments?.getBoolean(Constants.IS_INCOME_ENTRY_TYPE)
 
         isIncomeEntryType?.let {
-            Snackbar.make(binding.root, if (it) "Income" else "Expenditure", Snackbar.LENGTH_SHORT)
-                .show()
+            if (isIncomeEntryType) {
+                viewModel.updateEntryListType(EntryListType.IncomeEntry)
+            } else if (!isIncomeEntryType) {
+                viewModel.updateEntryListType(EntryListType.ExpenditureEntry)
+            }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

@@ -9,7 +9,7 @@ import com.judahben149.spendr.utils.DateUtils
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 
 class EntryListController(
-    private val onEntryItemClicked:() -> Unit
+    private val onEntryItemClicked:(id: Int) -> Unit
 ): PagingDataEpoxyController<CashEntry>() {
 
     override fun buildItemModel(currentPosition: Int, entry: CashEntry?): EpoxyModel<*> {
@@ -19,7 +19,7 @@ class EntryListController(
             amount = entry?.amount?.abbreviateNumber()!!,
             date = DateUtils.formatFriendlyDateTime(entry?.transactionDate!!),
             category = "Savings",
-            onEntryItemClicked = { onEntryItemClicked() }
+            onEntryItemClicked = { onEntryItemClicked(entry?.id!!) }
         ).id("pagedCashEntry")
     }
 }
