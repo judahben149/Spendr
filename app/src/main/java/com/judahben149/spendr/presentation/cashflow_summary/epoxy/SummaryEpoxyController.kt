@@ -41,8 +41,6 @@ class SummaryEpoxyController(
         val latestThreeIncome = getLatestThreeIncomes(uiState.cashEntryList)
         val latestThreeExpenditure = getLatestThreeExpenditures(uiState.cashEntryList)
 
-        SummarySpacer(20)
-        SummaryHeaderEpoxyModel("Summary").id(-1).addTo(this)
         SummaryCardEpoxyModel(income, expenditure, "July").id("card_summary").addTo(this)
 
         SummaryIncomeHeaderEpoxyModel(
