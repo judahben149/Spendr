@@ -10,7 +10,7 @@ object Constants {
     const val IS_FIRST_LAUNCH = "is_first_launch"
 
     //Keys
-    const val ENTRY_TYPE = "ENTRY_TYPE"
+    const val IS_INCOME_ENTRY_TYPE = "IS_INCOME_ENTRY_TYPE"
     const val ENTRY_ID = "ENTRY_ID"
 
     //Constants
