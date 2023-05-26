@@ -82,4 +82,14 @@ object DummyData {
         )
     )
 
+    val categoryMap = mapOf<Int, String>(
+        Pair(1, "Savings"),
+        Pair(2, "Salary"),
+        Pair(3, "Transport"),
+        Pair(4, "Travel"),
+        Pair(5, "Salary"),
+        Pair(6, "Utilities"),
+        Pair(7, "Rent"),
+    )
+
 }
