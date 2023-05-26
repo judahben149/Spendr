@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.judahben149.spendr.R
@@ -26,6 +27,9 @@ class EntryDetailFragment : Fragment() {
     private val viewModel: EntryDetailViewModel by viewModels()
     private lateinit var entryDetailEpoxyController: EntryDetailEpoxyController
     private lateinit var epoxyRecyclerView: EpoxyRecyclerView
+    val navController by lazy {
+        findNavController()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +41,8 @@ class EntryDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnBack.setOnClickListener { navController.popBackStack() }
+
         val entryId = arguments?.getInt(Constants.ENTRY_ID)
         setupEpoxyController()
 

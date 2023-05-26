@@ -12,10 +12,8 @@ class EntryDetailEpoxyController: Typed2EpoxyController<CashEntry, Map<Int, Stri
 
         cashEntry?.let {  entry ->
             categoryMap?.let {  map ->
-                Log.d("TAGM", "buildModels: ${entry.toString()} \n ${map.toString()}")
                 EntryDetailHeaderEpoxyModel(entry, map).id("entryDetail_header").addTo(this)
             }
         }
     }
-
 }

@@ -21,7 +21,6 @@ class HomeFragment : Fragment() {
     val navController by lazy {
         findNavController()
     }
-
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(

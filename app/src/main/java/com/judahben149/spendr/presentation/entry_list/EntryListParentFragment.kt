@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.judahben149.spendr.databinding.FragmentEntryListParentBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,6 +18,10 @@ class EntryListParentFragment : Fragment() {
 
     private lateinit var pagerAdapter: EntryListPagerAdapter
 
+    val navController by lazy {
+        findNavController()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +32,9 @@ class EntryListParentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnBack.setOnClickListener {
+            navController.popBackStack()
+        }
 
         val viewPager = binding.viewPagerEntryListParent
         val tabLayout = binding.tabLayoutEntryList
