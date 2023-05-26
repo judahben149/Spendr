@@ -1,15 +1,17 @@
 package com.judahben149.spendr.presentation.cashflow_summary
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentCashFlowSummaryBinding
-import com.judahben149.spendr.databinding.FragmentHomeBinding
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.SummaryEpoxyController
+import com.judahben149.spendr.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +21,20 @@ class CashFlowSummaryFragment : Fragment() {
     val binding get() = _binding!!
 
     private val viewModel: CashFlowSummaryViewModel by viewModels()
+    val navController by lazy {
+        findNavController()
+    }
+
+    private val summaryEpoxyController: SummaryEpoxyController by lazy {
+        SummaryEpoxyController(
+            onSeeAllIncomeClicked = {
+                handleNavigationEvent(CashFlowSummaryNavigationDestinations.EntryListFragment(true))
+            }, onSeeAllExpenditureClicked = {
+                handleNavigationEvent(CashFlowSummaryNavigationDestinations.EntryListFragment(false))
+            }, onEntryItemClicked = { entryId ->
+                handleNavigationEvent(CashFlowSummaryNavigationDestinations.EntryDetailFragment(entryId))
+            })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,12 +48,34 @@ class CashFlowSummaryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getCashEntries()
-
-        val summaryEpoxyController = SummaryEpoxyController()
         binding.epoxyRvSummaryScreen.setController(summaryEpoxyController)
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
-            summaryEpoxyController.setData(state.cashEntryList)
+            summaryEpoxyController.setData(state)
         }
     }
+
+    private fun handleNavigationEvent(destination: CashFlowSummaryNavigationDestinations) {
+        when(destination) {
+            is CashFlowSummaryNavigationDestinations.EntryListFragment -> {
+                val isIncomeEntryTypeBundle = destination.isIncomeEntryType
+                val bundle = Bundle().apply {
+                    putBoolean(Constants.IS_INCOME_ENTRY_TYPE, isIncomeEntryTypeBundle)
+                }
+                navController.navigate(R.id.entryListFragment, bundle)
+            }
+
+            is CashFlowSummaryNavigationDestinations.EntryDetailFragment -> {
+                val bundle = Bundle().apply {
+                    putInt(Constants.ENTRY_ID, destination.entryId)
+                }
+                navController.navigate(R.id.entryDetailFragment, bundle)
+            }
+        }
+    }
+}
+
+sealed class CashFlowSummaryNavigationDestinations() {
+    data class EntryListFragment(val isIncomeEntryType: Boolean): CashFlowSummaryNavigationDestinations()
+    data class EntryDetailFragment(val entryId: Int): CashFlowSummaryNavigationDestinations()
 }

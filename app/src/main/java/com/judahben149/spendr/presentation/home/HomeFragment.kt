@@ -46,6 +46,10 @@ class HomeFragment : Fragment() {
             navController.navigate(R.id.cashFlowSummaryFragment)
         }
 
+        binding.cardTransactions.setOnClickListener {
+            navController.navigate(R.id.entryListParentFragment)
+        }
+
         binding.cardAddEntry.setOnClickListener {
             navController.navigate(R.id.addCashEntryFragment)
         }
