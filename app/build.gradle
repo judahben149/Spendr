@@ -90,4 +90,7 @@ dependencies {
     //Paging3
     implementation "androidx.paging:paging-runtime:$paging_version"
 
+    //ViewPager2
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-beta02'
+
 }

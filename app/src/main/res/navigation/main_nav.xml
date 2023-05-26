@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_entryListFragment"
             app:destination="@id/entryListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_entryListParentFragment"
+            app:destination="@id/entryListParentFragment" />
     </fragment>
     <fragment
         android:id="@+id/cashFlowSummaryFragment"
@@ -51,4 +54,9 @@
         android:name="com.judahben149.spendr.presentation.entry_detail.EntryDetailFragment"
         android:label="fragment_entry_detail"
         tools:layout="@layout/fragment_entry_detail" />
+    <fragment
+        android:id="@+id/entryListParentFragment"
+        android:name="com.judahben149.spendr.presentation.entry_list.EntryListParentFragment"
+        android:label="fragment_entry_list_parent"
+        tools:layout="@layout/fragment_entry_list_parent" />
 </navigation>
