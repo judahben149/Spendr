@@ -9,6 +9,9 @@ object Constants {
     const val SETTINGS_FILE = "app_pref"
     const val IS_FIRST_LAUNCH = "is_first_launch"
 
+    //Flags
+    const val SHOULD_SHOW_TOOL_BAR = "SHOULD_SHOW_TOOL_BAR"
+
     //Keys
     const val IS_INCOME_ENTRY_TYPE = "IS_INCOME_ENTRY_TYPE"
     const val ENTRY_ID = "ENTRY_ID"
