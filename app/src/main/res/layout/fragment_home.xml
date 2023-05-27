@@ -190,7 +190,7 @@
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
             android:textSize="13sp"
-            android:text="Transactions" />
+            android:text="Activity" />
     </soup.neumorphism.NeumorphCardView>
 
 
@@ -348,7 +348,7 @@
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
             android:textSize="13sp"
-            android:text="Add Entry" />
+            android:text="New Entry" />
     </soup.neumorphism.NeumorphCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
