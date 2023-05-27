@@ -20,6 +20,7 @@ class EntryListPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecyc
                 EntryListFragment().apply {
                     arguments = Bundle().apply {
                         putBoolean(Constants.IS_INCOME_ENTRY_TYPE, true)
+                        putBoolean(Constants.SHOULD_SHOW_TOOL_BAR, false)
                     }
                 }
             }
@@ -28,6 +29,7 @@ class EntryListPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecyc
                 EntryListFragment().apply {
                     arguments = Bundle().apply {
                         putBoolean(Constants.IS_INCOME_ENTRY_TYPE, false)
+                        putBoolean(Constants.SHOULD_SHOW_TOOL_BAR, false)
                     }
                 }
             }

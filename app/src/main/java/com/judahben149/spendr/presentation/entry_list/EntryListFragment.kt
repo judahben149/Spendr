@@ -45,8 +45,11 @@ class EntryListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setEntryType()
+
+        binding.toolBar.setOnClickListener {
+            navController.popBackStack()
+        }
         setupEpoxyController()
 
         lifecycleScope.launch {
@@ -79,6 +82,34 @@ class EntryListFragment : Fragment() {
         }
     }
 
+    private fun showOrHideToolBar(title: String) {
+        val showToolBar = arguments?.getBoolean(Constants.SHOULD_SHOW_TOOL_BAR)
+
+        showToolBar?.let { shouldShowToolBar ->
+            if (shouldShowToolBar) {
+                binding.tvToolbarTitle.text = title
+                return
+            }
+        }
+
+        binding.toolBar.visibility = View.GONE
+    }
+
+
+    private fun setEntryType() {
+        val isIncomeEntryType = arguments?.getBoolean(Constants.IS_INCOME_ENTRY_TYPE)
+
+        isIncomeEntryType?.let {
+            if (isIncomeEntryType) {
+                showOrHideToolBar("Income")
+                viewModel.updateEntryListType(EntryListType.IncomeEntry)
+            } else if (!isIncomeEntryType) {
+                showOrHideToolBar("Expenditure")
+                viewModel.updateEntryListType(EntryListType.ExpenditureEntry)
+            }
+        }
+    }
+
     private fun setupEpoxyController() {
         entryListRv = binding.epoxyRvEntryList
 
@@ -95,18 +126,6 @@ class EntryListFragment : Fragment() {
         }
 
         navController.navigate(R.id.entryDetailFragment, bundle)
-    }
-
-    private fun setEntryType() {
-        val isIncomeEntryType = arguments?.getBoolean(Constants.IS_INCOME_ENTRY_TYPE)
-
-        isIncomeEntryType?.let {
-            if (isIncomeEntryType) {
-                viewModel.updateEntryListType(EntryListType.IncomeEntry)
-            } else if (!isIncomeEntryType) {
-                viewModel.updateEntryListType(EntryListType.ExpenditureEntry)
-            }
-        }
     }
 
     override fun onDestroy() {
