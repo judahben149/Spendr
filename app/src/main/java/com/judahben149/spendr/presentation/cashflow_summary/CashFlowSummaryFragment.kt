@@ -62,6 +62,7 @@ class CashFlowSummaryFragment : Fragment() {
                 val isIncomeEntryTypeBundle = destination.isIncomeEntryType
                 val bundle = Bundle().apply {
                     putBoolean(Constants.IS_INCOME_ENTRY_TYPE, isIncomeEntryTypeBundle)
+                    putBoolean(Constants.SHOULD_SHOW_TOOL_BAR, true)
                 }
                 navController.navigate(R.id.entryListFragment, bundle)
             }
