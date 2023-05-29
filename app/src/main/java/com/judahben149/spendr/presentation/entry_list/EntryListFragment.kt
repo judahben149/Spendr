@@ -5,21 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.paging.filter
+import androidx.paging.map
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentEntryListBinding
-import com.judahben149.spendr.domain.model.CashEntry
+import com.judahben149.spendr.domain.model.EntryListData
 import com.judahben149.spendr.presentation.entry_list.epoxy.EntryListController
 import com.judahben149.spendr.utils.Constants
+import com.judahben149.spendr.utils.DateUtils.getMonthFromDateInMillis
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class EntryListFragment : Fragment() {
@@ -54,30 +56,7 @@ class EntryListFragment : Fragment() {
 
         lifecycleScope.launch {
             viewModel.pagedCashEntries.collectLatest { pagedCashEntries ->
-                var entries: PagingData<CashEntry> = pagedCashEntries
-
-                //Because this fragment is reused to show both income and expenditure
-                // entries, filter for which to display
-                when(viewModel.state.value!!.entryListType) {
-                    is EntryListType.IncomeEntry -> {
-                        val incomeEntries = pagedCashEntries.filter { cashEntry ->
-                            cashEntry.isIncome
-                        }
-                        entries = incomeEntries
-                    }
-
-                    is EntryListType.ExpenditureEntry -> {
-                        val expenditureEntries = pagedCashEntries.filter { cashEntry ->
-                            !cashEntry.isIncome
-                        }
-                        entries = expenditureEntries
-                    }
-
-                    is EntryListType.AllEntry -> {
-                        entries = pagedCashEntries
-                    }
-                }
-                entryListController.submitData(entries)
+                entryListController.submitData(pagedCashEntries)
             }
         }
     }
@@ -102,9 +81,11 @@ class EntryListFragment : Fragment() {
         isIncomeEntryType?.let {
             if (isIncomeEntryType) {
                 showOrHideToolBar("Income")
+                Timber.tag(Constants.TIMBER_TAG).d("Fragment update- is Income? - $isIncomeEntryType")
                 viewModel.updateEntryListType(EntryListType.IncomeEntry)
             } else if (!isIncomeEntryType) {
                 showOrHideToolBar("Expenditure")
+                Timber.tag(Constants.TIMBER_TAG).d("Fragment update- is Income? - $isIncomeEntryType")
                 viewModel.updateEntryListType(EntryListType.ExpenditureEntry)
             }
         }
