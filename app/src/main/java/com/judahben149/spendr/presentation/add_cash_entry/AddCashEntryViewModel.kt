@@ -22,14 +22,25 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
     private var _categoryState: MutableLiveData<CategoryListState> = MutableLiveData(CategoryListState())
     val categoryState: LiveData<CategoryListState> = _categoryState
 
+    private var _selectedCategoryState: MutableLiveData<SelectedCategoryState> = MutableLiveData(SelectedCategoryState())
+    val selectedCategoryState: LiveData<SelectedCategoryState> get() = _selectedCategoryState
 
-    fun updateEntryType(isIncome: Boolean) {
-        _state.value = _state.value?.copy(
-            isIncome = isIncome
-        )
+    fun getCategories() {
+        setCategoryLoading(true)
+
+        viewModelScope.launch {
+            val categoryList = repository.getCategories().collect { categoryEntityList ->
+                val categoryList = categoryEntityList.map { categoryEntity ->
+                    MapperImpl().categoryEntityToCategory(categoryEntity)
+                }
+
+                _categoryState.value = _categoryState.value!!.copy(categoryList = categoryList)
+                setCategoryLoading(false)
+            }
+        }
     }
 
-    fun updateAmount(amount: Double) {
+    fun updateAmount(amount: Int) {
         _state.value = _state.value?.copy(
             amount = amount
         )
@@ -37,10 +48,10 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
 
     fun saveEntry() {
         viewModelScope.launch {
-
             val cashEntry = CashEntry(
-                amount = _state.value!!.amount,
+                amount = _state.value!!.amount.toDouble(),
                 isIncome = _state.value!!.isIncome,
+                transactionDate =_state.value!!.date
             )
 
             val entity = MapperImpl().cashEntryToCashEntryEntity(cashEntry)
@@ -60,6 +71,15 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
         }
     }
 
+    fun updateSelectedCategoryId(categoryId: Int) {
+        val previousSelectedId = _selectedCategoryState.value?.currentSelectedId ?: -2
+
+        _selectedCategoryState.value = _selectedCategoryState.value!!.copy(
+            currentSelectedId = categoryId,
+            previousSelectedId = previousSelectedId
+        )
+    }
+
     fun setCurrentDate(currentDate: Long) {
         _state.value = _state.value!!.copy(
             date = currentDate
@@ -75,6 +95,10 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
     fun setCashEntryType(isIncome: Boolean) {
         _categoryState.value = _categoryState.value!!.copy(
             isIncomeSelected = isIncome
+        )
+
+        _state.value = _state.value?.copy(
+            isIncome = isIncome
         )
     }
 }
