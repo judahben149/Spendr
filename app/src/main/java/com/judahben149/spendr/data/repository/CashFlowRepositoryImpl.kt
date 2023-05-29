@@ -9,6 +9,7 @@ import com.judahben149.spendr.data.local.CashFlowDao
 import com.judahben149.spendr.data.local.entity.CashEntryEntity
 import com.judahben149.spendr.data.local.entity.CategoryEntity
 import com.judahben149.spendr.data.paging.CashEntryPagingSource
+import com.judahben149.spendr.domain.model.EntryListData
 import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.Constants.INITIAL_LOAD_SIZE
 import com.judahben149.spendr.utils.Constants.PAGE_SIZE
@@ -20,6 +21,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 class CashFlowRepositoryImpl @Inject constructor(
@@ -42,9 +44,7 @@ class CashFlowRepositoryImpl @Inject constructor(
         return cashFlowDao.getAllCashEntries()
     }
 
-    override fun getALlPagedCashEntries(): Flow<PagingData<CashEntryEntity>> {
-        Log.d("TAGM", "getALlPagedCashEntries: repository")
-
+    override fun getALlPagedCashEntries(): Flow<PagingData<EntryListData>> {
         return Pager(
             config = PagingConfig(
                 pageSize = PAGE_SIZE,
@@ -52,7 +52,33 @@ class CashFlowRepositoryImpl @Inject constructor(
                 initialLoadSize = INITIAL_LOAD_SIZE
             ),
             pagingSourceFactory = {
-                CashEntryPagingSource(cashFlowDao)
+                CashEntryPagingSource(cashFlowDao, true)
+            }
+        ).flow
+    }
+
+    override fun getAllPagedIncome(): Flow<PagingData<EntryListData>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = PAGE_SIZE,
+                enablePlaceholders = false,
+                initialLoadSize = INITIAL_LOAD_SIZE
+            ),
+            pagingSourceFactory = {
+                CashEntryPagingSource(cashFlowDao, true)
+            }
+        ).flow
+    }
+
+    override fun getAllPagedExpenditure(): Flow<PagingData<EntryListData>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = PAGE_SIZE,
+                enablePlaceholders = false,
+                initialLoadSize = INITIAL_LOAD_SIZE
+            ),
+            pagingSourceFactory = {
+                CashEntryPagingSource(cashFlowDao, false)
             }
         ).flow
     }
