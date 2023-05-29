@@ -35,9 +35,28 @@ object DateUtils {
             return "Today"
         }
 
+        //If date is part of current year, return just the day and month
+        if(currentDate.get(Calendar.YEAR) == givenDate.get(Calendar.YEAR)) {
+            val format = SimpleDateFormat("d MMM", Locale.getDefault())
+            return format.format(givenDate.time)
+        }
+
         val format = SimpleDateFormat("d MMM, yyyy", Locale.getDefault())
         return format.format(givenDate.time)
     }
 
+    fun getMonthFromDateInMillis(dateInMillis: Long): String {
+        val currentDate = Calendar.getInstance()
+        val givenDate = Calendar.getInstance()
+        givenDate.timeInMillis = dateInMillis
+
+        if (givenDate.get(Calendar.YEAR) != currentDate.get(Calendar.YEAR)) {
+            val monthYearFormat = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
+            return monthYearFormat.format(givenDate.time)
+        }
+
+        val monthFormat = SimpleDateFormat("MMMM", Locale.getDefault())
+        return monthFormat.format(givenDate.time)
+    }
 
 }
