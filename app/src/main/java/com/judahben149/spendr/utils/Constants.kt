@@ -8,6 +8,7 @@ object Constants {
     const val DATE_PICKER_ADD_CASH_ENTRY = "DATE_PICKER_ADD_CASH_ENTRY"
     const val SETTINGS_FILE = "app_pref"
     const val IS_FIRST_LAUNCH = "is_first_launch"
+    const val TIMBER_TAG = "TIMBER_TAG"
 
     //Flags
     const val SHOULD_SHOW_TOOL_BAR = "SHOULD_SHOW_TOOL_BAR"
