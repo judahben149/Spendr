@@ -26,6 +26,7 @@ import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.Constants.DATE_PICKER_ADD_CASH_ENTRY
 import com.judahben149.spendr.utils.DateUtils.formatFriendlyDateTime
 import com.judahben149.spendr.utils.DateUtils.getCurrentDateInMillis
+import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import com.judahben149.spendr.utils.extensions.highlight
 import com.judahben149.spendr.utils.extensions.unHighlight
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,6 +63,7 @@ class AddCashEntryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvToolbarTitle.animateToolBarTitle()
         binding.btnBack.setOnClickListener { navController.popBackStack() }
 
         setTodayDate()

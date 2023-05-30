@@ -1,6 +1,8 @@
 package com.judahben149.spendr.utils.extensions
 
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.DrawableRes
 import com.judahben149.spendr.R
 import soup.neumorphism.NeumorphButton
@@ -138,4 +140,15 @@ fun ImageView.mapCategoryIcon(categoryName: String) {
             this.setImageResource(R.drawable.utility)
         }
     }
+}
+
+fun TextView.animateToolBarTitle() {
+    this.translationX = 50f
+    this.alpha = 0f
+
+    this.animate()
+        .translationX(0f)
+        .alpha(1f)
+        .setDuration(250)
+        .start()
 }

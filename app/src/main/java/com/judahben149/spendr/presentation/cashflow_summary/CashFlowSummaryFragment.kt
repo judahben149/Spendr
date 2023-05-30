@@ -12,6 +12,7 @@ import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentCashFlowSummaryBinding
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.SummaryEpoxyController
 import com.judahben149.spendr.utils.Constants
+import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,6 +47,7 @@ class CashFlowSummaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvToolbarTitle.animateToolBarTitle()
         binding.btnBack.setOnClickListener { navController.popBackStack() }
 
         viewModel.getCashEntries()

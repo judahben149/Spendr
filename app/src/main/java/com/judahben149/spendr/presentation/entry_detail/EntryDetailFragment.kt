@@ -16,6 +16,7 @@ import com.judahben149.spendr.databinding.FragmentEntryDetailBinding
 import com.judahben149.spendr.presentation.entry_detail.epoxy.EntryDetailEpoxyController
 import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.DummyData
+import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +42,7 @@ class EntryDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvToolbarTitle.animateToolBarTitle()
         binding.btnBack.setOnClickListener { navController.popBackStack() }
 
         val entryId = arguments?.getInt(Constants.ENTRY_ID)

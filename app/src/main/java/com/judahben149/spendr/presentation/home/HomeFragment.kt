@@ -42,16 +42,16 @@ class HomeFragment : Fragment() {
         }
 
         binding.itemSummaryNeumorphicCard.setOnClickListener {
-            navController.navigate(R.id.cashFlowSummaryFragment)
+            navController.navigate(R.id.action_homeFragment_to_cashFlowSummaryFragment)
         }
         binding.cardTransactions.setOnClickListener {
-            navController.navigate(R.id.entryListParentFragment)
+            navController.navigate(R.id.action_homeFragment_to_entryListParentFragment)
         }
         binding.cardVisualizer.setOnClickListener {
-            navController.navigate(R.id.visualizerFragment)
+            navController.navigate(R.id.action_homeFragment_to_visualizerFragment)
         }
         binding.cardAddEntry.setOnClickListener {
-            navController.navigate(R.id.addCashEntryFragment)
+            navController.navigate(R.id.action_homeFragment_to_addCashEntryFragment)
         }
     }
 

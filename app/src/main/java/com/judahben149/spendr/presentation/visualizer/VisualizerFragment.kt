@@ -16,6 +16,7 @@ import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentVisualizerBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.github.mikephil.charting.data.PieEntry
+import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 
 @AndroidEntryPoint
 class VisualizerFragment : Fragment() {
@@ -39,14 +40,12 @@ class VisualizerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvToolbarTitle.animateToolBarTitle()
+        binding.btnBack.setOnClickListener { navController.popBackStack() }
+
         viewModel.getBalance()
 
-        binding.btnBack.setOnClickListener {
-            navController.popBackStack()
-        }
-
         viewModel.state.observe(viewLifecycleOwner) { state ->
-
             if (state.isPieChartDataReady) {
                 populatePieChart(state)
             }
