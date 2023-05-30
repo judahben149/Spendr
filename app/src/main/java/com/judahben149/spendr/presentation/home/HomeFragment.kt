@@ -44,11 +44,12 @@ class HomeFragment : Fragment() {
         binding.itemSummaryNeumorphicCard.setOnClickListener {
             navController.navigate(R.id.cashFlowSummaryFragment)
         }
-
         binding.cardTransactions.setOnClickListener {
             navController.navigate(R.id.entryListParentFragment)
         }
-
+        binding.cardVisualizer.setOnClickListener {
+            navController.navigate(R.id.visualizerFragment)
+        }
         binding.cardAddEntry.setOnClickListener {
             navController.navigate(R.id.addCashEntryFragment)
         }
