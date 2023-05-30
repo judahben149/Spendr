@@ -12,19 +12,32 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_cashFlowSummaryFragment"
-            app:destination="@id/cashFlowSummaryFragment" />
+            app:destination="@id/cashFlowSummaryFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
         <action
             android:id="@+id/action_homeFragment_to_addCashEntryFragment"
-            app:destination="@id/addCashEntryFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_entryListFragment"
-            app:destination="@id/entryListFragment" />
+            app:destination="@id/addCashEntryFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_homeFragment_to_entryListParentFragment"
-            app:destination="@id/entryListParentFragment" />
+            app:destination="@id/entryListParentFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_homeFragment_to_visualizerFragment"
-            app:destination="@id/visualizerFragment" />
+            app:destination="@id/visualizerFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/cashFlowSummaryFragment"
@@ -33,10 +46,18 @@
         tools:layout="@layout/fragment_cash_flow_summary" >
         <action
             android:id="@+id/action_cashFlowSummaryFragment_to_entryListFragment"
-            app:destination="@id/entryListFragment" />
+            app:destination="@id/entryListFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_cashFlowSummaryFragment_to_entryDetailFragment"
-            app:destination="@id/entryDetailFragment" />
+            app:destination="@id/entryDetailFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/addCashEntryFragment"
@@ -50,7 +71,11 @@
         tools:layout="@layout/fragment_entry_list" >
         <action
             android:id="@+id/action_entryListFragment_to_entryDetailFragment"
-            app:destination="@id/entryDetailFragment" />
+            app:destination="@id/entryDetailFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/entryDetailFragment"
