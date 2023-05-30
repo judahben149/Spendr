@@ -117,6 +117,7 @@ class AddCashEntryFragment : Fragment() {
 
         binding.btnSave.setOnClickListener {
             viewModel.saveEntry()
+            navController.popBackStack()
         }
 
         binding.layoutBtnIncome.setOnClickListener {
