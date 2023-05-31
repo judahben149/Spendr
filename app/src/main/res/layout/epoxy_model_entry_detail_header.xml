@@ -7,8 +7,9 @@
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/card_entry_detail"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_width="wrap_content"
+        android:minWidth="150dp"
+        android:layout_height="150dp"
         android:layout_marginHorizontal="50dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,8 +29,8 @@
 
         <ImageView
             android:id="@+id/iv_category_icon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
             android:src="@drawable/savings" />
@@ -39,33 +40,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="24dp"
+            android:textStyle="bold"
             android:fontFamily="@font/roboto_regular"
-            android:text="N10,000"
-            android:textColor="@color/md_theme_dark_secondaryContainer"
+            tools:text="N10,000"
+            android:textColor="#001E2B"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_title_entry_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/roboto_regular"
             android:text="Savings"
             android:textColor="@color/md_theme_dark_secondaryContainer"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/tv_date_entry_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="10dp"
-            android:text="10th May, 2023"
-            android:textColor="@color/md_theme_dark_secondaryContainer"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
     </soup.neumorphism.NeumorphCardView>
 
 

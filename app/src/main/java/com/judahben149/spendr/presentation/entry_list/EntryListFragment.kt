@@ -18,6 +18,7 @@ import com.judahben149.spendr.domain.model.EntryListData
 import com.judahben149.spendr.presentation.entry_list.epoxy.EntryListController
 import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.DateUtils.getMonthFromDateInMillis
+import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -67,6 +68,7 @@ class EntryListFragment : Fragment() {
         showToolBar?.let { shouldShowToolBar ->
             if (shouldShowToolBar) {
                 binding.tvToolbarTitle.text = title
+                binding.tvToolbarTitle.animateToolBarTitle()
                 return
             }
         }

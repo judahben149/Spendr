@@ -7,33 +7,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowId
-import android.view.WindowId.FocusObserver
-import android.widget.ListAdapter
-import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doOnTextChanged
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentAddCashEntryBinding
-import com.judahben149.spendr.presentation.add_cash_entry.adapter.CategoryAdapter
-import com.judahben149.spendr.utils.Constants
+import com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.CategoryBottomSheetFragment
+import com.judahben149.spendr.presentation.shared.BottomSheetContainerFragment
+import com.judahben149.spendr.utils.Constants.CATEGORY_BOTTOM_SHEET
 import com.judahben149.spendr.utils.Constants.DATE_PICKER_ADD_CASH_ENTRY
 import com.judahben149.spendr.utils.DateUtils.formatFriendlyDateTime
 import com.judahben149.spendr.utils.DateUtils.getCurrentDateInMillis
 import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import com.judahben149.spendr.utils.extensions.highlight
+import com.judahben149.spendr.utils.extensions.mapCategoryIcon
 import com.judahben149.spendr.utils.extensions.unHighlight
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import timber.log.Timber
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 @AndroidEntryPoint
 class AddCashEntryFragment : Fragment() {
@@ -42,11 +32,9 @@ class AddCashEntryFragment : Fragment() {
     val binding get() = _binding!!
 
     private var textChangedByListener = true
-    private val viewModel: AddCashEntryViewModel by viewModels()
+    private val viewModel: AddCashEntryViewModel by activityViewModels()
     private var isIncome: Boolean = false
 
-    lateinit var adapter: CategoryAdapter
-    lateinit var categoryRecyclerView: RecyclerView
     val navController by lazy {
         findNavController()
     }
@@ -67,8 +55,6 @@ class AddCashEntryFragment : Fragment() {
         binding.btnBack.setOnClickListener { navController.popBackStack() }
 
         setTodayDate()
-        setupCategoryAdapter()
-        viewModel.getCategories()
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
 
@@ -83,27 +69,23 @@ class AddCashEntryFragment : Fragment() {
         }
 
         viewModel.categoryState.observe(viewLifecycleOwner) { categoryState ->
-            showProgressBar(categoryState.isLoading)
 
-            //observe for changes in selected category. Uses the map function to map the category with the id in question
-            viewModel.selectedCategoryState.observe(viewLifecycleOwner) { selectedCategoryState ->
-                adapter.updateSelectedCategoryState(selectedCategoryState)
-
-                if (categoryState.isIncomeSelected) {
-                    binding.btnIncome.highlight()
-                    binding.btnExpenditure.unHighlight()
-                    adapter.submitList(categoryState.categoryList?.filter { category ->
-                        category.isIncomeCategory
-                    })
-                } else {
-                    binding.btnExpenditure.highlight()
-                    binding.btnIncome.unHighlight()
-                    adapter.submitList(categoryState.categoryList?.filter { category ->
-                        !category.isIncomeCategory
-                    })
-                }
+            if (categoryState.isIncomeSelected) {
+                binding.btnIncome.highlight()
+                binding.btnExpenditure.unHighlight()
+                //set bottom sheet list to income items
+            } else {
+                binding.btnExpenditure.highlight()
+                binding.btnIncome.unHighlight()
+                //set bottom sheet list to expenditure items
             }
         }
+
+        viewModel.selectedCategoryId.observe(viewLifecycleOwner) { selectedId ->
+            Toast.makeText(requireContext(), "Id is $selectedId", Toast.LENGTH_SHORT).show()
+            binding.ivSelectedCategoryIcon.mapCategoryIcon(selectedId)
+        }
+
 
         binding.etAmount.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -133,6 +115,9 @@ class AddCashEntryFragment : Fragment() {
         binding.tvDate.setOnClickListener {
             datePicker()
         }
+        binding.tvCategory.setOnClickListener {
+            BottomSheetContainerFragment().show(childFragmentManager, CATEGORY_BOTTOM_SHEET)
+        }
     }
 
     private fun setTodayDate() {
@@ -140,20 +125,6 @@ class AddCashEntryFragment : Fragment() {
         viewModel.setCurrentDate(currentDate)
     }
 
-    private fun setupCategoryAdapter() {
-        categoryRecyclerView = binding.rvCategory
-        adapter = CategoryAdapter() { selectedId ->
-            viewModel.updateSelectedCategoryId(selectedId)
-        }
-
-        categoryRecyclerView.adapter = adapter
-        categoryRecyclerView.layoutManager = GridLayoutManager(
-            requireContext(),
-            3,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-    }
 
     private fun displayFriendlyDate(dateLong: Long) {
         binding.tvDate.text = formatFriendlyDateTime(dateLong)
@@ -170,13 +141,6 @@ class AddCashEntryFragment : Fragment() {
         }
     }
 
-    fun showProgressBar(isLoading: Boolean) {
-        if (isLoading) {
-            binding.pgBarCategory.visibility = View.VISIBLE
-        } else {
-            binding.pgBarCategory.visibility = View.INVISIBLE
-        }
-    }
 
     override fun onPause() {
         super.onPause()

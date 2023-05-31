@@ -3,6 +3,7 @@ package com.judahben149.spendr.presentation.entry_detail.epoxy
 import android.util.Log
 import com.airbnb.epoxy.Typed2EpoxyController
 import com.judahben149.spendr.domain.model.CashEntry
+import com.judahben149.spendr.presentation.entry_detail.epoxy.model.EntryDetailBodyEpoxyModel
 import com.judahben149.spendr.presentation.entry_detail.epoxy.model.EntryDetailHeaderEpoxyModel
 
 class EntryDetailEpoxyController: Typed2EpoxyController<CashEntry, Map<Int, String>>() {
@@ -13,6 +14,7 @@ class EntryDetailEpoxyController: Typed2EpoxyController<CashEntry, Map<Int, Stri
         cashEntry?.let {  entry ->
             categoryMap?.let {  map ->
                 EntryDetailHeaderEpoxyModel(entry, map).id("entryDetail_header").addTo(this)
+                EntryDetailBodyEpoxyModel(entry, map).id("entryDetail_body").addTo(this)
             }
         }
     }

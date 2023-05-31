@@ -5,7 +5,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.judahben149.spendr.data.local.AppDatabase
 import com.judahben149.spendr.data.local.CashFlowDao
-import com.judahben149.spendr.data.local.PreloadDefaultCategories
 import com.judahben149.spendr.utils.Constants.APP_DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -25,8 +24,7 @@ object DatabaseModule {
             context,
             AppDatabase::class.java,
             APP_DATABASE_NAME
-        ).addCallback(PreloadDefaultCategories(context))
-            .build()
+        ).build()
     }
 
     @Provides

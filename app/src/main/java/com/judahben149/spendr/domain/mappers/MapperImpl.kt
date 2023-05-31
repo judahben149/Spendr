@@ -30,6 +30,7 @@ class MapperImpl: Mapper {
         return CategoryEntity(
             categoryId = category.categoryId,
             categoryName = category.categoryName,
+            categoryIconId = category.categoryIconId,
             isIncomeCategory = category.isIncomeCategory
         )
     }
@@ -38,6 +39,7 @@ class MapperImpl: Mapper {
         return Category(
             categoryId = categoryEntity.categoryId,
             categoryName = categoryEntity.categoryName,
+            categoryIconId = categoryEntity.categoryIconId,
             isIncomeCategory = categoryEntity.isIncomeCategory
         )
     }

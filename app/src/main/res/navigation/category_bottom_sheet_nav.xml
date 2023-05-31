@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_bottom_sheet_nav"
+    app:startDestination="@id/categoryBottomSheetFragment">
+
+    <fragment
+        android:id="@+id/categoryBottomSheetFragment"
+        android:name="com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.CategoryBottomSheetFragment"
+        android:label="fragment_category_bottom_sheet"
+        tools:layout="@layout/fragment_category_bottom_sheet" >
+        <action
+            android:id="@+id/action_categoryBottomSheetFragment_to_newCategoryBottomSheetFragment"
+            app:destination="@id/newCategoryBottomSheetFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_from_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_from_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/newCategoryBottomSheetFragment"
+        android:name="com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.NewCategoryBottomSheetFragment"
+        android:label="fragment_new_category_bottom_sheet"
+        tools:layout="@layout/fragment_new_category_bottom_sheet" />
+</navigation>
