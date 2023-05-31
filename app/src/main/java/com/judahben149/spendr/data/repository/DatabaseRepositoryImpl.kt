@@ -31,11 +31,13 @@ class DatabaseRepositoryImpl @Inject constructor(private val cashFlowDao: CashFl
 
                     val categoryId = categoryItem.getInt("category-id")
                     val categoryName = categoryItem.getString("category-name")
+                    val categoryIconId = categoryItem.getInt("category-icon-id")
                     val isIncomeCategory = categoryItem.getBoolean("is-income-category")
 
                     val categoryEntity = CategoryEntity(
                         categoryId,
                         categoryName,
+                        categoryIconId,
                         isIncomeCategory
                     )
 
@@ -45,7 +47,7 @@ class DatabaseRepositoryImpl @Inject constructor(private val cashFlowDao: CashFl
             }
         }
         catch (exception: Exception) {
-            Log.d("TAGM", "prefillDefaultCategories: Error on prefilling categories")
+            Log.d("TAGM", "prefillDefaultCategories: Error on prefilling categories - ${exception.message}")
         }
     }
 }
