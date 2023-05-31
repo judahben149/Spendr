@@ -63,7 +63,11 @@
         android:id="@+id/addCashEntryFragment"
         android:name="com.judahben149.spendr.presentation.add_cash_entry.AddCashEntryFragment"
         android:label="Add Entry"
-        tools:layout="@layout/fragment_add_cash_entry" />
+        tools:layout="@layout/fragment_add_cash_entry" >
+        <action
+            android:id="@+id/action_addCashEntryFragment_to_categoryBottomSheetFragment2"
+            app:destination="@id/categoryBottomSheetFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/entryListFragment"
         android:name="com.judahben149.spendr.presentation.entry_list.EntryListFragment"
@@ -92,4 +96,18 @@
         android:name="com.judahben149.spendr.presentation.visualizer.VisualizerFragment"
         android:label="fragment_visualizer"
         tools:layout="@layout/fragment_visualizer" />
+    <dialog
+        android:id="@+id/categoryBottomSheetFragment2"
+        android:name="com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.CategoryBottomSheetFragment"
+        android:label="fragment_category_bottom_sheet"
+        tools:layout="@layout/fragment_category_bottom_sheet" >
+        <action
+            android:id="@+id/action_categoryBottomSheetFragment2_to_newCategoryBottomSheetFragment2"
+            app:destination="@id/newCategoryBottomSheetFragment2" />
+    </dialog>
+    <dialog
+        android:id="@+id/newCategoryBottomSheetFragment2"
+        android:name="com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.NewCategoryBottomSheetFragment"
+        android:label="fragment_new_category_bottom_sheet"
+        tools:layout="@layout/fragment_new_category_bottom_sheet" />
 </navigation>
