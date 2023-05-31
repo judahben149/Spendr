@@ -19,7 +19,6 @@ data class EntryDetailHeaderEpoxyModel(
 
         tvAmountEntryDetails.text = cashEntry.amount.abbreviateNumber()
         tvTitleEntryDetails.text = categoryName
-        tvDateEntryDetails.text = DateUtils.formatFriendlyDateTime(cashEntry.transactionDate)
         ivCategoryIcon.mapCategoryIcon(categoryName)
     }
 }
