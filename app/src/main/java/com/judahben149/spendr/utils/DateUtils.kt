@@ -59,4 +59,11 @@ object DateUtils {
         return monthFormat.format(givenDate.time)
     }
 
+    fun getTimeOfDayFromDateInMillis(dateInMillis: Long): String {
+        val givenDate = Calendar.getInstance()
+        givenDate.timeInMillis = dateInMillis
+
+        val timeFormat = SimpleDateFormat("h:mma", Locale.getDefault())
+        return timeFormat.format(givenDate.time)
+    }
 }
