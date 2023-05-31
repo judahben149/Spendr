@@ -8,5 +8,6 @@ data class CategoryEntity(
     @PrimaryKey(autoGenerate = true)
     val categoryId: Int,
     val categoryName: String,
+    val categoryIconId: Int,
     val isIncomeCategory: Boolean
 )

@@ -10,13 +10,8 @@ data class AddCashEntryState(
 )
 
 data class CategoryListState(
-    val categoryList: List<Category>? = null,
+    val categoryList: List<Category> = emptyList(),
     val isIncomeSelected: Boolean = false,
     val isError: Boolean = false,
     val isLoading: Boolean = false
-)
-
-data class SelectedCategoryState(
-    val currentSelectedId: Int = -1,
-    val previousSelectedId: Int = -2,
 )

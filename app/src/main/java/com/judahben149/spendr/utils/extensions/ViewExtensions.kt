@@ -142,6 +142,110 @@ fun ImageView.mapCategoryIcon(categoryName: String) {
     }
 }
 
+fun ImageView.mapCategoryIcon(categoryIconId: Int) {
+    when(categoryIconId) {
+        1 -> {
+            this.setImageResource(R.drawable.automobile)
+        }
+
+        2 -> {
+            this.setImageResource(R.drawable.bank)
+        }
+
+        3 -> {
+            this.setImageResource(R.drawable.charity)
+        }
+
+        4 -> {
+            this.setImageResource(R.drawable.child_care)
+        }
+
+        5 -> {
+            this.setImageResource(R.drawable.clothing)
+        }
+
+        6 -> {
+            this.setImageResource(R.drawable.education)
+        }
+
+        7 -> {
+            this.setImageResource(R.drawable.entertainment)
+        }
+
+        8 -> {
+            this.setImageResource(R.drawable.fitness)
+        }
+
+        9 -> {
+            this.setImageResource(R.drawable.food)
+        }
+
+        10 -> {
+            this.setImageResource(R.drawable.gift)
+        }
+
+        11 -> {
+            this.setImageResource(R.drawable.grocery)
+        }
+
+        12 -> {
+            this.setImageResource(R.drawable.loan)
+        }
+
+        13 -> {
+            this.setImageResource(R.drawable.medical)
+        }
+
+        14 -> {
+            this.setImageResource(R.drawable.miscellaneous)
+        }
+
+        15 -> {
+            this.setImageResource(R.drawable.pet)
+        }
+
+        16 -> {
+            this.setImageResource(R.drawable.rent)
+        }
+
+        17 -> {
+            this.setImageResource(R.drawable.salary)
+        }
+
+        18 -> {
+            this.setImageResource(R.drawable.savings)
+        }
+
+        19 -> {
+            this.setImageResource(R.drawable.shopping)
+        }
+
+        20 -> {
+            this.setImageResource(R.drawable.subscription)
+        }
+
+        21 -> {
+            this.setImageResource(R.drawable.tax)
+        }
+
+        22 -> {
+            this.setImageResource(R.drawable.transport)
+        }
+
+        23 -> {
+            this.setImageResource(R.drawable.travel)
+        }
+
+        24 -> {
+            this.setImageResource(R.drawable.utility)
+        }
+        else -> {
+            //icon for uncategorized cash entries
+            this.setImageResource(R.drawable.question_mark)
+        }
+    }
+}
+
 fun TextView.animateToolBarTitle() {
     this.translationX = 50f
     this.alpha = 0f
