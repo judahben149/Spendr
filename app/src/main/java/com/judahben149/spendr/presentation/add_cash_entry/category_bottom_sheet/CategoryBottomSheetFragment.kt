@@ -1,5 +1,6 @@
 package com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentCategoryBottomSheetBinding
 import com.judahben149.spendr.presentation.add_cash_entry.AddCashEntryViewModel
 import com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.adapter.CategoryAdapter
+import com.judahben149.spendr.presentation.shared.BottomSheetContainerFragment
 import com.judahben149.spendr.utils.Constants
 import timber.log.Timber
 
@@ -24,6 +26,9 @@ class CategoryBottomSheetFragment : Fragment() {
 
     private var _binding: FragmentCategoryBottomSheetBinding? = null
     val binding get() = _binding!!
+
+    private val dismissListener: BottomSheetDismissListener?
+        get() = requireActivity() as? BottomSheetDismissListener
 
     private val viewModel: CategoryViewModel by activityViewModels()
     private val addCashEntryViewModel: AddCashEntryViewModel by activityViewModels()
@@ -33,6 +38,15 @@ class CategoryBottomSheetFragment : Fragment() {
     private val navController by lazy {
         findNavController()
     }
+
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        if (context is BottomSheetDismissListener) {
+//            dismissListener = context
+//        } else {
+//            throw IllegalArgumentException("Parent fragment must implement BottomSheetDismissListener")
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +58,10 @@ class CategoryBottomSheetFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setCategorySelected(isIncomeSelected = false)
+
+        val isIncome = addCashEntryViewModel.categoryState.value?.isIncomeSelected
+        viewModel.setCategorySelected(isIncomeSelected = isIncome ?: false)
+
         setupRecyclerView()
         viewModel.getCategories()
 
@@ -72,7 +89,7 @@ class CategoryBottomSheetFragment : Fragment() {
             navController.navigate(R.id.action_categoryBottomSheetFragment_to_newCategoryBottomSheetFragment)
         }
         binding.tvDone.setOnClickListener {
-            navController.popBackStack()
+//            dismissListener?.dismissBottomSheet()
         }
     }
 
@@ -82,6 +99,7 @@ class CategoryBottomSheetFragment : Fragment() {
 
         adapter = CategoryAdapter() {  selectedId ->
             addCashEntryViewModel.updateSelectedCategoryId(selectedId)
+//            dismissListener?.dismissBottomSheet()
         }
 
         recyclerView.adapter = adapter

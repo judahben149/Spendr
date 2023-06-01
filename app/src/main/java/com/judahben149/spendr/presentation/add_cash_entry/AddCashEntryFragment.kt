@@ -39,7 +39,6 @@ class AddCashEntryFragment : Fragment() {
         findNavController()
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,16 +47,13 @@ class AddCashEntryFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvToolbarTitle.animateToolBarTitle()
         binding.btnBack.setOnClickListener { navController.popBackStack() }
-
         setTodayDate()
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
-
             if (!textChangedByListener) {
                 binding.etAmount.setText(if (state.amount == 0) "" else state.amount.toString())
             } else {
@@ -73,17 +69,15 @@ class AddCashEntryFragment : Fragment() {
             if (categoryState.isIncomeSelected) {
                 binding.btnIncome.highlight()
                 binding.btnExpenditure.unHighlight()
-                //set bottom sheet list to income items
             } else {
                 binding.btnExpenditure.highlight()
                 binding.btnIncome.unHighlight()
-                //set bottom sheet list to expenditure items
             }
         }
 
-        viewModel.selectedCategoryId.observe(viewLifecycleOwner) { selectedId ->
-            Toast.makeText(requireContext(), "Id is $selectedId", Toast.LENGTH_SHORT).show()
-            binding.ivSelectedCategoryIcon.mapCategoryIcon(selectedId)
+        viewModel.selectedCategory.observe(viewLifecycleOwner) { category ->
+            binding.ivSelectedCategoryIcon.mapCategoryIcon(category.categoryIconId)
+            binding.tvCategory.text = category.categoryName
         }
 
 

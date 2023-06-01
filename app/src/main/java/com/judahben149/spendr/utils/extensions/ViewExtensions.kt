@@ -209,36 +209,37 @@ fun ImageView.mapCategoryIcon(categoryIconId: Int) {
         }
 
         17 -> {
-            this.setImageResource(R.drawable.salary)
-        }
-
-        18 -> {
             this.setImageResource(R.drawable.savings)
         }
 
-        19 -> {
+        18 -> {
             this.setImageResource(R.drawable.shopping)
         }
 
-        20 -> {
+        19 -> {
             this.setImageResource(R.drawable.subscription)
         }
 
-        21 -> {
+        20 -> {
             this.setImageResource(R.drawable.tax)
         }
 
-        22 -> {
+        21 -> {
             this.setImageResource(R.drawable.transport)
         }
 
-        23 -> {
+        22 -> {
             this.setImageResource(R.drawable.travel)
         }
 
-        24 -> {
+        23 -> {
             this.setImageResource(R.drawable.utility)
         }
+
+        24 -> {
+            this.setImageResource(R.drawable.salary)
+        }
+
         else -> {
             //icon for uncategorized cash entries
             this.setImageResource(R.drawable.question_mark)

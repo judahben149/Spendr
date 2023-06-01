@@ -44,19 +44,6 @@ class CashFlowRepositoryImpl @Inject constructor(
         return cashFlowDao.getAllCashEntries()
     }
 
-    override fun getALlPagedCashEntries(): Flow<PagingData<EntryListData>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = PAGE_SIZE,
-                enablePlaceholders = false,
-                initialLoadSize = INITIAL_LOAD_SIZE
-            ),
-            pagingSourceFactory = {
-                CashEntryPagingSource(cashFlowDao, true)
-            }
-        ).flow
-    }
-
     override fun getAllPagedIncome(): Flow<PagingData<EntryListData>> {
         return Pager(
             config = PagingConfig(
