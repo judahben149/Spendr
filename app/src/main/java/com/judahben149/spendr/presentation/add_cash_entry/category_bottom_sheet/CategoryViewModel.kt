@@ -17,13 +17,12 @@ import javax.inject.Inject
 @HiltViewModel
 class CategoryViewModel @Inject constructor(private val repository: CashFlowRepositoryImpl): ViewModel() {
 
-    private var _categoryState: MutableLiveData<CategoryListState> = MutableLiveData(
-        CategoryListState()
-    )
+    private var _categoryState: MutableLiveData<CategoryListState> = MutableLiveData(CategoryListState())
     val categoryState: LiveData<CategoryListState> = _categoryState
 
 
     fun getCategoryIconList(): List<Int> {
+        //These are the ids of the icons provided for selection. They are static
         val categoryIconsList = listOf<Int>(
             1,
             2,
@@ -54,24 +53,21 @@ class CategoryViewModel @Inject constructor(private val repository: CashFlowRepo
     }
 
     fun setCategorySelected(isIncomeSelected: Boolean) {
-        Timber.tag(Constants.TIMBER_TAG).d("Category  is income to $isIncomeSelected")
         _categoryState.value = _categoryState.value!!.copy(
             isIncomeSelected = isIncomeSelected
         )
     }
 
     fun getCategories() {
-        Timber.tag(Constants.TIMBER_TAG).d("Get categories called")
         setCategoryLoading(true)
 
         viewModelScope.launch {
-            val categoryList = repository.getCategories().collect { categoryEntityList ->
+            repository.getCategories().collect { categoryEntityList ->
                 val categoryList = categoryEntityList.map { categoryEntity ->
                     MapperImpl().categoryEntityToCategory(categoryEntity)
                 }
 
                 _categoryState.value = _categoryState.value!!.copy(categoryList = categoryList)
-                Timber.tag(Constants.TIMBER_TAG).d("Category list - $categoryList")
                 setCategoryLoading(false)
             }
         }
@@ -92,7 +88,6 @@ class CategoryViewModel @Inject constructor(private val repository: CashFlowRepo
     }
 
     fun setCategoryLoading(isLoading: Boolean) {
-        Timber.tag(Constants.TIMBER_TAG).d("Category loading - $isLoading")
         _categoryState.value = _categoryState.value!!.copy(
             isLoading = isLoading
         )

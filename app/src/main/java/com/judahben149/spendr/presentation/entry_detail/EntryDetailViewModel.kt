@@ -29,8 +29,6 @@ class EntryDetailViewModel @Inject constructor(private val cashFlowRepository: C
             val entryDetailEntity = cashFlowRepository.getEntryDetail(entryId)
             val entryDetail = MapperImpl().cashEntryEntityToCashEntry(entryDetailEntity)
 
-            Log.d("TAGM", "getEntryDetail: ${entryDetail}")
-
             _state.value = _state.value?.copy(
                 cashEntry = entryDetail,
                 isLoading = false
