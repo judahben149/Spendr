@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_reminder"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.5"
+    app:neumorph_lightSource="leftTop"
+    app:neumorph_shadowElevation="2dp"
+    app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+    app:neumorph_shapeType="basin"
+    android:layout_marginTop="-7dp"
+    android:layout_marginBottom="-3dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_card_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_reminder_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="N500"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/md_theme_light_onSecondaryContainer"
+            />
+
+        <TextView
+            android:id="@+id/tv_reminder_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginEnd="20dp"
+            android:maxLines="1"
+            android:text="Payment for school fees"
+            android:textColor="@color/md_theme_light_onSecondaryContainer"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_reminder_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_reminder_amount" />
+
+
+        <ImageView
+            android:id="@+id/iv_recurrent_reminder"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_reminder_date"
+            app:layout_constraintStart_toStartOf="@+id/tv_reminder_date"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_retry"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_reminder_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transport"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_recurrent_reminder"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/md_theme_light_onSecondaryContainer" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</soup.neumorphism.NeumorphCardView>
