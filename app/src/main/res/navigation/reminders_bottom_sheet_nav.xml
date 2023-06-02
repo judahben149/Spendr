@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reminders_bottom_sheet_nav"
+    app:startDestination="@id/reminderDetailsBottomSheetFragment">
+
+    <fragment
+        android:id="@+id/reminderDetailsBottomSheetFragment"
+        android:name="com.judahben149.spendr.presentation.extras.reminders.ReminderDetailsBottomSheetFragment"
+        android:label="fragment_reminder_details_bottom_sheet"
+        tools:layout="@layout/fragment_reminder_details_bottom_sheet" />
+</navigation>

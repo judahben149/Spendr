@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="48dp"
+    tools:context=".presentation.extras.reminders.ReminderDetailsBottomSheetFragment"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_save_or_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
+        android:text="Save"
+        android:textSize="18dp"
+        android:textColor="@color/md_theme_light_onSecondaryContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_reminder_text"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Subject"
+        app:layout_constraintEnd_toStartOf="@+id/layout_reminder_amount"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_save_or_update">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_reminder_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            tools:text="Payment" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_reminder_amount"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1.5"
+        app:layout_constraintTop_toTopOf="@id/layout_reminder_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_reminder_amount"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            tools:text="50,000" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_reminder_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="16sp"
+        android:background="@drawable/textview_border"
+        android:hint="Date"
+        android:padding="16dp"
+        android:text="25th, March, 2023"
+        app:layout_constraintEnd_toStartOf="@id/tv_reminder_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_reminder_text" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_reminder_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/textview_border"
+        android:hint="Time"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:text="11:00 pm"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_reminder_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_reminder_date" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="24dp"
+        app:dividerColor="@color/md_theme_light_onSecondaryContainer"
+        app:layout_constraintTop_toBottomOf="@id/tv_reminder_date" />
+
+    <TextView
+        android:id="@+id/tv_recurrent_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Repeating reminder?"
+        android:textSize="17sp"
+        android:textColor="@color/md_theme_light_onSecondaryContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/swtch_is_recurrent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_recurrent_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_recurrent_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
