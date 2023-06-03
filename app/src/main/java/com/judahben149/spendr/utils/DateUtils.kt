@@ -16,6 +16,15 @@ object DateUtils {
         return calendar.timeInMillis // Get the time in milliseconds
     }
 
+    fun getTomorrowDateInMillis(): Long {
+        val calendar = Calendar.getInstance() // Create a Calendar instance
+        calendar.add(Calendar.DAY_OF_MONTH, 1)
+
+        return calendar.timeInMillis // Get the time in milliseconds
+    }
+
+
+
     fun getCurrentFriendlyDate(): String {
         val calendar = Calendar.getInstance() // Create a Calendar instance
         calendar.time = Date() // Set the Calendar's time to the current date
@@ -42,6 +51,13 @@ object DateUtils {
             currentDate.get(Calendar.DAY_OF_YEAR) == givenDate.get(Calendar.DAY_OF_YEAR)
         ) {
             return "Today"
+        }
+
+        // Check if it's tomorrow
+        if (currentDate.get(Calendar.YEAR) == givenDate.get(Calendar.YEAR) &&
+            currentDate.get(Calendar.DAY_OF_YEAR) + 1 == givenDate.get(Calendar.DAY_OF_YEAR)
+        ) {
+            return "Tomorrow"
         }
 
         //If date is part of current year, return just the day and month
