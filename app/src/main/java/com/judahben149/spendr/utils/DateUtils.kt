@@ -20,7 +20,21 @@ object DateUtils {
         val calendar = Calendar.getInstance() // Create a Calendar instance
         calendar.add(Calendar.DAY_OF_MONTH, 1)
 
+        //sets the default date to 9am
+        calendar.set(Calendar.HOUR_OF_DAY, 9)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+
         return calendar.timeInMillis // Get the time in milliseconds
+    }
+
+    fun getFriendlyTime(timeInMillis: Long): String {
+        val currentTime = Calendar.getInstance()
+        val givenTime = Calendar.getInstance()
+        givenTime.timeInMillis = timeInMillis
+
+        val format = SimpleDateFormat("h:mm a", Locale.getDefault())
+        return format.format(givenTime.time)
     }
 
 
