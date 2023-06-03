@@ -6,4 +6,7 @@ data class CashEntry(
     val isIncome: Boolean = false,
     val categoryId: Int = 0,
     val transactionDate: Long = 0L,
+    val categoryName: String = "",
+    val categoryIconId: Int = 0,
+    val isIncomeCategory: Boolean = false
 )
