@@ -4,21 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.timepicker.MaterialTimePicker
 import com.judahben149.spendr.databinding.FragmentReminderDetailsBottomSheetBinding
-import com.judahben149.spendr.domain.model.Reminder
+import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.DateUtils
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Calendar
 
 @AndroidEntryPoint
 class ReminderDetailsBottomSheetFragment(): Fragment() {
 
     private var _binding: FragmentReminderDetailsBottomSheetBinding? = null
     val binding get() = _binding!!
-
-    private var subjectTextChangedByListener = true
-    private var amountTextChangedByListener = true
 
     private val viewModel: RemindersViewModel by activityViewModels()
 
@@ -33,18 +34,28 @@ class ReminderDetailsBottomSheetFragment(): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        setEditTextListeners()
+        setTomorrowDate()
 
         viewModel.newReminderState.observe(viewLifecycleOwner) { state ->
             //observe values entered from viewModel and set them
-            binding.etReminderAmount.setText(state.amount.toString())
-            binding.etReminderText.setText(state.reminderText)
             binding.tvReminderDate.text = DateUtils.formatFriendlyDateTime(state.targetDate)
-            setEditTextValues(state)
+            binding.tvReminderTime.text = DateUtils.getFriendlyTime(state.targetDate)
+        }
+
+        binding.tvReminderDate.setOnClickListener {
+            datePicker()
+        }
+
+        binding.tvReminderTime.setOnClickListener {
+            val currentDate = viewModel.newReminderState.value?.targetDate
+            if (currentDate != null) {
+                timePicker(currentDate)
+            }
         }
 
         binding.swtchIsRecurrent.setOnCheckedChangeListener { compoundButton, isChecked ->
             viewModel.setIsRecurrent(isChecked)
+            Toast.makeText(requireContext(), isChecked.toString(), Toast.LENGTH_SHORT).show()
         }
 
         binding.tvSaveOrUpdate.setOnClickListener {
@@ -54,46 +65,43 @@ class ReminderDetailsBottomSheetFragment(): Fragment() {
         }
     }
 
+    private fun datePicker() {
 
-    private fun setEditTextValues(state: Reminder?) {
-        if (!subjectTextChangedByListener) {
-            binding.etReminderText.setText(state?.reminderText)
-        } else {
-            subjectTextChangedByListener = false
-        }
+        val datePicker: MaterialDatePicker<Long> =
+            MaterialDatePicker.Builder.datePicker().setTitleText("Choose Date").build()
+        datePicker.show(parentFragmentManager, Constants.DATE_PICKER_ADD_CASH_ENTRY)
 
-        if (!amountTextChangedByListener) {
-            binding.etReminderAmount.setText(if (state?.amount == 0.0) "" else state?.amount.toString())
-        } else {
-            amountTextChangedByListener = false
+        datePicker.addOnPositiveButtonClickListener { dateLong ->
+            Toast.makeText(requireContext(), dateLong.toString(), Toast.LENGTH_SHORT).show()
+            viewModel.setTargetDate(dateLong)
         }
     }
 
-//    private fun setEditTextListeners() {
-//        binding.etReminderAmount.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-//            override fun onTextChanged(char: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-//
-//            override fun afterTextChanged(editable: Editable?) {
-//                amountTextChangedByListener = true
-//                viewModel.setAmount(
-//                    if (editable.isNullOrEmpty()) 0.0 else editable.toString().toDouble()
-//                )
-//            }
-//        })
-//
-//        binding.etReminderText.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-//            override fun onTextChanged(char: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-//
-//            override fun afterTextChanged(editable: Editable?) {
-//                subjectTextChangedByListener = true
-//                viewModel.setReminderText(
-//                    if (editable.isNullOrEmpty()) "" else editable.toString()
-//                )
-//            }
-//        })
-//    }
+    private fun timePicker(targetDate: Long) {
+
+        val timePicker: MaterialTimePicker =
+            MaterialTimePicker.Builder().setTitleText("Choose Time").build()
+        timePicker.show(parentFragmentManager, Constants.DATE_PICKER_ADD_CASH_ENTRY)
+
+        timePicker.addOnPositiveButtonClickListener {
+            val selectedHour = timePicker.hour
+            val selectedMinute = timePicker.minute
+
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = targetDate
+            calendar.set(Calendar.HOUR_OF_DAY, selectedHour)
+            calendar.set(Calendar.MINUTE, selectedMinute)
+
+            val timeInMillis = calendar.timeInMillis
+
+            viewModel.setTargetDate(timeInMillis)
+        }
+    }
+
+    private fun setTomorrowDate() {
+        val currentDate = DateUtils.getTomorrowDateInMillis()
+        viewModel.setTargetDate(currentDate)
+    }
 
     override fun onDestroy() {
         super.onDestroy()

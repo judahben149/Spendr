@@ -17,7 +17,7 @@ class RemindersAdapter(private val onReminderItemClicked:(id: Int) -> Unit): Lis
 
         fun bind(item: Reminder) {
             binding.tvReminderAmount.text = item.amount.abbreviateNumber()
-            binding.tvReminderDate.text = DateUtils.formatFriendlyDateTime(item.targetDate)
+            binding.tvReminderDate.text = DateUtils.getFriendlyTime(item.targetDate) + ", " + DateUtils.formatFriendlyDateTime(item.targetDate)
             binding.tvReminderText.text = item.reminderText
 
             if (item.isRecurrent) {
