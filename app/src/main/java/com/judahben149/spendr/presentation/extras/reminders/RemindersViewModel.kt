@@ -54,7 +54,6 @@ class RemindersViewModel @Inject constructor(
             viewModelScope.launch {
                 val reminder =
                     _newReminderState.value?.copy(amount = amount, reminderText = subject)
-                Timber.tag(TIMBER_TAG).d("save reminder - viewModel")
 
                 reminder?.let {
                     remindersRepository.saveReminder(
