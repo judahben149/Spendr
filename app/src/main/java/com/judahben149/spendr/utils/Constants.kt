@@ -3,6 +3,7 @@ package com.judahben149.spendr.utils
 object Constants {
 
     const val CATEGORY_BOTTOM_SHEET = "CATEGORY_BOTTOM_SHEET"
+    const val REMINDER_BOTTOM_SHEET = "REMINDER_BOTTOM_SHEET"
     const val APP_DATABASE_NAME = "spendr_database"
 
     //Tags
