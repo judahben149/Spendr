@@ -41,7 +41,7 @@ class SummaryEpoxyController(
         val latestThreeIncome = getLatestThreeIncomes(uiState.cashEntryList)
         val latestThreeExpenditure = getLatestThreeExpenditures(uiState.cashEntryList)
 
-        SummaryCardEpoxyModel(income, expenditure, "July").id("card_summary").addTo(this)
+        SummaryCardEpoxyModel(income, expenditure, "All").id("card_summary").addTo(this)
 
         SummaryIncomeHeaderEpoxyModel(
             incomeTitle = "Income",
@@ -52,9 +52,7 @@ class SummaryEpoxyController(
 
         latestThreeIncome.forEach { cashEntry ->
             SummaryEntryItemEpoxyModel(
-                amount = cashEntry.amount.abbreviateNumber(),
-                date = DateUtils.formatFriendlyDateTime(cashEntry.transactionDate),
-                category = "Salary"
+                cashEntry = cashEntry
             ) {
                 onEntryItemClicked(cashEntry.id)
             }.id("Income_${cashEntry.id}").addTo(this)
@@ -70,9 +68,7 @@ class SummaryEpoxyController(
 
         latestThreeExpenditure.forEach { cashEntry ->
             SummaryEntryItemEpoxyModel(
-                amount = cashEntry.amount.abbreviateNumber(),
-                date = DateUtils.formatFriendlyDateTime(cashEntry.transactionDate),
-                category = "Savings"
+                cashEntry = cashEntry
             ) {
                 onEntryItemClicked(cashEntry.id)
             }.id("Expenditure_${cashEntry.id}").addTo(this)

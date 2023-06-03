@@ -40,6 +40,7 @@ class CashFlowRepositoryImpl @Inject constructor(
         return cashFlowDao.getCategories()
     }
 
+
     override fun getALlCashEntries(): Flow<List<CashEntryEntity>> {
         return cashFlowDao.getAllCashEntries()
     }

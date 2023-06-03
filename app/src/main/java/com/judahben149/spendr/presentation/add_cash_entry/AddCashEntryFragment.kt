@@ -7,14 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.judahben149.spendr.databinding.FragmentAddCashEntryBinding
-import com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.CategoryBottomSheetFragment
-import com.judahben149.spendr.presentation.shared.BottomSheetContainerFragment
+import com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.BottomSheetContainerFragment
 import com.judahben149.spendr.utils.Constants.CATEGORY_BOTTOM_SHEET
 import com.judahben149.spendr.utils.Constants.DATE_PICKER_ADD_CASH_ENTRY
 import com.judahben149.spendr.utils.DateUtils.formatFriendlyDateTime
@@ -51,6 +48,7 @@ class AddCashEntryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.tvToolbarTitle.animateToolBarTitle()
         binding.btnBack.setOnClickListener { navController.popBackStack() }
+        viewModel.reset()
         setTodayDate()
 
         viewModel.state.observe(viewLifecycleOwner) { state ->

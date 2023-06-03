@@ -12,7 +12,7 @@ import com.judahben149.spendr.utils.extensions.highlight
 import com.judahben149.spendr.utils.extensions.mapCategoryIcon
 import com.judahben149.spendr.utils.extensions.unHighlight
 
-class CategoryAdapter(private val setSelectedCategoryId: (selectedId: Int) -> Unit) :
+class CategoryAdapter(private val setSelectedCategoryId: (category: Category) -> Unit) :
     ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(CategoryDiffer()) {
 
 
@@ -23,7 +23,7 @@ class CategoryAdapter(private val setSelectedCategoryId: (selectedId: Int) -> Un
             binding.imageItemCategory.mapCategoryIcon(item.categoryIconId)
 
             binding.itemRvCategory.setOnClickListener {
-                setSelectedCategoryId(item.categoryId)
+                setSelectedCategoryId(item)
             }
         }
     }

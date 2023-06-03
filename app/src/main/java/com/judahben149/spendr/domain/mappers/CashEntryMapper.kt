@@ -5,7 +5,7 @@ import com.judahben149.spendr.data.local.entity.CategoryEntity
 import com.judahben149.spendr.domain.model.CashEntry
 import com.judahben149.spendr.domain.model.Category
 
-interface Mapper {
+interface CashEntryMapper {
 
     fun cashEntryToCashEntryEntity(cashEntry: CashEntry): CashEntryEntity
 

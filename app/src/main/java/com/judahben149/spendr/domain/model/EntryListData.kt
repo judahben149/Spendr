@@ -1,7 +1,7 @@
 package com.judahben149.spendr.domain.model
 
 import com.judahben149.spendr.data.local.entity.CashEntryEntity
-import com.judahben149.spendr.domain.mappers.MapperImpl
+import com.judahben149.spendr.domain.mappers.CashEntryMapperImpl
 
 sealed class EntryListData {
     data class MonthHeader(val month: String) : EntryListData()
@@ -10,7 +10,7 @@ sealed class EntryListData {
 
         private companion object {
             private fun convertEntityToModel(entity: CashEntryEntity): CashEntry {
-                return MapperImpl().cashEntryEntityToCashEntry(entity)
+                return CashEntryMapperImpl().cashEntryEntityToCashEntry(entity)
             }
         }
     }

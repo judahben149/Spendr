@@ -5,13 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.judahben149.spendr.data.repository.CashFlowRepositoryImpl
-import com.judahben149.spendr.domain.mappers.MapperImpl
+import com.judahben149.spendr.domain.mappers.CashEntryMapperImpl
 import com.judahben149.spendr.domain.model.Category
 import com.judahben149.spendr.presentation.add_cash_entry.CategoryListState
-import com.judahben149.spendr.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -64,7 +62,7 @@ class CategoryViewModel @Inject constructor(private val repository: CashFlowRepo
         viewModelScope.launch {
             repository.getCategories().collect { categoryEntityList ->
                 val categoryList = categoryEntityList.map { categoryEntity ->
-                    MapperImpl().categoryEntityToCategory(categoryEntity)
+                    CashEntryMapperImpl().categoryEntityToCategory(categoryEntity)
                 }
 
                 _categoryState.value = _categoryState.value!!.copy(categoryList = categoryList)
@@ -82,7 +80,7 @@ class CategoryViewModel @Inject constructor(private val repository: CashFlowRepo
                 isIncomeCategory = categoryState.value!!.isIncomeSelected
             )
 
-            val categoryEntity = MapperImpl().categoryToCategoryEntity(category)
+            val categoryEntity = CashEntryMapperImpl().categoryToCategoryEntity(category)
             repository.saveNewCategory(categoryEntity)
         }
     }
