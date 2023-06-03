@@ -19,9 +19,7 @@ class EntryListController(
         return when (item) {
             is EntryListData.EntryItem -> {
                 SummaryEntryItemEpoxyModel(
-                    amount = item.entryItem.amount.abbreviateNumber(),
-                    date = DateUtils.formatFriendlyDateTime(item.entryItem.transactionDate),
-                    category = "Savings",
+                    cashEntry = item.entryItem,
                     onEntryItemClicked = { onEntryItemClicked(item.entryItem.id) }
                 ).id("pagedCashEntry")
             }

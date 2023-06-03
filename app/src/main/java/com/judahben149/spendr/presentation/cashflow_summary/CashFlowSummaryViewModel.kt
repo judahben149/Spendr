@@ -5,9 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.judahben149.spendr.data.repository.CashFlowRepositoryImpl
-import com.judahben149.spendr.domain.mappers.MapperImpl
+import com.judahben149.spendr.domain.mappers.CashEntryMapperImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,7 +22,7 @@ class CashFlowSummaryViewModel @Inject constructor(private val repository: CashF
         viewModelScope.launch {
             repository.getALlCashEntries().collect { cashEntryEntityList ->
                 val cashEntryList = cashEntryEntityList.map { cashEntryEntity ->
-                    MapperImpl().cashEntryEntityToCashEntry(cashEntryEntity)
+                    CashEntryMapperImpl().cashEntryEntityToCashEntry(cashEntryEntity)
                 }
 
                 _state.value = _state.value!!.copy(

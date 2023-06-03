@@ -5,14 +5,17 @@ import com.judahben149.spendr.data.local.entity.CategoryEntity
 import com.judahben149.spendr.domain.model.CashEntry
 import com.judahben149.spendr.domain.model.Category
 
-class MapperImpl: Mapper {
+class CashEntryMapperImpl: CashEntryMapper {
     override fun cashEntryToCashEntryEntity(cashEntry: CashEntry): CashEntryEntity {
         return CashEntryEntity(
             id = cashEntry.id,
             amount = cashEntry.amount,
             isIncome = cashEntry.isIncome,
             categoryId = cashEntry.categoryId,
-            transactionDate = cashEntry.transactionDate
+            transactionDate = cashEntry.transactionDate,
+            categoryName = cashEntry.categoryName,
+            categoryIconId = cashEntry.categoryIconId,
+            isIncomeCategory = cashEntry.isIncomeCategory
         )
     }
 
@@ -22,7 +25,10 @@ class MapperImpl: Mapper {
             amount = cashEntryEntity.amount,
             isIncome = cashEntryEntity.isIncome,
             categoryId = cashEntryEntity.categoryId,
-            transactionDate = cashEntryEntity.transactionDate
+            transactionDate = cashEntryEntity.transactionDate,
+            categoryName = cashEntryEntity.categoryName,
+            categoryIconId = cashEntryEntity.categoryIconId,
+            isIncomeCategory = cashEntryEntity.isIncomeCategory
         )
     }
 

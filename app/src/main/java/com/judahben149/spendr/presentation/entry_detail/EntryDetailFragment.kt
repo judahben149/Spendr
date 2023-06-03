@@ -48,18 +48,17 @@ class EntryDetailFragment : Fragment() {
         val entryId = arguments?.getInt(Constants.ENTRY_ID)
         setupEpoxyController()
 
-        Log.d("TAGM", "onViewCreated: $entryId")
         entryId?.let { id ->
             viewModel.getEntryDetail(id)
         }
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
             state.cashEntry?.let {
-                entryDetailEpoxyController.setData(it, DummyData.categoryMap)
+                state.cashEntry?.let {
+                    entryDetailEpoxyController.setData(state.cashEntry)
+                }
             }
         }
-
-
     }
 
     private fun setupEpoxyController() {

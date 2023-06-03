@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentHomeBinding
+import com.judahben149.spendr.utils.DateUtils
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,10 +36,17 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBalance()
 
+        binding.tvDate.text = DateUtils.getCurrentFriendlyDate()
+
         viewModel.state.observe(viewLifecycleOwner) { state ->
-            showProgressBar(state.isBalanceLoading)
-            binding.tvInflowAmount.text = state.inflowBalance.abbreviateNumber()
-            binding.tvOutflowAmount.text = state.outflowBalance.abbreviateNumber()
+            binding.tvAmountBalance.text =
+                state.inflowBalance.minus(state.outflowBalance).abbreviateNumber()
+
+            binding.tvAmountBalance.setTextColor(
+                if (state.inflowBalance.minus(state.outflowBalance) < 0.0) resources.getColor(
+                    R.color.syracuse_red_orange
+                ) else resources.getColor(R.color.pigment_green)
+            )
         }
 
         binding.itemSummaryNeumorphicCard.setOnClickListener {
@@ -47,29 +55,14 @@ class HomeFragment : Fragment() {
         binding.cardTransactions.setOnClickListener {
             navController.navigate(R.id.action_homeFragment_to_entryListParentFragment)
         }
-        binding.cardVisualizer.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_visualizerFragment)
+        binding.cardBudget.setOnClickListener {
+            navController.navigate(R.id.action_homeFragment_to_budgetFragment)
         }
         binding.cardAddEntry.setOnClickListener {
             navController.navigate(R.id.action_homeFragment_to_addCashEntryFragment)
         }
-    }
-
-    private fun showProgressBar(isLoading: Boolean) {
-        if (isLoading) {
-            binding.tvInflowAmount.visibility = View.INVISIBLE
-            binding.tvInflowText.visibility = View.INVISIBLE
-            binding.tvOutflowAmount.visibility = View.INVISIBLE
-            binding.tvOutflowText.visibility = View.INVISIBLE
-            binding.pgBarInflowAmount.visibility = View.VISIBLE
-            binding.pgBarOutflowAmount.visibility = View.VISIBLE
-        } else {
-            binding.tvInflowAmount.visibility = View.VISIBLE
-            binding.tvInflowText.visibility = View.VISIBLE
-            binding.tvOutflowAmount.visibility = View.VISIBLE
-            binding.tvOutflowText.visibility = View.VISIBLE
-            binding.pgBarInflowAmount.visibility = View.INVISIBLE
-            binding.pgBarOutflowAmount.visibility = View.INVISIBLE
+        binding.cardExtras.setOnClickListener {
+            navController.navigate(R.id.action_homeFragment_to_extrasFragment)
         }
     }
 }

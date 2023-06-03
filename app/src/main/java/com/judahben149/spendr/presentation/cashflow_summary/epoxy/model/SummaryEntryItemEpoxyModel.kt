@@ -2,22 +2,24 @@ package com.judahben149.spendr.presentation.cashflow_summary.epoxy.model
 
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.EpoxyModelSummaryEntryCardBinding
+import com.judahben149.spendr.domain.model.CashEntry
+import com.judahben149.spendr.domain.model.Category
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.ViewBindingKotlinModel
+import com.judahben149.spendr.utils.DateUtils
+import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import com.judahben149.spendr.utils.extensions.mapCategoryIcon
 
 data class SummaryEntryItemEpoxyModel(
-    val amount: String,
-    val date: String,
-    val category: String,
+    val cashEntry: CashEntry,
     val onEntryItemClicked:() -> Unit
 ): ViewBindingKotlinModel<EpoxyModelSummaryEntryCardBinding>(R.layout.epoxy_model_summary_entry_card) {
 
     override fun EpoxyModelSummaryEntryCardBinding.bind() {
-        tvEntryAmount.text = amount
-        tvEntryCategory.text = category
-        tvEntryDate.text = date
+        tvEntryAmount.text = cashEntry.amount.abbreviateNumber()
+        tvEntryCategory.text = cashEntry.categoryName
+        tvEntryDate.text = DateUtils.formatFriendlyDateTime(cashEntry.transactionDate)
 
-        imageCategoryIcon.mapCategoryIcon(category)
+        imageCategoryIcon.mapCategoryIcon(cashEntry.categoryIconId)
 
         cardEntry.setOnClickListener {
             onEntryItemClicked()

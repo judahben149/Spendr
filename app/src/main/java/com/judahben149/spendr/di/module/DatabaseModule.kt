@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.judahben149.spendr.data.local.AppDatabase
 import com.judahben149.spendr.data.local.CashFlowDao
+import com.judahben149.spendr.data.local.RemindersDao
 import com.judahben149.spendr.utils.Constants.APP_DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -31,5 +32,11 @@ object DatabaseModule {
     @Singleton
     fun providesCashFlowDao(appDatabase: AppDatabase): CashFlowDao {
         return appDatabase.CashFlowDao()
+    }
+
+    @Provides
+    @Singleton
+    fun providesRemindersDao(appDatabase: AppDatabase): RemindersDao {
+        return appDatabase.RemindersDao()
     }
 }

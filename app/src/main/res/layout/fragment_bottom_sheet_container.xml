@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/bottom_sheet_behavior"
-    tools:context=".presentation.shared.BottomSheetContainerFragment">
+    tools:context=".presentation.add_cash_entry.category_bottom_sheet.BottomSheetContainerFragment">
 
 
     <fragment

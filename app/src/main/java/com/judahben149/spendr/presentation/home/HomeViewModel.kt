@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.judahben149.spendr.data.repository.CashFlowRepositoryImpl
-import com.judahben149.spendr.domain.mappers.MapperImpl
+import com.judahben149.spendr.domain.mappers.CashEntryMapperImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,7 +22,7 @@ class HomeViewModel @Inject constructor(private val repository: CashFlowReposito
         viewModelScope.launch {
             repository.getALlCashEntries().collect { entryList ->
                 val allEntries = entryList.map {  entryEntity ->
-                    MapperImpl().cashEntryEntityToCashEntry(entryEntity)
+                    CashEntryMapperImpl().cashEntryEntityToCashEntry(entryEntity)
                 }
 
                 var totalInflow = 0.00

@@ -3,18 +3,13 @@ package com.judahben149.spendr.presentation.add_cash_entry
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.judahben149.spendr.data.repository.CashFlowRepositoryImpl
-import com.judahben149.spendr.domain.mappers.MapperImpl
+import com.judahben149.spendr.domain.mappers.CashEntryMapperImpl
 import com.judahben149.spendr.domain.model.CashEntry
 import com.judahben149.spendr.domain.model.Category
-import com.judahben149.spendr.utils.Constants.TIMBER_TAG
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -55,10 +50,13 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
                 amount = _state.value!!.amount.toDouble(),
                 isIncome = _state.value!!.isIncome,
                 transactionDate = _state.value!!.date,
-                categoryId = _selectedCategory.value!!.categoryId
+                categoryId = _selectedCategory.value!!.categoryId,
+                categoryName = _state.value!!.categoryName,
+                categoryIconId = _state.value!!.categoryIconId,
+                isIncomeCategory = _state.value!!.isIncomeCategory
             )
 
-            val entity = MapperImpl().cashEntryToCashEntryEntity(cashEntry)
+            val entity = CashEntryMapperImpl().cashEntryToCashEntryEntity(cashEntry)
             repository.saveEntry(entity)
         }
     }
@@ -67,7 +65,7 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
         viewModelScope.launch {
             repository.getCategories().collect { categoryEntityList ->
                 val categoryList = categoryEntityList.map { categoryEntity ->
-                    MapperImpl().categoryEntityToCategory(categoryEntity)
+                    CashEntryMapperImpl().categoryEntityToCategory(categoryEntity)
                 }
 
                 _selectedCategoryList.value = categoryList
@@ -76,11 +74,18 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
     }
 
 
-    fun updateSelectedCategoryId(categoryId: Int) {
-        _selectedCategoryId.value = categoryId
-        _selectedCategory.value = _selectedCategoryList.value?.find { category ->
-            category.categoryId == categoryId
+    fun updateSelectedCategoryId(category: Category) {
+        _selectedCategoryId.value = category.categoryId
+        _selectedCategory.value = _selectedCategoryList.value?.find { currentCategory ->
+            currentCategory.categoryId == category.categoryId
         }
+
+        _state.value = _state.value?.copy(
+            categoryName = category.categoryName,
+            categoryIconId = category.categoryIconId,
+            categoryId = category.categoryId,
+            isIncomeCategory = category.isIncomeCategory
+        )
     }
 
     fun setCurrentDate(currentDate: Long) {
@@ -103,5 +108,14 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
         _state.value = _state.value?.copy(
             isIncome = isIncome
         )
+    }
+
+    fun reset() {
+        _state.value = AddCashEntryState()
+        _categoryState.value = CategoryListState()
+        _selectedCategoryId.value = -1
+        _selectedCategoryList.value = emptyList()
+        _selectedCategory.value = Category()
+        getCategoryList()
     }
 }

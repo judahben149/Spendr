@@ -32,8 +32,15 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
         <action
-            android:id="@+id/action_homeFragment_to_visualizerFragment"
-            app:destination="@id/visualizerFragment"
+            android:id="@+id/action_homeFragment_to_extrasFragment"
+            app:destination="@id/extrasFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_budgetFragment"
+            app:destination="@id/budgetFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
@@ -66,7 +73,11 @@
         tools:layout="@layout/fragment_add_cash_entry" >
         <action
             android:id="@+id/action_addCashEntryFragment_to_categoryBottomSheetFragment2"
-            app:destination="@id/categoryBottomSheetFragment2" />
+            app:destination="@id/categoryBottomSheetFragment2"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/entryListFragment"
@@ -103,11 +114,55 @@
         tools:layout="@layout/fragment_category_bottom_sheet" >
         <action
             android:id="@+id/action_categoryBottomSheetFragment2_to_newCategoryBottomSheetFragment2"
-            app:destination="@id/newCategoryBottomSheetFragment2" />
+            app:destination="@id/newCategoryBottomSheetFragment2"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </dialog>
     <dialog
         android:id="@+id/newCategoryBottomSheetFragment2"
         android:name="com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.NewCategoryBottomSheetFragment"
         android:label="fragment_new_category_bottom_sheet"
         tools:layout="@layout/fragment_new_category_bottom_sheet" />
+    <fragment
+        android:id="@+id/remindersFragment"
+        android:name="com.judahben149.spendr.presentation.extras.reminders.RemindersFragment"
+        android:label="fragment_reminders"
+        tools:layout="@layout/fragment_reminders" >
+        <action
+            android:id="@+id/action_remindersFragment_to_reminderDetailsBottomSheetFragment2"
+            app:destination="@id/reminderDetailsBottomSheetFragment2"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/extrasFragment"
+        android:name="com.judahben149.spendr.presentation.extras.ExtrasFragment"
+        android:label="fragment_task"
+        tools:layout="@layout/fragment_extras" >
+        <action
+            android:id="@+id/action_extrasFragment_to_remindersFragment"
+            app:destination="@id/remindersFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/reminderDetailsBottomSheetFragment2"
+        android:name="com.judahben149.spendr.presentation.extras.reminders.ReminderDetailsBottomSheetFragment"
+        android:label="fragment_reminder_details_bottom_sheet"
+        tools:layout="@layout/fragment_reminder_details_bottom_sheet" />
+    <fragment
+        android:id="@+id/budgetFragment"
+        android:name="com.judahben149.spendr.presentation.budget.BudgetFragment"
+        android:label="fragment_budget"
+        tools:layout="@layout/fragment_budget" >
+        <action
+            android:id="@+id/action_budgetFragment_to_visualizerFragment"
+            app:destination="@id/visualizerFragment" />
+    </fragment>
 </navigation>

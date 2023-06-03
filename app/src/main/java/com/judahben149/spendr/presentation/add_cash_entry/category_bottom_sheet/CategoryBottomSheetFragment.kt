@@ -1,11 +1,9 @@
 package com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -13,12 +11,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentCategoryBottomSheetBinding
 import com.judahben149.spendr.presentation.add_cash_entry.AddCashEntryViewModel
 import com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.adapter.CategoryAdapter
-import com.judahben149.spendr.presentation.shared.BottomSheetContainerFragment
 import com.judahben149.spendr.utils.Constants
 import timber.log.Timber
 
@@ -31,6 +27,7 @@ class CategoryBottomSheetFragment : Fragment() {
         get() = requireActivity() as? BottomSheetDismissListener
 
     private val viewModel: CategoryViewModel by activityViewModels()
+
     private val addCashEntryViewModel: AddCashEntryViewModel by activityViewModels()
     private lateinit var adapter: CategoryAdapter
     private lateinit var recyclerView: RecyclerView
@@ -39,14 +36,6 @@ class CategoryBottomSheetFragment : Fragment() {
         findNavController()
     }
 
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        if (context is BottomSheetDismissListener) {
-//            dismissListener = context
-//        } else {
-//            throw IllegalArgumentException("Parent fragment must implement BottomSheetDismissListener")
-//        }
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -97,8 +86,8 @@ class CategoryBottomSheetFragment : Fragment() {
         recyclerView = binding.rvCategoryBottomSheet
         recyclerView.isNestedScrollingEnabled = false
 
-        adapter = CategoryAdapter() {  selectedId ->
-            addCashEntryViewModel.updateSelectedCategoryId(selectedId)
+        adapter = CategoryAdapter() {  category ->
+            addCashEntryViewModel.updateSelectedCategoryId(category)
 //            dismissListener?.dismissBottomSheet()
         }
 
@@ -109,5 +98,10 @@ class CategoryBottomSheetFragment : Fragment() {
             LinearLayoutManager.VERTICAL,
             false
         )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
