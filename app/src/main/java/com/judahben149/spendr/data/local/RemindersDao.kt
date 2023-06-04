@@ -12,6 +12,6 @@ interface RemindersDao {
     @Upsert()
     suspend fun saveReminder(reminderEntity: ReminderEntity)
 
-    @Query("SELECT * FROM reminders ORDER BY targetDate DESC")
+    @Query("SELECT * FROM reminders ORDER BY targetDate ASC")
     fun getAllReminders(): Flow<List<ReminderEntity>>
 }
