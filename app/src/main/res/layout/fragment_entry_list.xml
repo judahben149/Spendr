@@ -53,4 +53,36 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolBar" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/anim_empty_budget"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:alpha="0.8"
+        app:lottie_speed="0.38"
+        app:lottie_renderMode="automatic"
+        android:visibility="invisible"
+        app:lottie_colorFilter="@color/md_theme_light_onSecondaryContainer"
+        app:lottie_fileName="ic_add_to_collection.json"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_empty_budget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.8"
+        android:visibility="invisible"
+        android:text="Create an item to get started..."
+        app:layout_constraintTop_toBottomOf="@id/anim_empty_budget"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/md_theme_light_onSecondaryContainer"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

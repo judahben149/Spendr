@@ -33,6 +33,7 @@ class BottomSheetContainerFragment : BottomSheetDialogFragment(), BottomSheetDis
         super.onAttach(context)
         dismissListener = requireActivity() as? BottomSheetDismissListener
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

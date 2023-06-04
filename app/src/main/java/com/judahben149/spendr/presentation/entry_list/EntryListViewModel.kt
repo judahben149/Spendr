@@ -34,7 +34,6 @@ class EntryListViewModel @Inject constructor(private val cashFlowRepository: Cas
 
                 else ->  PagingData.empty()
                 //figure out how to return the full list by merging both income and expenditure here
-
             }
         }.cachedIn(viewModelScope)
 

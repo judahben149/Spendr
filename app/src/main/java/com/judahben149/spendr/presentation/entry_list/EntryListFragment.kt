@@ -60,6 +60,18 @@ class EntryListFragment : Fragment() {
                 entryListController.submitData(pagedCashEntries)
             }
         }
+
+        entryListController.addLoadStateListener { combinedLoadStates ->
+            if (combinedLoadStates.append.endOfPaginationReached) {
+                if (entryListController.adapter.itemCount < 1) {
+                    binding.animEmptyBudget.visibility = View.VISIBLE
+                    binding.tvEmptyBudget.visibility = View.VISIBLE
+                } else {
+                    binding.animEmptyBudget.visibility = View.INVISIBLE
+                    binding.tvEmptyBudget.visibility = View.INVISIBLE
+                }
+            }
+        }
     }
 
     private fun showOrHideToolBar(title: String) {
