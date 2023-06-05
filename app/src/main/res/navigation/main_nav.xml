@@ -45,6 +45,9 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/cashFlowSummaryFragment"
@@ -165,4 +168,8 @@
             android:id="@+id/action_budgetFragment_to_visualizerFragment"
             app:destination="@id/visualizerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.judahben149.spendr.presentation.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

@@ -47,6 +47,7 @@ dependencies {
     def lifecycle_version = "2.6.1"
     def epoxyVersion = "5.0.0"
     def paging_version = "3.1.1"
+    def preference_version = "1.2.0"
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -98,5 +99,8 @@ dependencies {
 
     //MP Chart
     implementation "com.github.PhilJay:MPAndroidChart:v3.1.0"
+
+    //Preference Fragment Compat
+    implementation "androidx.preference:preference-ktx:$preference_version"
 
 }

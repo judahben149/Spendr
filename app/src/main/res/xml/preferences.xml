@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <DropDownPreference
+        android:title="Select Currency">
+
+    </DropDownPreference>
+    <PreferenceCategory android:title="Currency"
+        android:icon="@drawable/plus">
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="About">
+
+    </PreferenceCategory>
+</PreferenceScreen>
