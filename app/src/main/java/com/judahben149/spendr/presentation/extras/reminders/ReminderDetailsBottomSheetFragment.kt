@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.judahben149.spendr.databinding.FragmentReminderDetailsBottomSheetBinding
+import com.judahben149.spendr.presentation.add_cash_entry.category_bottom_sheet.BottomSheetContainerFragment
 import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.DateUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,6 +65,7 @@ class ReminderDetailsBottomSheetFragment(): Fragment() {
             val amount = if (binding.etReminderAmount.text.isNullOrEmpty()) 0.0 else binding.etReminderAmount.text.toString().toDouble()
             val subject = if (binding.etReminderText.text.isNullOrEmpty()) "" else binding.etReminderText.text.toString()
             viewModel.saveReminder(amount, subject)
+            dismissBottomSheet()
         }
     }
 
@@ -98,6 +100,11 @@ class ReminderDetailsBottomSheetFragment(): Fragment() {
 
             viewModel.setTargetDate(timeInMillis)
         }
+    }
+
+    private fun dismissBottomSheet() {
+        val parentBottomSheet = parentFragment?.parentFragment as RemindersContainerBottomSheet
+        parentBottomSheet.dismiss()
     }
 
     private fun setTomorrowDate() {

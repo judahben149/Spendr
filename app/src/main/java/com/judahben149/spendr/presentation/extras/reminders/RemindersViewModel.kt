@@ -18,6 +18,7 @@ import com.judahben149.spendr.utils.Constants.REMINDER_TEXT
 import com.judahben149.spendr.utils.Constants.REMINDER_TITLE
 import com.judahben149.spendr.utils.Constants.TIMBER_TAG
 import com.judahben149.spendr.utils.NotificationHelper
+import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
@@ -47,7 +48,7 @@ class RemindersViewModel @Inject constructor(
         if (notificationHelper.isNotificationPermissionGranted()) {
             scheduleReminder(
                 "Make payment for $subject",
-                amount.toString(),
+                amount.abbreviateNumber(),
                 _newReminderState.value!!.targetDate
             )
 

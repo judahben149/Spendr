@@ -56,8 +56,20 @@ class RemindersFragment : Fragment() {
         }
 
         viewModel.reminderListState.observe(viewLifecycleOwner) { reminderListState ->
-            Timber.tag(TIMBER_TAG).d("Submitting reminders list")
+            shouldShowEmptyAnimation(reminderListState.reminders.size)
             remindersAdapter.submitList(reminderListState.reminders)
+        }
+    }
+
+    private fun shouldShowEmptyAnimation(listSize: Int) {
+        if (listSize < 1) {
+            binding.animEmptyReminder.visibility = View.VISIBLE
+            binding.tvEmptyReminder.visibility = View.VISIBLE
+            Timber.tag(TIMBER_TAG).d("Showing animation")
+        } else {
+            binding.animEmptyReminder.visibility = View.INVISIBLE
+            binding.tvEmptyReminder.visibility = View.INVISIBLE
+            Timber.tag(TIMBER_TAG).d("Hiding animation")
         }
     }
 

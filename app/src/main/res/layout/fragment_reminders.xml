@@ -64,5 +64,38 @@
         tools:listitem="@layout/item_rv_reminders"
         />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/anim_empty_reminder"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintVertical_bias="0.4"
+        android:alpha="0.4"
+        app:lottie_speed="0.35"
+        app:lottie_renderMode="automatic"
+        android:visibility="invisible"
+        app:lottie_colorFilter="@color/md_theme_light_onSecondaryContainer"
+        app:lottie_fileName="empty_reminder.json"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_empty_reminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.6"
+        android:visibility="invisible"
+        android:text="@string/tv_empty_reminder_text"
+        app:layout_constraintTop_toBottomOf="@id/anim_empty_reminder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/md_theme_light_onSecondaryContainer"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

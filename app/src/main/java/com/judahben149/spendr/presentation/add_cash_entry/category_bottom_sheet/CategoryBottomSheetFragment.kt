@@ -78,7 +78,7 @@ class CategoryBottomSheetFragment : Fragment() {
             navController.navigate(R.id.action_categoryBottomSheetFragment_to_newCategoryBottomSheetFragment)
         }
         binding.tvDone.setOnClickListener {
-//            dismissListener?.dismissBottomSheet()
+            dismissBottomSheet()
         }
     }
 
@@ -88,7 +88,7 @@ class CategoryBottomSheetFragment : Fragment() {
 
         adapter = CategoryAdapter() {  category ->
             addCashEntryViewModel.updateSelectedCategoryId(category)
-//            dismissListener?.dismissBottomSheet()
+            dismissBottomSheet()
         }
 
         recyclerView.adapter = adapter
@@ -98,6 +98,11 @@ class CategoryBottomSheetFragment : Fragment() {
             LinearLayoutManager.VERTICAL,
             false
         )
+    }
+
+    private fun dismissBottomSheet() {
+        val parentBottomSheet = parentFragment?.parentFragment as BottomSheetContainerFragment
+        parentBottomSheet.dismiss()
     }
 
     override fun onDestroy() {
