@@ -1,5 +1,6 @@
 package com.judahben149.spendr.presentation.extras.reminders.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +12,20 @@ import com.judahben149.spendr.domain.model.Reminder
 import com.judahben149.spendr.utils.DateUtils
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 
-class RemindersAdapter(private val onReminderItemClicked:(id: Int) -> Unit): ListAdapter<Reminder, RemindersAdapter.RemindersViewHolder>(RemindersDiffer()) {
+class RemindersAdapter(
+    private val context: Context,
+    private val onReminderItemClicked: (id: Int) -> Unit
+) : ListAdapter<Reminder, RemindersAdapter.RemindersViewHolder>(RemindersDiffer()) {
 
-    inner class RemindersViewHolder(val binding: ItemRvRemindersBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class RemindersViewHolder(val binding: ItemRvRemindersBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Reminder) {
-            binding.tvReminderAmount.text = item.amount.abbreviateNumber()
-            binding.tvReminderDate.text = DateUtils.getFriendlyTime(item.targetDate) + ", " + DateUtils.formatFriendlyDateTime(item.targetDate)
+            binding.tvReminderAmount.text = item.amount.abbreviateNumber(context)
+            binding.tvReminderDate.text =
+                DateUtils.getFriendlyTime(item.targetDate) + ", " + DateUtils.formatFriendlyDateTime(
+                    item.targetDate
+                )
             binding.tvReminderText.text = item.reminderText
 
             if (item.isRecurrent) {
@@ -33,7 +41,8 @@ class RemindersAdapter(private val onReminderItemClicked:(id: Int) -> Unit): Lis
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RemindersViewHolder {
-        val binding = ItemRvRemindersBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemRvRemindersBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RemindersViewHolder(binding)
     }
 
@@ -42,7 +51,7 @@ class RemindersAdapter(private val onReminderItemClicked:(id: Int) -> Unit): Lis
     }
 
 
-    class RemindersDiffer(): DiffUtil.ItemCallback<Reminder>() {
+    class RemindersDiffer() : DiffUtil.ItemCallback<Reminder>() {
         override fun areItemsTheSame(oldItem: Reminder, newItem: Reminder): Boolean {
             return oldItem.id == newItem.id
         }

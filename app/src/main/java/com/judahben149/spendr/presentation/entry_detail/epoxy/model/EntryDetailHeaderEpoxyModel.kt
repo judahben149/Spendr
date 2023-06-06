@@ -1,5 +1,6 @@
 package com.judahben149.spendr.presentation.entry_detail.epoxy.model
 
+import android.content.Context
 import com.judahben149.spendr.R
 import com.judahben149.spendr.data.local.entity.CategoryEntity
 import com.judahben149.spendr.databinding.EpoxyModelEntryDetailHeaderBinding
@@ -11,12 +12,13 @@ import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import com.judahben149.spendr.utils.extensions.mapCategoryIcon
 
 data class EntryDetailHeaderEpoxyModel(
+    val context: Context,
     val cashEntry: CashEntry
 ): ViewBindingKotlinModel<EpoxyModelEntryDetailHeaderBinding>(R.layout.epoxy_model_entry_detail_header) {
 
     override fun EpoxyModelEntryDetailHeaderBinding.bind() {
 
-        tvAmountEntryDetails.text = cashEntry.amount.abbreviateNumber()
+        tvAmountEntryDetails.text = cashEntry.amount.abbreviateNumber(context)
         tvTitleEntryDetails.text = cashEntry.categoryName
         ivCategoryIcon.mapCategoryIcon(cashEntry.categoryIconId)
     }

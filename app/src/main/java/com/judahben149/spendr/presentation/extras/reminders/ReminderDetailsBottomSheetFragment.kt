@@ -76,7 +76,6 @@ class ReminderDetailsBottomSheetFragment(): Fragment() {
         datePicker.show(parentFragmentManager, Constants.DATE_PICKER_ADD_CASH_ENTRY)
 
         datePicker.addOnPositiveButtonClickListener { dateLong ->
-            Toast.makeText(requireContext(), dateLong.toString(), Toast.LENGTH_SHORT).show()
             viewModel.setTargetDate(dateLong)
         }
     }
@@ -97,7 +96,6 @@ class ReminderDetailsBottomSheetFragment(): Fragment() {
             calendar.set(Calendar.MINUTE, selectedMinute)
 
             val timeInMillis = calendar.timeInMillis
-
             viewModel.setTargetDate(timeInMillis)
         }
     }

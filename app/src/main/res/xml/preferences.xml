@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <DropDownPreference
-        android:title="Select Currency">
+        android:title="Select Currency"
+        android:entries="@array/currency_names"
+        android:entryValues="@array/currency_names"
+        android:key="currency"
+        android:defaultValue="Nigerian Naira (₦)"
+        app:useSimpleSummaryProvider="true"
+        />
 
-    </DropDownPreference>
-    <PreferenceCategory android:title="Currency"
-        android:icon="@drawable/plus">
+    <Preference android:title="Delete all reminders"
+        />
 
-    </PreferenceCategory>
+    <Preference android:title="Delete all budget entries"
+        />
 
-    <PreferenceCategory android:title="About">
 
-    </PreferenceCategory>
+    <PreferenceCategory android:title="About Spendr"
+        android:summary=""
+        />
+
+    <PreferenceCategory android:title="Privacy policy"
+        android:summary=""
+        />
 </PreferenceScreen>

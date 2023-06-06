@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
             binding.tvAmountBalance.text =
-                state.inflowBalance.minus(state.outflowBalance).abbreviateNumber()
+                state.inflowBalance.minus(state.outflowBalance).abbreviateNumber(requireContext())
 
             binding.tvAmountBalance.setTextColor(
                 if (state.inflowBalance.minus(state.outflowBalance) < 0.0) resources.getColor(
@@ -63,6 +63,9 @@ class HomeFragment : Fragment() {
         }
         binding.cardExtras.setOnClickListener {
             navController.navigate(R.id.action_homeFragment_to_extrasFragment)
+        }
+        binding.cardSettings.setOnClickListener {
+            navController.navigate(R.id.action_homeFragment_to_settingsFragment)
         }
     }
 }

@@ -75,7 +75,7 @@ class RemindersFragment : Fragment() {
 
     fun setupRecyclerView() {
         recyclerView = binding.rvReminderList
-        remindersAdapter = RemindersAdapter() { id ->
+        remindersAdapter = RemindersAdapter(requireContext()) { id ->
             //pull up bottom sheet to update reminder
         }
 

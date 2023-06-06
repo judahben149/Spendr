@@ -28,6 +28,7 @@ class CashFlowSummaryFragment : Fragment() {
 
     private val summaryEpoxyController: SummaryEpoxyController by lazy {
         SummaryEpoxyController(
+            requireContext(),
             onSeeAllIncomeClicked = {
                 handleNavigationEvent(CashFlowSummaryNavigationDestinations.EntryListFragment(true))
             }, onSeeAllExpenditureClicked = {

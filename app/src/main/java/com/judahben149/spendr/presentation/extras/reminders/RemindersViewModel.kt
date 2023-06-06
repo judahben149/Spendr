@@ -48,7 +48,7 @@ class RemindersViewModel @Inject constructor(
         if (notificationHelper.isNotificationPermissionGranted()) {
             scheduleReminder(
                 "Make payment for $subject",
-                amount.abbreviateNumber(),
+                amount.abbreviateNumber(context),
                 _newReminderState.value!!.targetDate
             )
 

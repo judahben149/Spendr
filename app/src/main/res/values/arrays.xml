@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="currency">
+        <item>؋</item>
+        <item>Lek</item>
+        <item>د.ج</item>
+        <item>$</item>
+        <item>Kz</item>
+        <item>$</item>
+        <item>֏</item>
+        <item>ƒ</item>
+        <item>$</item>
+        <item>₼</item>
+        <item>$</item>
+        <item>ب.د</item>
+        <item>৳</item>
+        <item>$</item>
+        <item>Br</item>
+        <item>BYN</item>
+        <item>$</item>
+        <item>$</item>
+        <item>Nu.</item>
+        <item>Bs.</item>
+        <item>KM</item>
+        <item>P</item>
+        <item>R$</item>
+        <item>£</item>
+        <item>$</item>
+        <item>лв</item>
+        <item>Fr</item>
+        <item>៛</item>
+        <item>$</item>
+        <item>$</item>
+        <item>$</item>
+        <item>Fr</item>
+        <item>$</item>
+        <item>¥</item>
+        <item>$</item>
+        <item>Fr</item>
+        <item>Fr</item>
+        <item>₡</item>
+        <item>kn</item>
+        <item>$</item>
+        <item>$MN</item>
+        <item>Kč</item>
+        <item>kr</item>
+        <item>Fr</item>
+        <item>RD$</item>
+        <item>$</item>
+        <item>ج.م</item>
+        <item>Fr</item>
+        <item>Nfk</item>
+        <item>€</item>
+        <item>L</item>
+        <item>Br</item>
+        <item>€</item>
+        <item>£</item>
+        <item>$</item>
+        <item>D</item>
+        <item>₾</item>
+        <item>₵</item>
+        <item>£</item>
+        <item>Q</item>
+        <item>£</item>
+        <item>Fr</item>
+        <item>₣</item>
+        <item>$</item>
+        <item>G</item>
+        <item>L</item>
+        <item>$</item>
+        <item>Ft</item>
+        <item>kr</item>
+        <item>₹</item>
+        <item>Rp</item>
+        <item>﷼</item>
+        <item>ع.د</item>
+        <item>₪</item>
+        <item>€</item>
+        <item>$</item>
+        <item>¥</item>
+        <item>£</item>
+        <item>د.ا</item>
+        <item>₸</item>
+        <item>KSh</item>
+        <item>د.ك</item>
+        <item>сом</item>
+        <item>₭</item>
+        <item>Ls</item>
+        <item>ل.ل</item>
+        <item>L</item>
+        <item>$</item>
+        <item>ل.د</item>
+        <item>Lt</item>
+        <item>P</item>
+        <item>ден</item>
+        <item>Ar</item>
+        <item>MK</item>
+        <item>RM</item>
+        <item>ރ</item>
+        <item>UM</item>
+        <item>₨</item>
+        <item>$</item>
+        <item>L</item>
+        <item>₮</item>
+        <item>€</item>
+        <item>$</item>
+        <item>د.م.</item>
+        <item>MT</item>
+        <item>K</item>
+        <item>$</item>
+        <item>₨</item>
+        <item>ƒ</item>
+        <item>$</item>
+        <item>$</item>
+        <item>C$</item>
+        <item>₦</item>
+        <item>₩</item>
+        <item>kr</item>
+        <item>ر.ع.</item>
+        <item>₨</item>
+        <item>B/.</item>
+        <item>K</item>
+        <item>₲</item>
+        <item>S/.</item>
+        <item>₱</item>
+        <item>zł</item>
+        <item>ر.ق</item>
+        <item>lei</item>
+        <item>₽</item>
+        <item>Fr</item>
+        <item>£</item>
+        <item>$</item>
+        <item>$</item>
+        <item>€</item>
+        <item>€</item>
+        <item>$</item>
+        <item>T</item>
+        <item>Db</item>
+        <item>ر.س</item>
+        <item>Fr</item>
+        <item>дин.</item>
+        <item>₨</item>
+        <item>Le</item>
+        <item>$</item>
+        <item>€</item>
+        <item>€</item>
+        <item>$</item>
+        <item>S</item>
+        <item>R</item>
+        <item>₩</item>
+        <item>£</item>
+        <item>₨</item>
+        <item>ج.س.</item>
+        <item>$</item>
+        <item>L</item>
+        <item>kr</item>
+        <item>Fr</item>
+        <item>ل.س</item>
+        <item>$</item>
+        <item>ЅМ</item>
+        <item>Sh</item>
+        <item>฿</item>
+        <item>T$</item>
+        <item>$</item>
+        <item>د.ت</item>
+        <item>₺</item>
+        <item>m</item>
+        <item>$</item>
+        <item>Sh</item>
+        <item>₴</item>
+        <item>د.إ</item>
+        <item>$</item>
+        <item>$U</item>
+        <item>so\'m</item>
+        <item>Vt</item>
+        <item>Bs.</item>
+        <item>₫</item>
+        <item>Fr</item>
+        <item>﷼</item>
+        <item>ZK</item>
+        <item>$</item>
+    </string-array>
+
+    <string-array name="currency_names">
+        <item>Afghan Afghani (؋)</item>
+        <item>Albanian Lek (Lek)</item>
+        <item>Algerian Dinar (د.ج)</item>
+        <item>American Dollar ($)</item>
+        <item>Angolan Kwanza (Kz)</item>
+        <item>Argentine Peso ($)</item>
+        <item>Armenian Dram (֏)</item>
+        <item>Aruban Florin (ƒ)</item>
+        <item>Australian Dollar ($)</item>
+        <item>Azerbaijani Manat (₼)</item>
+        <item>Bahamian Dollar ($)</item>
+        <item>Bahraini Dinar (ب.د)</item>
+        <item>Bangladeshi Taka (৳)</item>
+        <item>Barbadian Dollar ($)</item>
+        <item>Belarusian Ruble (Br)</item>
+        <item>Belarusian Ruble (BYN)</item>
+        <item>Belizian Dollar ($)</item>
+        <item>Bermudian Dollar ($)</item>
+        <item>Bhutanese Ngultrum (Nu.)</item>
+        <item>Bolivian Boliviano (Bs.)</item>
+        <item>Bosnia and Herzegovina Convertible Mark (KM)</item>
+        <item>Botswana Pula (P)</item>
+        <item>Brazilian Real (R$)</item>
+        <item>British Pound (£)</item>
+        <item>Brunei Dollar ($)</item>
+        <item>Bulgarian Lev (лв)</item>
+        <item>Burundian Franc (Fr)</item>
+        <item>Cambodian Riel (៛)</item>
+        <item>Canadian Dollar ($)</item>
+        <item>Cape Verdean Escudo ($)</item>
+        <item>Cayman Islands Dollar ($)</item>
+        <item>Central African CFA Franc (Fr)</item>
+        <item>Chilean Peso ($)</item>
+        <item>Chinese Yuan (¥)</item>
+        <item>Colombian Peso ($)</item>
+        <item>Comorian Franc (Fr)</item>
+        <item>Congolese Franc (Fr)</item>
+        <item>Costa Rican Colón (₡)</item>
+        <item>Croatian Kuna (kn)</item>
+        <item>Cuban Convertible Peso ($)</item>
+        <item>Cuban Peso ($MN)</item>
+        <item>Czech Koruna (Kč)</item>
+        <item>Danish Krone (kr)</item>
+        <item>Djiboutian Franc (Fr)</item>
+        <item>Dominican Peso (RD$)</item>
+        <item>East Caribbean Dollar ($)</item>
+        <item>Egyptian Pound (ج.م)</item>
+        <item>Equatorial Guinean CFA Franc (Fr)</item>
+        <item>Eritrean Nakfa (Nfk)</item>
+        <item>Estonian Euro (€)</item>
+        <item>Eswatini Lilangeni (L)</item>
+        <item>Ethiopian Birr (Br)</item>
+        <item>Euro (€)</item>
+        <item>Falkland Islands Pound (£)</item>
+        <item>Fijian Dollar ($)</item>
+        <item>Gambian Dalasi (D)</item>
+        <item>Georgian Lari (₾)</item>
+        <item>Ghanaian Cedi (₵)</item>
+        <item>Gibraltar Pound (£)</item>
+        <item>Guatemalan Quetzal (Q)</item>
+        <item>Guernsey Pound (£)</item>
+        <item>Guinean Franc (Fr)</item>
+        <item>Guinean Syli (₣)</item>
+        <item>Guyanese Dollar ($)</item>
+        <item>Haitian Gourde (G)</item>
+        <item>Honduran Lempira (L)</item>
+        <item>Hong Kong Dollar ($)</item>
+        <item>Hungarian Forint (Ft)</item>
+        <item>Icelandic Króna (kr)</item>
+        <item>Indian Rupee (₹)</item>
+        <item>Indonesian Rupiah (Rp)</item>
+        <item>Iranian Rial (﷼)</item>
+        <item>Iraqi Dinar (ع.د)</item>
+        <item>Israeli Shekel (₪)</item>
+        <item>Italian Euro (€)</item>
+        <item>Jamaican Dollar ($)</item>
+        <item>Japanese Yen (¥)</item>
+        <item>Jersey Pound (£)</item>
+        <item>Jordanian Dinar (د.ا)</item>
+        <item>Kazakhstani Tenge (₸)</item>
+        <item>Kenyan Shilling (KSh)</item>
+        <item>Kuwaiti Dinar (د.ك)</item>
+        <item>Kyrgyzstani Som (сом)</item>
+        <item>Laotian Kip (₭)</item>
+        <item>Latvian Lats (Ls)</item>
+        <item>Lebanese Pound (ل.ل)</item>
+        <item>Lesotho Loti (L)</item>
+        <item>Liberian Dollar ($)</item>
+        <item>Libyan Dinar (ل.د)</item>
+        <item>Lithuanian Litas (Lt)</item>
+        <item>Macanese Pataca (P)</item>
+        <item>Macedonian Denar (ден)</item>
+        <item>Malagasy Ariary (Ar)</item>
+        <item>Malawian Kwacha (MK)</item>
+        <item>Malaysian Ringgit (RM)</item>
+        <item>Maldivian Rufiyaa (ރ)</item>
+        <item>Mauritanian Ouguiya (UM)</item>
+        <item>Mauritian Rupee (₨)</item>
+        <item>Mexican Peso ($)</item>
+        <item>Moldovan Leu (L)</item>
+        <item>Mongolian Tögrög (₮)</item>
+        <item>Montenegrin Euro (€)</item>
+        <item>Montserratian Dollar ($)</item>
+        <item>Moroccan Dirham (د.م.)</item>
+        <item>Mozambican Metical (MT)</item>
+        <item>Myanmar Kyat (K)</item>
+        <item>Namibian Dollar ($)</item>
+        <item>Nepalese Rupee (₨)</item>
+        <item>Netherlands Antillean Guilder (ƒ)</item>
+        <item>New Taiwan Dollar ($)</item>
+        <item>New Zealand Dollar ($)</item>
+        <item>Nicaraguan Córdoba (C$)</item>
+        <item>Nigerian Naira (₦)</item>
+        <item>North Korean Won (₩)</item>
+        <item>Norwegian Krone (kr)</item>
+        <item>Omani Rial (ر.ع.)</item>
+        <item>Pakistani Rupee (₨)</item>
+        <item>Panamanian Balboa (B/.)</item>
+        <item>Papua New Guinean Kina (K)</item>
+        <item>Paraguayan Guarani (₲)</item>
+        <item>Peruvian Sol (S/.)</item>
+        <item>Philippine Peso (₱)</item>
+        <item>Polish Złoty (zł)</item>
+        <item>Qatari Riyal (ر.ق)</item>
+        <item>Romanian Leu (lei)</item>
+        <item>Russian Ruble (₽)</item>
+        <item>Rwandan Franc (Fr)</item>
+        <item>Saint Helena Pound (£)</item>
+        <item>Saint Kitts and Nevis Dollar ($)</item>
+        <item>Saint Lucian Dollar ($)</item>
+        <item>Saint Martin Euro (€)</item>
+        <item>Saint Pierre and Miquelon Euro (€)</item>
+        <item>Saint Vincent and the Grenadines Dollar ($)</item>
+        <item>Samoan Tālā (T)</item>
+        <item>São Tomé and Príncipe Dobra (Db)</item>
+        <item>Saudi Riyal (ر.س)</item>
+        <item>Senegalese Franc (Fr)</item>
+        <item>Serbian Dinar (дин.)</item>
+        <item>Seychellois Rupee (₨)</item>
+        <item>Sierra Leonean Leone (Le)</item>
+        <item>Singapore Dollar ($)</item>
+        <item>Slovak Euro (€)</item>
+        <item>Slovenian Euro (€)</item>
+        <item>Solomon Islands Dollar ($)</item>
+        <item>Somali Shilling (S)</item>
+        <item>South African Rand (R)</item>
+        <item>South Korean Won (₩)</item>
+        <item>South Sudanese Pound (£)</item>
+        <item>Sri Lankan Rupee (₨)</item>
+        <item>Sudanese Pound (ج.س.)</item>
+        <item>Surinamese Dollar ($)</item>
+        <item>Swazi Lilangeni (L)</item>
+        <item>Swedish Krona (kr)</item>
+        <item>Swiss Franc (Fr)</item>
+        <item>Syrian Pound (ل.س)</item>
+        <item>Taiwan Dollar ($)</item>
+        <item>Tajikistani Somoni (ЅМ)</item>
+        <item>Tanzanian Shilling (Sh)</item>
+        <item>Thai Baht (฿)</item>
+        <item>Tongan Paʻanga (T$)</item>
+        <item>Trinidad and Tobago Dollar ($)</item>
+        <item>Tunisian Dinar (د.ت)</item>
+        <item>Turkish Lira (₺)</item>
+        <item>Turkmenistan Manat (m)</item>
+        <item>Tuvaluan Dollar ($)</item>
+        <item>Ugandan Shilling (Sh)</item>
+        <item>Ukrainian Hryvnia (₴)</item>
+        <item>United Arab Emirates Dirham (د.إ)</item>
+        <item>United States Dollar ($)</item>
+        <item>Uruguayan Peso ($U)</item>
+        <item>Uzbekistani Som (so\'m)</item>
+        <item>Vanuatu Vatu (Vt)</item>
+        <item>Venezuelan Bolívar (Bs.)</item>
+        <item>Vietnamese đồng (₫)</item>
+        <item>Wallis and Futuna CFP Franc (Fr)</item>
+        <item>Yemeni Rial (﷼)</item>
+        <item>Zambian Kwacha (ZK)</item>
+        <item>Zimbabwean Dollar ($)</item>
+    </string-array>
+</resources>

@@ -108,9 +108,10 @@ class EntryListFragment : Fragment() {
     private fun setupEpoxyController() {
         entryListRv = binding.epoxyRvEntryList
 
-        entryListController = EntryListController(onEntryItemClicked = { itemId ->
-
-            handleItemClicks(itemId)
+        entryListController = EntryListController(
+            requireContext(),
+            onEntryItemClicked = { itemId ->
+                handleItemClicks(itemId)
         })
         entryListRv.setController(entryListController)
     }

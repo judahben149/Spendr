@@ -1,5 +1,6 @@
 package com.judahben149.spendr.presentation.entry_list.epoxy
 
+import android.content.Context
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging3.PagingDataEpoxyController
 import com.judahben149.spendr.domain.model.EntryListData
@@ -11,6 +12,7 @@ import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import timber.log.Timber
 
 class EntryListController(
+    private val context: Context,
     private val onEntryItemClicked: (id: Int) -> Unit
 ) : PagingDataEpoxyController<EntryListData>() {
 
@@ -19,6 +21,7 @@ class EntryListController(
         return when (item) {
             is EntryListData.EntryItem -> {
                 SummaryEntryItemEpoxyModel(
+                    context,
                     cashEntry = item.entryItem,
                     onEntryItemClicked = { onEntryItemClicked(item.entryItem.id) }
                 ).id("pagedCashEntry")

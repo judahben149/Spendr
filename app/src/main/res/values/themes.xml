@@ -3,9 +3,18 @@
     <style name="Base.Theme.Spendr" parent="AppTheme.Spendr.Material3">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="preferenceTheme">@style/AppPreferenceTheme</item>
     </style>
 
     <style name="Theme.Spendr" parent="Base.Theme.Spendr" />
+    
+    <style name="AppPreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="preferenceFragmentCompatStyle">@style/AppPreferenceFragmentCompatStyle</item>
+    </style>
+
+    <style name="AppPreferenceFragmentCompatStyle" parent="@style/PreferenceFragment.Material">
+        <item name="android:layout">@layout/screen_prefs</item>
+    </style>
 
     <style name="AppTheme.Spendr.Material3" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_light_primary</item>

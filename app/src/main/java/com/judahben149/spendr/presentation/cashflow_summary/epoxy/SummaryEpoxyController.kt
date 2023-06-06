@@ -1,5 +1,6 @@
 package com.judahben149.spendr.presentation.cashflow_summary.epoxy
 
+import android.content.Context
 import android.util.Log
 import com.airbnb.epoxy.TypedEpoxyController
 import com.judahben149.spendr.domain.model.CashEntry
@@ -15,6 +16,7 @@ import com.judahben149.spendr.utils.DateUtils
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 
 class SummaryEpoxyController(
+    val context: Context,
     val onSeeAllIncomeClicked: () -> Unit,
     val onSeeAllExpenditureClicked: () -> Unit,
     val onEntryItemClicked: (id: Int) -> Unit
@@ -36,8 +38,8 @@ class SummaryEpoxyController(
             return
         }
 
-        val income = getTotalIncome(uiState.cashEntryList).abbreviateNumber()
-        val expenditure = getTotalExpenditure(uiState.cashEntryList).abbreviateNumber()
+        val income = getTotalIncome(uiState.cashEntryList).abbreviateNumber(context)
+        val expenditure = getTotalExpenditure(uiState.cashEntryList).abbreviateNumber(context)
         val latestThreeIncome = getLatestThreeIncomes(uiState.cashEntryList)
         val latestThreeExpenditure = getLatestThreeExpenditures(uiState.cashEntryList)
 
@@ -52,6 +54,7 @@ class SummaryEpoxyController(
 
         latestThreeIncome.forEach { cashEntry ->
             SummaryEntryItemEpoxyModel(
+                context,
                 cashEntry = cashEntry
             ) {
                 onEntryItemClicked(cashEntry.id)
@@ -68,6 +71,7 @@ class SummaryEpoxyController(
 
         latestThreeExpenditure.forEach { cashEntry ->
             SummaryEntryItemEpoxyModel(
+                context,
                 cashEntry = cashEntry
             ) {
                 onEntryItemClicked(cashEntry.id)

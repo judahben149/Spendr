@@ -63,7 +63,7 @@ class EntryDetailFragment : Fragment() {
 
     private fun setupEpoxyController() {
         epoxyRecyclerView = binding.epoxyRvEntryDetail
-        entryDetailEpoxyController = EntryDetailEpoxyController()
+        entryDetailEpoxyController = EntryDetailEpoxyController(requireContext())
 
         epoxyRecyclerView.setController(entryDetailEpoxyController)
     }
