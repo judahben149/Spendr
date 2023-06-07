@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "295298268959",
+    "project_id": "spendr-1",
+    "storage_bucket": "spendr-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295298268959:android:0de2664c2fc481c3367a2a",
+        "android_client_info": {
+          "package_name": "com.judahben149.spendr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295298268959-ha1h2uc90r3347q6rqbpr5aj73d3hekk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDISMFaw85e9be2sP3br5Wv-WUr5XcLNU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295298268959-ha1h2uc90r3347q6rqbpr5aj73d3hekk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
