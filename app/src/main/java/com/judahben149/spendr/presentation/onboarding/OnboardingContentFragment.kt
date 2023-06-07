@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentOnboardingContentBinding
@@ -101,8 +102,11 @@ class OnboardingContentFragment : Fragment() {
 
                 binding.tvRightText.setOnClickListener {
                     val userName = binding.tvUserName.text.toString()
+
+                    val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
                     val editor = appPrefs.edit()
-                    editor?.putString(Constants.USER_NAME, userName)
+                    val prefsEditor = prefs.edit()
+                    prefsEditor?.putString(Constants.USER_NAME, userName)?.apply()
                     editor?.putBoolean(Constants.IS_FIRST_LAUNCH, false)?.apply()
                     navController.navigate(R.id.homeFragment)
                 }

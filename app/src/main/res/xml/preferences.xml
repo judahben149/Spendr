@@ -2,6 +2,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <EditTextPreference
+        android:key="USER_NAME"
+        android:title="Change UserName"
+        app:useSimpleSummaryProvider="true"
+        />
+
     <DropDownPreference
         android:title="Select Currency"
         android:entries="@array/currency_names"
@@ -11,11 +17,11 @@
         app:useSimpleSummaryProvider="true"
         />
 
-    <Preference android:title="Delete all reminders"
-        />
+<!--    <Preference android:title="Delete all reminders"-->
+<!--        />-->
 
-    <Preference android:title="Delete all budget entries"
-        />
+<!--    <Preference android:title="Delete all budget entries"-->
+<!--        />-->
 
 
     <PreferenceCategory android:title="About Spendr"

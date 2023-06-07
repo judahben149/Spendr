@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentHomeBinding
 import com.judahben149.spendr.utils.Constants
@@ -83,7 +84,8 @@ class HomeFragment : Fragment() {
     }
 
     fun getUserName(): String {
-        return appPrefs.getString(Constants.USER_NAME, "there") ?: "there"
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        return prefs.getString(Constants.USER_NAME, "there") ?: "there"
     }
 
     override fun onDestroy() {

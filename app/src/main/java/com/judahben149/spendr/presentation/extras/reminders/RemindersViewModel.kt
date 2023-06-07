@@ -82,7 +82,7 @@ class RemindersViewModel @Inject constructor(
         }
     }
 
-    fun scheduleReminder(notificationTitle: String, notificationContent: String, time: Long) {
+    private fun scheduleReminder(notificationTitle: String, notificationContent: String, time: Long) {
         val bundle = Bundle()
         bundle.putString(REMINDER_TITLE, notificationTitle)
         bundle.putString(REMINDER_TEXT, notificationContent)
