@@ -4,4 +4,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_empty_reminder_text">You\'d have to create a reminder to see one</string>
     <string name="tv_empty_budget_text">Nothing to see here... yet!</string>
+
+    <string name="tv_onboarding_title_1">Welcome to Spendr</string>
+    <string name="tv_onboarding_title_2">Visualize Your Budget</string>
+    <string name="tv_onboarding_title_3">Set Payment Reminders</string>
+    <string name="tv_onboarding_text_1">Take control of your finances. Set goals, track expenses, and save money easily. Let\'s begin!</string>
+    <string name="tv_onboarding_text_2">Get insights into your spending. Understand your expenses with charts and visuals. Make smart financial choices.</string>
+    <string name="tv_onboarding_text_3">Never miss a payment again. Set reminders and manage bills effortlessly. Stay organized with Spendr.</string>
 </resources>

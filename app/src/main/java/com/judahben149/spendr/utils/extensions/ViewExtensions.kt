@@ -1,9 +1,11 @@
 package com.judahben149.spendr.utils.extensions
 
+import android.os.Handler
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import com.airbnb.lottie.LottieAnimationView
 import com.judahben149.spendr.R
 import soup.neumorphism.NeumorphButton
 import soup.neumorphism.NeumorphCardView
@@ -152,4 +154,13 @@ fun TextView.animateToolBarTitle() {
         .alpha(1f)
         .setDuration(250)
         .start()
+}
+
+fun LottieAnimationView.startDelayedAnimation(repeatDelayInMillis: Long) {
+    this.progress = 0F
+    this.playAnimation()
+
+    Handler().postDelayed({
+        startDelayedAnimation(repeatDelayInMillis)
+    }, repeatDelayInMillis)
 }

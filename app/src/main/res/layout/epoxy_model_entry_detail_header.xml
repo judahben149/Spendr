@@ -19,13 +19,15 @@
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
 
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/lottie_animation_entry_detail"-->
-<!--            android:layout_width="20dp"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:layout_gravity="end|top"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            android:layout_marginEnd="16dp" />-->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_entry_detail"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="end|top"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true" />
 
         <ImageView
             android:id="@+id/iv_category_icon"

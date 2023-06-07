@@ -36,8 +36,6 @@ class MainApp: Application() {
             CoroutineScope(Dispatchers.IO).launch {
                 databaseRepositoryImpl.prefillDefaultCategories(applicationContext)
             }
-            val editor = appPrefs.edit()
-            editor?.putBoolean(IS_FIRST_LAUNCH, false)?.apply()
         } else {
             val editor = appPrefs.edit()
             editor?.putBoolean(IS_FIRST_LAUNCH, false)?.apply()

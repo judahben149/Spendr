@@ -1,6 +1,7 @@
 package com.judahben149.spendr.presentation.entry_detail.epoxy.model
 
 import android.content.Context
+import androidx.core.content.ContextCompat
 import com.judahben149.spendr.R
 import com.judahben149.spendr.data.local.entity.CategoryEntity
 import com.judahben149.spendr.databinding.EpoxyModelEntryDetailHeaderBinding
@@ -21,5 +22,10 @@ data class EntryDetailHeaderEpoxyModel(
         tvAmountEntryDetails.text = cashEntry.amount.abbreviateNumber(context)
         tvTitleEntryDetails.text = cashEntry.categoryName
         ivCategoryIcon.mapCategoryIcon(cashEntry.categoryIconId)
+        if (cashEntry.isIncome) {
+            animEntryDetail.setAnimation("ic_up_trendline.json")
+        } else {
+            animEntryDetail.setAnimation("ic_down_trendline.json")
+        }
     }
 }

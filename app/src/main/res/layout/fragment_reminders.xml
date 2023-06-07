@@ -66,8 +66,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/anim_empty_reminder"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:layout_constraintVertical_bias="0.4"
         android:alpha="0.4"
         app:lottie_speed="0.35"

@@ -1,5 +1,6 @@
 package com.judahben149.spendr.presentation.home
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,9 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentHomeBinding
+import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.DateUtils
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -22,6 +25,10 @@ class HomeFragment : Fragment() {
     val navController by lazy {
         findNavController()
     }
+
+    @Inject
+    lateinit var appPrefs: SharedPreferences
+
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
@@ -34,6 +41,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val isFirstLaunch = appPrefs.getBoolean(Constants.IS_FIRST_LAUNCH, true)
+        if (isFirstLaunch)
+            navController.navigate(R.id.action_homeFragment_to_onboardingFragment)
+
+        binding.tvToolbarTitle.setText("Hi, ".plus(getUserName()))
         viewModel.getBalance()
 
         binding.tvDate.text = DateUtils.getCurrentFriendlyDate()
@@ -67,5 +80,14 @@ class HomeFragment : Fragment() {
         binding.cardSettings.setOnClickListener {
             navController.navigate(R.id.action_homeFragment_to_settingsFragment)
         }
+    }
+
+    fun getUserName(): String {
+        return appPrefs.getString(Constants.USER_NAME, "there") ?: "there"
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

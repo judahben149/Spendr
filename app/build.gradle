@@ -83,8 +83,6 @@ dependencies {
 
     //Epoxy
     implementation "com.airbnb.android:epoxy:$epoxyVersion"
-//    implementation "com.airbnb.android:epoxy-databinding:$epoxyVersion"
-//    kapt "com.airbnb.android:epoxy-processor:$epoxyVersion"
     implementation "com.airbnb.android:epoxy-paging:$epoxyVersion"
     implementation "com.airbnb.android:epoxy-paging3:$epoxyVersion"
 
@@ -103,4 +101,6 @@ dependencies {
     //Preference Fragment Compat
     implementation "androidx.preference:preference-ktx:$preference_version"
 
+    //Dot indicator
+    implementation "com.tbuonomo:dotsindicator:5.0"
 }

@@ -47,7 +47,14 @@
             app:popExitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
     </fragment>
     <fragment
         android:id="@+id/cashFlowSummaryFragment"
@@ -166,10 +173,29 @@
         tools:layout="@layout/fragment_budget" >
         <action
             android:id="@+id/action_budgetFragment_to_visualizerFragment"
-            app:destination="@id/visualizerFragment" />
+            app:destination="@id/visualizerFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.judahben149.spendr.presentation.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.judahben149.spendr.presentation.onboarding.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
 </navigation>

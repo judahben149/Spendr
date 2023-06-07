@@ -101,6 +101,7 @@ object DrawableUtils {
             24 -> {
                 R.drawable.salary
             }
+
             else -> {
                 //icon for uncategorized cash entries
                 R.drawable.question_mark
