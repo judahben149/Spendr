@@ -90,7 +90,7 @@ class OnboardingContentFragment : Fragment() {
                 binding.tvOnboardingText.text = getString(R.string.tv_onboarding_text_3)
                 binding.tvRightText.text = "Start"
                 binding.animOnboarding.apply {
-                    setAnimation("notification1.lottie")
+                    setAnimation("anim_calendar.json")
                     speed = 0.45F
                 }
 

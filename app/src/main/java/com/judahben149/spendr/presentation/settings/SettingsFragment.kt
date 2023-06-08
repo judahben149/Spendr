@@ -1,5 +1,7 @@
 package com.judahben149.spendr.presentation.settings
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +54,15 @@ class SettingsFragment: PreferenceFragmentCompat() {
         val deleteRemindersPreference = findPreference<Preference?>("deleteReminders")
         deleteRemindersPreference?.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
             SettingsDialogFragment.newInstance("reminders").show(childFragmentManager, SETTINGS_DIALOG)
+            true
+        }
+
+        val aboutPreferences = findPreference<Preference?>("about")
+        aboutPreferences?.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
+            val websiteUrl = "https://github.com/judahben149/Spendr"
+
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl))
+            startActivity(intent)
             true
         }
     }
