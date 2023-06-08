@@ -12,6 +12,8 @@ object Constants {
     const val SETTINGS_FILE = "app_pref"
     const val IS_FIRST_LAUNCH = "is_first_launch"
     const val TIMBER_TAG = "TIMBER_TAG"
+    const val SETTINGS_DIALOG = "SETTINGS_DIALOG"
+    const val DIALOG_TYPE = "DIALOG_TYPE"
 
     //Flags
     const val SHOULD_SHOW_TOOL_BAR = "SHOULD_SHOW_TOOL_BAR"
