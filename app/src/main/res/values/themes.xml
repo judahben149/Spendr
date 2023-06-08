@@ -16,6 +16,10 @@
         <item name="android:layout">@layout/screen_prefs</item>
     </style>
 
+    <style name="RoundedCornersDialog" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
     <style name="AppTheme.Spendr.Material3" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>

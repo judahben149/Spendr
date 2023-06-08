@@ -11,4 +11,13 @@
     <string name="tv_onboarding_text_1">Take control of your finances. Set goals, track expenses, and save money easily. Let\'s begin!</string>
     <string name="tv_onboarding_text_2">Get insights into your spending. Understand your expenses with charts and visuals. Make smart financial choices.</string>
     <string name="tv_onboarding_text_3">Never miss a payment again. Set reminders and manage bills effortlessly. Stay organized with Spendr.</string>
+
+    <string name="tv_delete_entries_header">Delete Entries?</string>
+    <string name="tv_delete_entries_body">All entries in your Spendr budget will be completely lost. This action cannot be undone</string>
+    <string name="tv_delete_reminders_header">Delete Reminders?</string>
+    <string name="tv_delete_reminders_body">You can either clear expired reminders or all reminders</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="delete_expired_reminders">Expired</string>
+    <string name="delete_all_reminders">All</string>
 </resources>

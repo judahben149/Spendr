@@ -2,4 +2,8 @@
 <resources>
     <string name="tv_empty_reminder_text">You\'d have to create a reminder to see one</string>
     <string name="tv_empty_budget_text">Nothing to see here... yet!</string>
+    <string name="tv_delete_entries_header">Are you sure you want to delete?</string>
+    <string name="tv_delete_entries_body">All entries in your Spendr budget will be completely lost. This action cannot be undone</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
 </resources>
