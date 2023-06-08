@@ -14,5 +14,6 @@ data class SummaryCardEpoxyModel(
         tvInflowAmount.text = incomeAmount
         tvOutflowAmount.text = expenditureAmount
         tvMonthName.text = month
+
     }
 }
