@@ -1,4 +1,4 @@
-package com.judahben149.spendr.presentation
+package com.judahben149.spendr.presentation.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,19 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.ScreenPrefsBinding
+import com.judahben149.spendr.utils.Constants.SETTINGS_DIALOG
 import com.judahben149.spendr.utils.extensions.animateToolBarTitle
+import dagger.hilt.android.AndroidEntryPoint
 import soup.neumorphism.NeumorphCardView
 
+@AndroidEntryPoint
 class SettingsFragment: PreferenceFragmentCompat() {
 
 
     val navController by lazy {
         findNavController()
     }
+
+    private val viewModel: SettingsViewModel by viewModels()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
@@ -35,5 +42,17 @@ class SettingsFragment: PreferenceFragmentCompat() {
 //        backButton.setOnClickListener {
 //            navController.navigateUp()
 //        }
+
+        val deleteEntriesPreference = findPreference<Preference?>("deleteEntries")
+        deleteEntriesPreference?.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
+            SettingsDialogFragment.newInstance("entries").show(childFragmentManager, SETTINGS_DIALOG)
+            true
+        }
+
+        val deleteRemindersPreference = findPreference<Preference?>("deleteReminders")
+        deleteRemindersPreference?.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
+            SettingsDialogFragment.newInstance("reminders").show(childFragmentManager, SETTINGS_DIALOG)
+            true
+        }
     }
 }

@@ -21,4 +21,10 @@ interface CashFlowRepository {
     fun getAllPagedExpenditure(): Flow<PagingData<EntryListData>>
 
     suspend fun getEntryDetail(entryId: Int): CashEntryEntity
+
+    suspend fun deleteAllEntries()
+
+    suspend fun deleteAllReminders()
+
+    suspend fun deleteExpiredReminders(currentDate: Long)
 }

@@ -19,6 +19,10 @@ class CategoryViewModel @Inject constructor(private val repository: CashFlowRepo
     val categoryState: LiveData<CategoryListState> = _categoryState
 
 
+    init {
+        getCategories()
+    }
+
     fun getCategoryIconList(): List<Int> {
         //These are the ids of the icons provided for selection. They are static
         val categoryIconsList = listOf<Int>(

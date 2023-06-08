@@ -52,7 +52,6 @@ class CategoryBottomSheetFragment : Fragment() {
         viewModel.setCategorySelected(isIncomeSelected = isIncome ?: false)
 
         setupRecyclerView()
-        viewModel.getCategories()
 
         viewModel.categoryState.observe(viewLifecycleOwner) { categoryState ->
 

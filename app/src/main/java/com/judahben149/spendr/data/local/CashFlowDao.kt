@@ -1,6 +1,7 @@
 package com.judahben149.spendr.data.local
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -34,4 +35,16 @@ interface CashFlowDao {
 
     @Query("SELECT * FROM cashEntry WHERE id = :entryId")
     suspend fun getEntryDetail(entryId: Int): CashEntryEntity
+
+    @Query("DELETE FROM cashEntry")
+    suspend fun deleteAllEntries()
+
+    @Query("DELETE FROM reminders")
+    suspend fun deleteAllReminders()
+
+    @Query("DELETE FROM reminders WHERE targetDate < :currentDate")
+    suspend fun deleteExpiredReminders(currentDate: Long)
+
+//    @Query("DELETE FROM category")
+//    suspend fun deleteAllCategories()
 }

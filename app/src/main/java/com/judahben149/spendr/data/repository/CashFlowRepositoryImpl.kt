@@ -75,4 +75,16 @@ class CashFlowRepositoryImpl @Inject constructor(
     override suspend fun getEntryDetail(entryId: Int): CashEntryEntity {
        return cashFlowDao.getEntryDetail(entryId)
     }
+
+    override suspend fun deleteAllEntries() {
+        cashFlowDao.deleteAllEntries()
+    }
+
+    override suspend fun deleteAllReminders() {
+        cashFlowDao.deleteAllEntries()
+    }
+
+    override suspend fun deleteExpiredReminders(currentDate: Long) {
+        cashFlowDao.deleteExpiredReminders(currentDate)
+    }
 }

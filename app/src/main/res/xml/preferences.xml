@@ -4,7 +4,7 @@
 
     <EditTextPreference
         android:key="USER_NAME"
-        android:title="Change UserName"
+        android:title="Change Name"
         app:useSimpleSummaryProvider="true"
         />
 
@@ -17,18 +17,15 @@
         app:useSimpleSummaryProvider="true"
         />
 
-<!--    <Preference android:title="Delete all reminders"-->
-<!--        />-->
+    <Preference android:title="Delete reminders"
+        android:key="deleteReminders"/>
 
-<!--    <Preference android:title="Delete all budget entries"-->
-<!--        />-->
+    <Preference android:title="Delete all budget entries"
+        android:key="deleteEntries" />
 
 
-    <PreferenceCategory android:title="About Spendr"
-        android:summary=""
-        />
+    <PreferenceCategory android:title="About Spendr" />
 
     <PreferenceCategory android:title="Privacy policy"
-        android:summary=""
-        />
+        android:summary="" />
 </PreferenceScreen>

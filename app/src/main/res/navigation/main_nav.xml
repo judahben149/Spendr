@@ -181,7 +181,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.judahben149.spendr.presentation.SettingsFragment"
+        android:name="com.judahben149.spendr.presentation.settings.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/onboardingFragment"
