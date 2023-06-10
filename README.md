@@ -46,6 +46,13 @@ Spendr has a focus on simplicity and  -->
 <img src="https://github.com/judahben149/Spendr/assets/71103838/4bc9e42b-c801-4fcf-aa3f-d8d32e837e8a" alt="Delete reminders dialog screen" width="200">
 <img src="https://github.com/judahben149/Spendr/assets/71103838/b75e95d4-5f83-45d4-8c55-630d1cdfc3ba" alt="Delete budget entries dialog screen" width="200">
 
+ 
+ ‎
+## Spendr Application Flow Diagram
+![Spendr - Flow](https://github.com/judahben149/Spendr/assets/71103838/d41bf832-adaa-4a3b-9332-c4f0feea142a)
+
+
+
 ## Build Tools
 * [Kotlin](https://kotlinlang.org/docs/android-overview.html) - Kotlin is a modern and concise programming language for Android development. It offers enhanced null safety, functional programming features, and seamless interoperability with Java. With its clean syntax and extensive Android support, Kotlin boosts productivity and code readability for developers. Kotlin is officially supported by Google as a first-class language for Android development, making it a popular choice among developers worldwide.
 
