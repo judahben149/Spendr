@@ -2,7 +2,7 @@
 Spendr is a neat-looking budgeting app based on the neumorphic design style.
 Built with Modern Android Development practices in mind, it adheres to clean architecture and keeps up with latest industry standards.
 
-## About the pp
+## About the App
 Spendr has a focus on simplicity and 
 
 ## Screenshots
@@ -46,3 +46,27 @@ Spendr has a focus on simplicity and
 <img src="https://github.com/judahben149/Spendr/assets/71103838/4bc9e42b-c801-4fcf-aa3f-d8d32e837e8a" alt="Delete reminders dialog screen" width="200">
 <img src="https://github.com/judahben149/Spendr/assets/71103838/b75e95d4-5f83-45d4-8c55-630d1cdfc3ba" alt="Delete budget entries dialog screen" width="200">
 
+## Build Tools
+* Kotlin - 
+* Neumorphism UI - 
+* MVVM - 
+* Clean Architecture - 
+* Dagger-Hilt - 
+* Navigation Component - 
+* ViewModel & LiveData - 
+* Kotlin Coroutines - 
+* Kotlin Flows - 
+* Room persistence library - 
+* Paging-3 - 
+* ViewPager-2 - 
+* ViewPager Dot Indicator - 
+* Epoxy - 
+* Lottie Animations - 
+* Alarm Manager - 
+* Braodcast Receiver - 
+* Splash Screen API - 
+* Timber - 
+* Shared Preferences - 
+* Preferences API - 
+* Firebase Crashlytics - 
+* Firebase Performance Monitor - 
