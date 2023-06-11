@@ -1,9 +1,11 @@
 package com.judahben149.spendr.presentation.cashflow_summary.epoxy.model
 
+import com.google.errorprone.annotations.Keep
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.EpoxyModelSummaryNeumorphicCardBinding
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.ViewBindingKotlinModel
 
+@Keep
 data class SummaryCardEpoxyModel(
     val incomeAmount: String,
     val expenditureAmount: String,
