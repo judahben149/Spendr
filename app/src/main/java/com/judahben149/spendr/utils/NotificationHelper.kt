@@ -21,6 +21,8 @@ class NotificationHelper @Inject constructor(private val context: Context) {
         // Request permission to show notifications
         val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
         intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
         context.startActivity(intent)
     }
 
@@ -46,7 +48,8 @@ class NotificationHelper @Inject constructor(private val context: Context) {
 
 
     fun isNotificationPermissionGranted(): Boolean {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationManager.areNotificationsEnabled()

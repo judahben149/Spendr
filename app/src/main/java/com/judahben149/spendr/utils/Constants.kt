@@ -4,6 +4,7 @@ object Constants {
 
     const val CATEGORY_BOTTOM_SHEET = "CATEGORY_BOTTOM_SHEET"
     const val REMINDER_BOTTOM_SHEET = "REMINDER_BOTTOM_SHEET"
+    const val NOTIFICATION_PERMISSION_DIALOG = "NOTIFICATION_PERMISSION_DIALOG"
     const val APP_DATABASE_NAME = "spendr_database"
     const val USER_NAME = "USER_NAME"
 

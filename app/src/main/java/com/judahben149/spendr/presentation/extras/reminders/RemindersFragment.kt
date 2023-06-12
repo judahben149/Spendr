@@ -15,6 +15,7 @@ import com.judahben149.spendr.databinding.FragmentRemindersBinding
 import com.judahben149.spendr.presentation.extras.reminders.adapter.RemindersAdapter
 import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.Constants.TIMBER_TAG
+import com.judahben149.spendr.utils.NotificationHelper
 import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -52,7 +53,10 @@ class RemindersFragment : Fragment() {
         setupRecyclerView()
 
         binding.ivNewReminder.setOnClickListener {
-            RemindersContainerBottomSheet().show(childFragmentManager, Constants.REMINDER_BOTTOM_SHEET)
+            if (NotificationHelper(requireContext()).isNotificationPermissionGranted())
+                RemindersContainerBottomSheet().show(childFragmentManager, Constants.REMINDER_BOTTOM_SHEET)
+            else
+                NotificationPermissionDialog().show(childFragmentManager, Constants.NOTIFICATION_PERMISSION_DIALOG)
         }
 
         viewModel.reminderListState.observe(viewLifecycleOwner) { reminderListState ->
