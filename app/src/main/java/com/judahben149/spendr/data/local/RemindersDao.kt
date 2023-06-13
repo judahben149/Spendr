@@ -14,4 +14,10 @@ interface RemindersDao {
 
     @Query("SELECT * FROM reminders ORDER BY targetDate ASC")
     fun getAllReminders(): Flow<List<ReminderEntity>>
+
+    @Query("DELETE FROM reminders")
+    suspend fun deleteAllReminders()
+
+    @Query("DELETE FROM reminders WHERE targetDate < :currentDate")
+    suspend fun deleteExpiredReminders(currentDate: Long)
 }

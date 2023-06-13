@@ -17,8 +17,8 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesCashFlowRepository(cashFlowDao: CashFlowDao): CashFlowRepositoryImpl {
-        return CashFlowRepositoryImpl(cashFlowDao)
+    fun providesCashFlowRepository(cashFlowDao: CashFlowDao, remindersDao: RemindersDao): CashFlowRepositoryImpl {
+        return CashFlowRepositoryImpl(cashFlowDao, remindersDao)
     }
 
     @Provides

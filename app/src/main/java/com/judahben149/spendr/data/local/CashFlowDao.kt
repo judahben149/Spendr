@@ -39,11 +39,6 @@ interface CashFlowDao {
     @Query("DELETE FROM cashEntry")
     suspend fun deleteAllEntries()
 
-    @Query("DELETE FROM reminders")
-    suspend fun deleteAllReminders()
-
-    @Query("DELETE FROM reminders WHERE targetDate < :currentDate")
-    suspend fun deleteExpiredReminders(currentDate: Long)
 
 //    @Query("DELETE FROM category")
 //    suspend fun deleteAllCategories()

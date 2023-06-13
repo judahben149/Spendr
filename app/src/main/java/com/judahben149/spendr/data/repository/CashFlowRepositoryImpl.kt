@@ -6,6 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.judahben149.spendr.data.local.CashFlowDao
+import com.judahben149.spendr.data.local.RemindersDao
 import com.judahben149.spendr.data.local.entity.CashEntryEntity
 import com.judahben149.spendr.data.local.entity.CategoryEntity
 import com.judahben149.spendr.data.paging.CashEntryPagingSource
@@ -25,7 +26,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class CashFlowRepositoryImpl @Inject constructor(
-    private val cashFlowDao: CashFlowDao
+    private val cashFlowDao: CashFlowDao,
+    private val remindersDao: RemindersDao,
 ) : CashFlowRepository {
 
     override suspend fun saveEntry(cashEntryEntity: CashEntryEntity) {
@@ -81,10 +83,10 @@ class CashFlowRepositoryImpl @Inject constructor(
     }
 
     override suspend fun deleteAllReminders() {
-        cashFlowDao.deleteAllEntries()
+        remindersDao.deleteAllReminders()
     }
 
     override suspend fun deleteExpiredReminders(currentDate: Long) {
-        cashFlowDao.deleteExpiredReminders(currentDate)
+        remindersDao.deleteExpiredReminders(currentDate)
     }
 }
