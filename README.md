@@ -5,6 +5,9 @@ Built with Modern Android Development practices in mind, it adheres to clean arc
 <!-- ## About the App
 Spendr has a focus on simplicity and  -->
 
+<!-- ## Try out Spendr
+ -->
+
 ## Screenshots
 ### Onboarding Section
 <img src="https://github.com/judahben149/Spendr/assets/71103838/ca5f11ed-5d67-410f-82be-6e3c7904ad2c" width="200" alt="Splash screen">
@@ -52,13 +55,17 @@ Spendr has a focus on simplicity and  -->
 ![Spendr - Flow](https://github.com/judahben149/Spendr/assets/71103838/d41bf832-adaa-4a3b-9332-c4f0feea142a)
 
 
+ ‎
+ ## Architecture Flow
+ ![Spendr Architecture Flow](https://github.com/judahben149/Spendr/assets/71103838/6305b5e1-c617-4d7f-ba4a-1f06307ad008)
+
 
 ## Build Tools
-* [Kotlin](https://kotlinlang.org/docs/android-overview.html) - Kotlin is a modern and concise programming language for Android development. It offers enhanced null safety, functional programming features, and seamless interoperability with Java. With its clean syntax and extensive Android support, Kotlin boosts productivity and code readability for developers. Kotlin is officially supported by Google as a first-class language for Android development, making it a popular choice among developers worldwide.
+* [Kotlin](https://kotlinlang.org/docs/android-overview.html) - Kotlin is officially supported by Google as a first-class language for Android development and Spendr is 100% kotlin.
 
-* [Neumorphism UI](https://github.com/fornewid/neumorphism) - Neumorphism UI, a popular design trend, brings a modern and sleek look to user interfaces. Inspired by skeuomorphism and flat design, Neumorphism combines subtle shadows, soft gradients, and rounded shapes to create visually appealing and tactile user interfaces. This design approach aims to provide a sense of depth and realism while maintaining a minimalistic and clean aesthetic. Neumorphism UI elements add a touch of elegance to applications, enhancing the overall user experience and making them visually engaging.
+* [Neumorphism UI](https://github.com/fornewid/neumorphism) - Spendr makes use of Neumorphism UI, a popular design trend, which brings a modern and sleek look to user interfaces. Inspired by skeuomorphism and flat design, Neumorphism combines subtle shadows, soft gradients, and rounded shapes to create visually appealing and tactile user interfaces. This design approach aims to provide a sense of depth and realism while maintaining a minimalistic and clean aesthetic. Neumorphism UI elements add a touch of elegance to applications, enhancing the overall user experience and making them visually engaging.
 
-* [MVVM](https://developer.android.com/topic/architecture) - MVVM (Model-View-ViewModel) is a popular architectural pattern for Android development. It separates the data (Model), UI (View), and logic (ViewModel) for better organization and maintainability. It promotes data-binding and enables reactive UI updates. MVVM is widely adopted for its testability and modularity.
+* [MVVM](https://developer.android.com/topic/architecture) - MVVM (Model-View-ViewModel) is a popular architectural pattern for Android development. It separates the data (Model), UI (View), and logic (ViewModel) for better organization and maintainability. In Spendr, data is completely separated from the UI layer with the proper use of State and ViewModels. It is observed and made available using Kotlin FLows and Live Data.
 
 * [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - Clean Architecture is a software design principle that emphasizes separation of concerns and independence of external frameworks. It promotes a modular and maintainable codebase by dividing the application into distinct layers: Presentation, Domain, and Data. This architecture allows for easier testing, scalability, and flexibility. It helps in achieving code that is decoupled, reusable, and focused on business logic, making it suitable for various platforms, including Android development.
 
@@ -66,25 +73,25 @@ Spendr has a focus on simplicity and  -->
 
 * [Navigation Component](https://developer.android.com/guide/navigation/get-started) - Navigation Component is a powerful library in Android Jetpack for managing app navigation. It simplifies screen transitions, handles navigation automatically, and promotes a consistent user experience.
 
-* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) & [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - ViewModel and LiveData are key components of Android Architecture. ViewModel separates data handling from UI components, preserving data during configuration changes. LiveData is an observable data holder that automatically updates the UI when data changes, considering the lifecycle state. Together, they promote clean architecture, separation of concerns, and enhance app testability.
+* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) & [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - ViewModel and LiveData are key components of Android Architecture. ViewModel separates data handling from UI components, preserving data during configuration changes. As mentioned above, Spendr use of ViewModels and LiveData to deliver reactive UIs.
 
-* [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) - Kotlin Coroutines is a lightweight framework for asynchronous programming in Kotlin. It simplifies background tasks without blocking the main thread, improving code readability and enabling efficient concurrent programming in Android apps.
+* [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) - Kotlin Coroutines is a lightweight framework for asynchronous programming in Kotlin. To avoid blocking the main thread, calls to the database and other expensive operations are handled on a background thread, ensuring fluent user operations and enhanced performance.
 
-* [Kotlin Flows](https://kotlinlang.org/docs/flow.html) - Kotlin Flows is a reactive stream library in Kotlin for handling asynchronous data streams. It provides a concise and declarative approach to reactive programming, enabling efficient handling of asynchronous operations and data stream transformations in Android applications.
+* [Kotlin Flows](https://kotlinlang.org/docs/flow.html) - Kotlin Flows is a reactive stream library in Kotlin for handling asynchronous data streams. Spendr uses Flows with Coroutines to ensure asynchronous operations.
 
-* [Room persistence library](https://developer.android.com/training/data-storage/room) - Room is a powerful persistence library in Android that simplifies working with databases. It offers convenient APIs and annotations for seamless data storage and retrieval.
+* [Room persistence library](https://developer.android.com/training/data-storage/room) - Room is a powerful persistence library in Android that simplifies working with databases. It offers convenient APIs and annotations for seamless data storage and retrieval. Entries in Spendr are stored and persisted in the local database.
 
-* [Paging-3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - Paging 3 is a powerful library for efficient handling of large datasets in Android apps. It simplifies pagination, loading data in chunks, and improves performance.
+* [Paging-3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - Paging 3 is a powerful library for efficient handling of large datasets in Android apps. All calls to retrieve multiple entries from the database is paged. This makes for faster retrieval times and a smoother UI feel for the user.
 
-* ViewPager-2 - ViewPager 2 is a powerful library for creating swipeable screens and slide-based UI in Android. It simplifies navigation between fragments or views, enabling interactive and engaging experiences. With flexibility and smooth scrolling, ViewPager 2 enhances the user experience for features like image galleries, onboarding screens, and tabbed layouts.
+* ViewPager-2 - ViewPager 2 is a powerful library for creating swipeable screens and slide-based UI in Android. It simplifies navigation between fragments or views, enabling interactive and engaging experiences. In Spendr, Viewpager2 is used on the Activity screen for swiping between Income and Expenditure categories. It is also used for the Onboarding screens of the app.
 
-* ViewPager Dot Indicator - ViewPager Dot Indicator is an Android library that adds a stylish dot indicator to ViewPager screens. It improves navigation and enhances the visual appeal of your app.
+* ViewPager Dot Indicator - ViewPager Dot Indicator is an Android library that adds a stylish dot indicator to ViewPager screens. It is used in the Onboarding section to enhance the visual appeal of the app.
 
-* Epoxy - Epoxy is an Android library that simplifies the creation of complex RecyclerView layouts. It provides a more declarative approach to building UIs, making it easier to handle dynamic data and efficiently update your views.
+* Epoxy - Epoxy is an Android library that simplifies the creation of complex RecyclerView layouts. It provides a more declarative approach to building UIs, making it easier to handle dynamic data and efficiently update your views. Epoxy is used in the Overview, Entry list and Entry detail Sections of the app. This approach is chosen over vanilla Recycler view because of the availability of complex items and states.
 
-* Lottie Animations - Lottie Animations is an Android library for seamless integration of vector-based animations in your app. It supports animations created in design tools using JSON or XML files, providing smooth playback and enhanced user experience.
+* Lottie Animations - Lottie Animations is an Android library for seamless integration of vector-based animations in your app. Lottie is used for all resource animations in Spendr.
 
-* MP Charts - Powerful charting library for Android. Supports various chart types with extensive customization. Visualize data effectively and create engaging charts.
+* MP Charts - Powerful charting library for Android. Supports various chart types with extensive customization. Visualize data effectively and create engaging charts. This is used in the Visualize Fragment.
 
 * Alarm Manager - Alarm Manager is a crucial Android component for scheduling time-based tasks and events, ensuring timely execution of app functionalities.
 
