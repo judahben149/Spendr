@@ -1,6 +1,7 @@
 package com.judahben149.spendr.presentation.entry_detail.epoxy.model
 
 import android.content.Context
+import androidx.annotation.Keep
 import androidx.core.content.ContextCompat
 import com.judahben149.spendr.R
 import com.judahben149.spendr.data.local.entity.CategoryEntity
@@ -12,6 +13,7 @@ import com.judahben149.spendr.utils.DateUtils
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import com.judahben149.spendr.utils.extensions.mapCategoryIcon
 
+@Keep
 data class EntryDetailHeaderEpoxyModel(
     val context: Context,
     val cashEntry: CashEntry
