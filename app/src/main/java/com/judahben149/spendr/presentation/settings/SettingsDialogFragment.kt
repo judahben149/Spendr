@@ -69,6 +69,11 @@ class SettingsDialogFragment: DialogFragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     companion object {
 
         fun newInstance(dialogType: String): SettingsDialogFragment {
