@@ -24,7 +24,7 @@
         android:key="deleteEntries" />
 
 
-    <PreferenceCategory android:title="About Spendr"
+    <Preference android:title="About Spendr"
         android:key="about"/>
 
 </PreferenceScreen>

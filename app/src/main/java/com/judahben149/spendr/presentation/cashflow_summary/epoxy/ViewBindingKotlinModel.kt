@@ -1,6 +1,7 @@
 package com.judahben149.spendr.presentation.cashflow_summary.epoxy
 
 import android.view.View
+import androidx.annotation.Keep
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
 import com.airbnb.epoxy.EpoxyModel
@@ -20,6 +21,7 @@ import java.util.concurrent.ConcurrentHashMap
  *    public static *** bind(android.view.View);
  * }
  */
+@Keep
 abstract class ViewBindingKotlinModel<T : ViewBinding>(
     @LayoutRes private val layoutRes: Int
 ) : EpoxyModel<View>() {
@@ -53,10 +55,12 @@ abstract class ViewBindingKotlinModel<T : ViewBinding>(
 }
 
 // Static cache of a method pointer for each type of item used.
+@Keep
 private val sBindingMethodByClass = ConcurrentHashMap<Class<*>, Method>()
 
 @Suppress("UNCHECKED_CAST")
 @Synchronized
+@Keep
 private fun getBindMethodFrom(javaClass: Class<*>): Method =
     sBindingMethodByClass.getOrPut(javaClass) {
         val actualTypeOfThis = getSuperclassParameterizedType(javaClass)
@@ -65,6 +69,7 @@ private fun getBindMethodFrom(javaClass: Class<*>): Method =
             ?: error("The binder class ${javaClass.canonicalName} should have a method bind(View)")
     }
 
+@Keep
 private fun getSuperclassParameterizedType(klass: Class<*>): ParameterizedType {
     val genericSuperclass = klass.genericSuperclass
     return (genericSuperclass as? ParameterizedType)

@@ -2,6 +2,7 @@ package com.judahben149.spendr.presentation.cashflow_summary.epoxy
 
 import android.content.Context
 import android.util.Log
+import androidx.annotation.Keep
 import com.airbnb.epoxy.TypedEpoxyController
 import com.judahben149.spendr.domain.model.CashEntry
 import com.judahben149.spendr.presentation.cashflow_summary.CashFlowSummaryUiState
@@ -15,6 +16,7 @@ import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummaryS
 import com.judahben149.spendr.utils.DateUtils
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 
+@Keep
 class SummaryEpoxyController(
     val context: Context,
     val onSeeAllIncomeClicked: () -> Unit,
@@ -61,7 +63,7 @@ class SummaryEpoxyController(
             }.id("Income_${cashEntry.id}").addTo(this)
         }
 
-        SummarySpacer(spacerHeight = 100)
+//        SummarySpacer(spacerHeight = 100)
 
         SummaryExpenditureHeaderEpoxyModel(
             "Expenditure"
