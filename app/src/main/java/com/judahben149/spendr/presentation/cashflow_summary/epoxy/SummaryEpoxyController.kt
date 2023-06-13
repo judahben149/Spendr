@@ -35,7 +35,6 @@ class SummaryEpoxyController(
 
         //set empty list state
         if (uiState.cashEntryList.isNullOrEmpty()) {
-            SummaryHeaderEpoxyModel("Summary").id("header").addTo(this)
             SummaryCardEpoxyModel("0", "0", "_").id("card").addTo(this)
             return
         }
