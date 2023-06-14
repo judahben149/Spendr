@@ -113,4 +113,13 @@ object DateUtils {
         val timeFormat = SimpleDateFormat("h:mma", Locale.getDefault())
         return timeFormat.format(givenDate.time)
     }
+
+    fun formatPdfFileName(dateInMillis: Long): String {
+        val currentDate = Calendar.getInstance()
+        val givenDate = Calendar.getInstance()
+        givenDate.timeInMillis = dateInMillis
+
+        val format = SimpleDateFormat("hh-mm_dd-MM-yyyy", Locale.getDefault())
+        return format.format(givenDate.time)
+    }
 }

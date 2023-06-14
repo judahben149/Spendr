@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.judahben149.spendr.databinding.DialogBottomShareSheetBinding
 import com.judahben149.spendr.utils.DateUtils
+import com.judahben149.spendr.utils.PDFGenerator
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.StringBuilder
@@ -35,6 +36,7 @@ class ShareSheetBottomDialog: BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val cashEntry = viewModel.state.value?.cashEntry
+
         cashEntry?.let { entry ->
             formattedText = StringBuilder()
                 .append("Amount: ".plus(entry.amount.abbreviateNumber(requireContext())).plus("\n"))
@@ -60,8 +62,10 @@ class ShareSheetBottomDialog: BottomSheetDialogFragment() {
         }
 
         binding.btnPdf.setOnClickListener {
-
-            dismiss()
+            cashEntry?.let {
+                PDFGenerator.generatePDF(requireContext(), binding.root, it)
+                dismiss()
+            }
         }
     }
 
