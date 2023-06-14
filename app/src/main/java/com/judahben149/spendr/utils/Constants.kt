@@ -15,6 +15,7 @@ object Constants {
     const val TIMBER_TAG = "TIMBER_TAG"
     const val SETTINGS_DIALOG = "SETTINGS_DIALOG"
     const val DIALOG_TYPE = "DIALOG_TYPE"
+    const val SHARE_SHEET_BOTTOM_DIALOG = "SHARE_SHEET_BOTTOM_DIALOG"
 
     //Flags
     const val SHOULD_SHOW_TOOL_BAR = "SHOULD_SHOW_TOOL_BAR"

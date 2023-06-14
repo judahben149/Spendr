@@ -32,6 +32,10 @@ class EntryDetailViewModel @Inject constructor(private val cashFlowRepository: C
         }
     }
 
+    fun reset() {
+        _state.value = EntryDetailState()
+    }
+
     private fun setLoadingState(isLoading: Boolean) {
         _state.value = _state.value?.copy(
             isLoading = isLoading

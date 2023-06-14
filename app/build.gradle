@@ -121,4 +121,7 @@ dependencies {
 
     //Splash
     implementation 'androidx.core:core-splashscreen:1.0.1'
+
+    //iText PDF Generator
+    implementation 'com.itextpdf:itext7-core:7.1.12'
 }
