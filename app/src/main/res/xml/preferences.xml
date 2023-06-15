@@ -23,6 +23,8 @@
     <Preference android:title="Delete all budget entries"
         android:key="deleteEntries" />
 
+    <Preference android:title="Export Budget"
+        android:key="exportBudget" />
 
     <Preference android:title="About Spendr"
         android:key="about"/>

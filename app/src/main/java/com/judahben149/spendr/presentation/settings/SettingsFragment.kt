@@ -14,6 +14,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.ScreenPrefsBinding
+import com.judahben149.spendr.utils.Constants.EXPORT_BUDGET_DIALOG
 import com.judahben149.spendr.utils.Constants.SETTINGS_DIALOG
 import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,6 +55,12 @@ class SettingsFragment: PreferenceFragmentCompat() {
         val deleteRemindersPreference = findPreference<Preference?>("deleteReminders")
         deleteRemindersPreference?.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
             SettingsDialogFragment.newInstance("reminders").show(childFragmentManager, SETTINGS_DIALOG)
+            true
+        }
+
+        val exportBudgetPreference = findPreference<Preference?>("exportBudget")
+        exportBudgetPreference?.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
+            ExportBudgetDialogFragment().show(childFragmentManager, EXPORT_BUDGET_DIALOG)
             true
         }
 
