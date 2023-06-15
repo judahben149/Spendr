@@ -119,7 +119,7 @@ object DateUtils {
         val givenDate = Calendar.getInstance()
         givenDate.timeInMillis = dateInMillis
 
-        val format = SimpleDateFormat("hh-mm_dd-MM-yyyy", Locale.getDefault())
+        val format = SimpleDateFormat("hh_mm-dd_MM_yyyy", Locale.getDefault())
         return format.format(givenDate.time)
     }
 }
