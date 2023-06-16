@@ -8,7 +8,9 @@ import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfWriter
 import com.itextpdf.layout.Document
 import com.itextpdf.layout.element.Paragraph
+import com.itextpdf.layout.element.Table
 import com.itextpdf.layout.property.TextAlignment
+import com.itextpdf.layout.property.UnitValue
 import com.judahben149.spendr.domain.model.CashEntry
 import com.judahben149.spendr.utils.Constants.TIMBER_TAG
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
@@ -26,7 +28,7 @@ object PDFHelper {
         onError: (exception: Exception) -> Unit
     ) {
 
-        val file = createFile(context, cashEntry)
+        val file = createSingleEntryFile(context, cashEntry)
 
         try {
             val fileOutput = FileOutputStream(file)
@@ -38,25 +40,29 @@ object PDFHelper {
 
             addTitle(layoutDocument, "Spendr Entry Detail")
             addEmptyLine(layoutDocument, 2)
-            addLineLeftFontSize18(layoutDocument, "Amount: ${cashEntry.amount.abbreviateNumber()}")
+            addLineLeftFontSize18(layoutDocument, "Amount: ${cashEntry.amount.abbreviateNumber(context)}")
             addLineLeftFontSize18(layoutDocument, "Category: ${cashEntry.categoryName}")
-            addLineLeftFontSize18(layoutDocument, "Date: ${DateUtils.formatStandardDateTime(cashEntry.transactionDate)}")
-            addLineLeftFontSize18(layoutDocument, "Entry Type: ${if (cashEntry.isIncome) "Income" else "Expenditure"}")
+            addLineLeftFontSize18(
+                layoutDocument,
+                "Date: ${DateUtils.formatStandardDateTime(cashEntry.transactionDate)}"
+            )
+            addLineLeftFontSize18(
+                layoutDocument,
+                "Entry Type: ${if (cashEntry.isIncome) "Income" else "Expenditure"}"
+            )
 
             layoutDocument.close()
             Snackbar.make(rootView, "File saved to ${file.path}", Snackbar.LENGTH_INDEFINITE).show()
-        }
-        catch (exception: Exception) {
+        } catch (exception: Exception) {
             onError(exception)
-        }
-        finally {
+        } finally {
             onFinish(file)
         }
     }
 
-    private fun createFile(context: Context, cashEntry: CashEntry): File {
-        val fileName = DateUtils.formatPdfFileName(cashEntry.transactionDate)
-        val filePath = getAppPath(context) + fileName
+    private fun createSingleEntryFile(context: Context, cashEntry: CashEntry): File {
+        val fileName = DateUtils.formatPdfFileName(cashEntry.transactionDate) + ".pdf"
+        val filePath = getAppPath(context, true) + fileName
         val file = File(filePath)
 
         if (file.exists()) {
@@ -65,9 +71,21 @@ object PDFHelper {
         return file
     }
 
-    private fun getAppPath(context: Context): String {
+    private fun createBudgetFile(context: Context): File {
+        val currentDate = DateUtils.getCurrentDateInMillis()
+        val fileName = DateUtils.formatPdfFileName(currentDate) + ".pdf"
+        val filePath = getAppPath(context, false) + fileName
+        val file = File(filePath)
+
+        if (file.exists()) {
+            file.delete()
+        }
+        return file
+    }
+
+    private fun getAppPath(context: Context, isSingleEntry: Boolean): String {
         val dir = context.getExternalFilesDir(null)
-        val spendrDir = File(dir, "PDFs")
+        val spendrDir = if (isSingleEntry) File(dir, "Single") else File(dir, "Entire")
 
         if (!spendrDir.exists()) {
             if (spendrDir.mkdirs()) {
@@ -84,7 +102,7 @@ object PDFHelper {
 
     private fun addTitle(layoutDocument: Document, text: String) {
         layoutDocument.add(
-            Paragraph(text).setFontSize(24f).setBold().setUnderline()
+            Paragraph(text).setFontSize(18f).setBold().setUnderline()
                 .setTextAlignment(TextAlignment.CENTER)
         )
     }
@@ -100,5 +118,122 @@ object PDFHelper {
             Paragraph(text).setFontSize(16f)
                 .setTextAlignment(TextAlignment.LEFT)
         )
+    }
+
+    private fun addLine(layoutDocument: Document, text: String, fontSize: Float) {
+        layoutDocument.add(
+            Paragraph(text).setFontSize(fontSize)
+                .setTextAlignment(TextAlignment.LEFT)
+        )
+    }
+
+    fun generateEntireBudgetTable(
+        context: Context,
+        cashEntryList: List<CashEntry>,
+        onFinish: (file: File) -> Unit,
+        onError: (exception: Exception) -> Unit
+    ) {
+        val file = createBudgetFile(context)
+
+        try {
+            val fileOutput = FileOutputStream(file)
+            val pdfWriter = PdfWriter(fileOutput)
+            pdfWriter.compressionLevel = CompressionConstants.BEST_COMPRESSION
+
+            val pdfDocument = PdfDocument(pdfWriter)
+            val layoutDocument = Document(pdfDocument)
+
+            addTitle(layoutDocument, "Spendr Budget Export")
+            addLine(layoutDocument, "Date exported - ${DateUtils.getCurrentFriendlyDateWithTime()}", 14f)
+            addEmptyLine(layoutDocument, 1)
+
+            val table = Table(
+                UnitValue.createPointArray(
+                    floatArrayOf(
+                        100f,
+                        120f,
+                        100f,
+                        120f
+                    )
+                )
+            )
+
+            table.addCell(
+                Paragraph("Date").setBold().setFontSize(14f).setTextAlignment(TextAlignment.CENTER)
+            )
+            table.addCell(
+                Paragraph("Amount").setBold().setFontSize(14f)
+                    .setTextAlignment(TextAlignment.CENTER)
+            )
+            table.addCell(
+                Paragraph("Entry Type").setBold().setFontSize(14f)
+                    .setTextAlignment(TextAlignment.CENTER)
+            )
+            table.addCell(
+                Paragraph("Category").setBold().setFontSize(14f)
+                    .setTextAlignment(TextAlignment.CENTER)
+            )
+
+            var monthName = ""
+            var totalIncome = 0.0
+            var totalExpenditure = 0.0
+
+            for (entry in cashEntryList) {
+
+                if (entry.isIncome)
+                    totalIncome += entry.amount
+                else
+                    totalExpenditure += entry.amount
+
+
+                table.addCell(
+                    Paragraph(DateUtils.formatStandardDateTime(entry.transactionDate) + "")
+                        .setFontSize(14f)
+                        .setTextAlignment(TextAlignment.CENTER)
+                )
+                table.addCell(
+                    Paragraph(entry.amount.abbreviateNumber(context) + "")
+                        .setFontSize(14f)
+                        .setTextAlignment(TextAlignment.CENTER)
+                )
+                table.addCell(
+                    Paragraph(if (entry.isIncome) "Income" else "Expenditure" + "")
+                        .setFontSize(14f)
+                        .setTextAlignment(TextAlignment.CENTER)
+                )
+                table.addCell(
+                    Paragraph(entry.categoryName + "")
+                        .setFontSize(14f)
+                        .setTextAlignment(TextAlignment.CENTER)
+                )
+            }
+
+            val totalExpenseTable = Table(
+                UnitValue.createPointArray(
+                    floatArrayOf(
+                        100f,
+                        120f,
+                        100f,
+                        120f
+                    )
+                )
+            )
+
+            totalExpenseTable.addCell(Paragraph("Total Income:").setBold().setTextAlignment(TextAlignment.CENTER))
+            totalExpenseTable.addCell(Paragraph(totalIncome.abbreviateNumber(context)).setTextAlignment(TextAlignment.CENTER))
+            totalExpenseTable.addCell(Paragraph("Total Expenditure").setBold().setTextAlignment(TextAlignment.CENTER))
+            totalExpenseTable.addCell(Paragraph(totalExpenditure.abbreviateNumber(context)).setTextAlignment(TextAlignment.CENTER))
+
+
+            layoutDocument.add(table)
+            addEmptyLine(layoutDocument, 1)
+            layoutDocument.add(totalExpenseTable)
+
+            layoutDocument.close()
+        } catch (exception: Exception) {
+            onError(exception)
+        } finally {
+            onFinish(file)
+        }
     }
 }

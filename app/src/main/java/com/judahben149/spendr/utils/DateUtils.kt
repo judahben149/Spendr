@@ -47,6 +47,14 @@ object DateUtils {
         return format.format(calendar.time)
     }
 
+    fun getCurrentFriendlyDateWithTime(): String {
+        val calendar = Calendar.getInstance() // Create a Calendar instance
+        calendar.time = Date() // Set the Calendar's time to the current date
+
+        val format = SimpleDateFormat("h:mm a, d MMMM, yyyy", Locale.getDefault())
+        return format.format(calendar.time)
+    }
+
     fun formatStandardDateTime(dateInMillis: Long): String {
         val currentDate = Calendar.getInstance()
         val givenDate = Calendar.getInstance()
@@ -119,7 +127,7 @@ object DateUtils {
         val givenDate = Calendar.getInstance()
         givenDate.timeInMillis = dateInMillis
 
-        val format = SimpleDateFormat("hh_mm-dd_MM_yyyy", Locale.getDefault())
+        val format = SimpleDateFormat("hh-mm_dd-MM-yyyy", Locale.getDefault())
         return format.format(givenDate.time)
     }
 }

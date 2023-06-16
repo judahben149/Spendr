@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="24dp"
+    tools:context=".presentation.settings.ExportBudgetDialogFragment">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/pgBar_export"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:indeterminate="true"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="48dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <TextView
+        android:id="@+id/tv_dialog_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Exporting PDF..."
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_dialog_body"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:padding="8dp"
+        android:text="Click to locate file in File Explorer or open with PDF viewer"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dialog_header" />
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/btn_negative"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:minWidth="120dp"
+        android:minHeight="64dp"
+        app:layout_constraintEnd_toStartOf="@id/btn_positive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dialog_body"
+        app:neumorph_shadowElevation="3dp"
+        app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+        app:neumorph_shapeType="basin">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_cancel"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="12dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="ic_folder.json"
+            app:lottie_loop="true"
+            app:lottie_repeatMode="restart"
+            app:lottie_speed="1.0" />
+
+        <TextView
+            android:id="@+id/tv_negative_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="12dp"
+            android:text="Locate"
+            android:textColor="@android:color/background_dark" />
+    </soup.neumorphism.NeumorphCardView>
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/btn_positive"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="120dp"
+        android:minHeight="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_negative"
+        app:layout_constraintTop_toTopOf="@id/btn_negative"
+        app:neumorph_shadowElevation="3dp"
+        app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+        app:neumorph_shapeType="basin">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:id="@+id/anim_delete"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="4dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="ic_view.json"
+            app:lottie_loop="true"
+            app:lottie_repeatMode="restart"
+            app:lottie_speed="1.0" />
+
+        <TextView
+            android:id="@+id/tv_positive_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:text="View"
+            android:textColor="@android:color/background_dark" />
+    </soup.neumorphism.NeumorphCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
