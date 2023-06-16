@@ -55,8 +55,7 @@ class ExportBudgetDialogFragment : DialogFragment() {
 
                         })
                 } else {
-                    Snackbar.make(binding.root, "No entries found in Budget", Snackbar.LENGTH_LONG).show()
-                    //show user that budget is empty
+                    setEmptyBudgetView()
                 }
             }
         }
@@ -81,6 +80,14 @@ class ExportBudgetDialogFragment : DialogFragment() {
             })
             dismiss()
         }
+    }
+
+    private fun setEmptyBudgetView() {
+        binding.tvDialogBody.visibility = View.VISIBLE
+        binding.pgBarExport.visibility = View.INVISIBLE
+
+        binding.tvDialogHeader.text = "Export not complete"
+        binding.tvDialogBody.text = "Your Spendr Budget is empty."
     }
 
 

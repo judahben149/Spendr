@@ -144,7 +144,7 @@ object PDFHelper {
             val layoutDocument = Document(pdfDocument)
 
             addTitle(layoutDocument, "Spendr Budget Export")
-            addLine(layoutDocument, "Date exported - ${DateUtils.getCurrentFriendlyDate()}", 14f)
+            addLine(layoutDocument, "Date exported - ${DateUtils.getCurrentFriendlyDateWithTime()}", 14f)
             addEmptyLine(layoutDocument, 1)
 
             val table = Table(
