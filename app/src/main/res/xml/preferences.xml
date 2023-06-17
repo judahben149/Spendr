@@ -6,6 +6,7 @@
         android:key="USER_NAME"
         android:title="Change Name"
         app:useSimpleSummaryProvider="true"
+        android:icon="@drawable/ic_name"
         />
 
     <DropDownPreference
@@ -15,18 +16,23 @@
         android:key="currency"
         android:defaultValue="Nigerian Naira (₦)"
         app:useSimpleSummaryProvider="true"
+        android:icon="@drawable/ic_currency"
         />
 
     <Preference android:title="Delete reminders"
-        android:key="deleteReminders"/>
+        android:key="deleteReminders"
+        android:icon="@drawable/ic_trash"/>
 
     <Preference android:title="Delete all budget entries"
-        android:key="deleteEntries" />
+        android:key="deleteEntries"
+        android:icon="@drawable/ic_trash"/>
 
     <Preference android:title="Export Budget"
-        android:key="exportBudget" />
+        android:key="exportBudget"
+        android:icon="@drawable/ic_export" />
 
     <Preference android:title="About Spendr"
-        android:key="about"/>
+        android:key="about"
+        android:icon="@drawable/ic_info" />
 
 </PreferenceScreen>
