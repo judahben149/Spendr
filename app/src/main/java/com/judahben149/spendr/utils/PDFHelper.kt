@@ -1,20 +1,28 @@
 package com.judahben149.spendr.utils
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.view.View
+import androidx.annotation.DrawableRes
 import com.google.android.material.snackbar.Snackbar
+import com.itextpdf.io.image.ImageData
+import com.itextpdf.io.image.ImageDataFactory
 import com.itextpdf.kernel.pdf.CompressionConstants
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfWriter
 import com.itextpdf.layout.Document
+import com.itextpdf.layout.element.Image
 import com.itextpdf.layout.element.Paragraph
 import com.itextpdf.layout.element.Table
 import com.itextpdf.layout.property.TextAlignment
 import com.itextpdf.layout.property.UnitValue
+import com.judahben149.spendr.R
 import com.judahben149.spendr.domain.model.CashEntry
 import com.judahben149.spendr.utils.Constants.TIMBER_TAG
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import timber.log.Timber
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 
@@ -38,9 +46,13 @@ object PDFHelper {
             val pdfDocument = PdfDocument(pdfWriter)
             val layoutDocument = Document(pdfDocument)
 
+            addLogo(context, layoutDocument, R.drawable.splash_piggy_pdf, "Spendr")
             addTitle(layoutDocument, "Spendr Entry Detail")
             addEmptyLine(layoutDocument, 2)
-            addLineLeftFontSize18(layoutDocument, "Amount: ${cashEntry.amount.abbreviateNumber(context)}")
+            addLineLeftFontSize18(
+                layoutDocument,
+                "Amount: ${cashEntry.amount.abbreviateNumber(context)}"
+            )
             addLineLeftFontSize18(layoutDocument, "Category: ${cashEntry.categoryName}")
             addLineLeftFontSize18(
                 layoutDocument,
@@ -99,6 +111,40 @@ object PDFHelper {
         return spendrDir.path + File.separator
     }
 
+    private fun addLogo(
+        context: Context,
+        layoutDocument: Document,
+        @DrawableRes logoImageDrawableId: Int,
+        logoText: String
+    ) {
+        val logoImage = createItextImage(context, logoImageDrawableId, 24F, 24F)
+
+        layoutDocument.add(logoImage).add(
+            Paragraph("   $logoText").setFontSize(6f).setBold()
+                .setTextAlignment(TextAlignment.LEFT)
+        )
+    }
+
+    private fun createItextImage(
+        context: Context,
+        @DrawableRes imageDrawableId: Int,
+        imageHeight: Float,
+        imageWidth: Float,
+    ): Image {
+        val logoImageDrawable = context.getDrawable(imageDrawableId)
+        val logoImageBitmap = (logoImageDrawable as BitmapDrawable).bitmap
+        val byteArrayOutput = ByteArrayOutputStream()
+
+        logoImageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutput)
+        val bitmapData: ByteArray = byteArrayOutput.toByteArray()
+
+        val imageData: ImageData = ImageDataFactory.create(bitmapData)
+        val image: Image = Image(imageData)
+        image.setHeight(imageHeight)
+        image.setWidth(imageWidth)
+
+        return image
+    }
 
     private fun addTitle(layoutDocument: Document, text: String) {
         layoutDocument.add(
@@ -143,8 +189,13 @@ object PDFHelper {
             val pdfDocument = PdfDocument(pdfWriter)
             val layoutDocument = Document(pdfDocument)
 
+            addLogo(context, layoutDocument, R.drawable.splash_piggy_pdf, "Spendr")
             addTitle(layoutDocument, "Spendr Budget Export")
-            addLine(layoutDocument, "Date exported - ${DateUtils.getCurrentFriendlyDateWithTime()}", 14f)
+            addLine(
+                layoutDocument,
+                "Date exported - ${DateUtils.getCurrentFriendlyDateWithTime()}",
+                12f
+            )
             addEmptyLine(layoutDocument, 1)
 
             val table = Table(
@@ -159,18 +210,18 @@ object PDFHelper {
             )
 
             table.addCell(
-                Paragraph("Date").setBold().setFontSize(14f).setTextAlignment(TextAlignment.CENTER)
+                Paragraph("Date").setBold().setFontSize(12f).setTextAlignment(TextAlignment.CENTER)
             )
             table.addCell(
-                Paragraph("Amount").setBold().setFontSize(14f)
+                Paragraph("Amount").setBold().setFontSize(12f)
                     .setTextAlignment(TextAlignment.CENTER)
             )
             table.addCell(
-                Paragraph("Entry Type").setBold().setFontSize(14f)
+                Paragraph("Entry Type").setBold().setFontSize(12f)
                     .setTextAlignment(TextAlignment.CENTER)
             )
             table.addCell(
-                Paragraph("Category").setBold().setFontSize(14f)
+                Paragraph("Category").setBold().setFontSize(12f)
                     .setTextAlignment(TextAlignment.CENTER)
             )
 
@@ -188,22 +239,22 @@ object PDFHelper {
 
                 table.addCell(
                     Paragraph(DateUtils.formatStandardDateTime(entry.transactionDate) + "")
-                        .setFontSize(14f)
+                        .setFontSize(12f)
                         .setTextAlignment(TextAlignment.CENTER)
                 )
                 table.addCell(
                     Paragraph(entry.amount.abbreviateNumber(context) + "")
-                        .setFontSize(14f)
+                        .setFontSize(12f)
                         .setTextAlignment(TextAlignment.CENTER)
                 )
                 table.addCell(
                     Paragraph(if (entry.isIncome) "Income" else "Expenditure" + "")
-                        .setFontSize(14f)
+                        .setFontSize(12f)
                         .setTextAlignment(TextAlignment.CENTER)
                 )
                 table.addCell(
                     Paragraph(entry.categoryName + "")
-                        .setFontSize(14f)
+                        .setFontSize(12f)
                         .setTextAlignment(TextAlignment.CENTER)
                 )
             }
@@ -219,10 +270,22 @@ object PDFHelper {
                 )
             )
 
-            totalExpenseTable.addCell(Paragraph("Total Income:").setBold().setTextAlignment(TextAlignment.CENTER))
-            totalExpenseTable.addCell(Paragraph(totalIncome.abbreviateNumber(context)).setTextAlignment(TextAlignment.CENTER))
-            totalExpenseTable.addCell(Paragraph("Total Expenditure").setBold().setTextAlignment(TextAlignment.CENTER))
-            totalExpenseTable.addCell(Paragraph(totalExpenditure.abbreviateNumber(context)).setTextAlignment(TextAlignment.CENTER))
+            totalExpenseTable.addCell(
+                Paragraph("Total Income:").setBold().setTextAlignment(TextAlignment.CENTER)
+            )
+            totalExpenseTable.addCell(
+                Paragraph(totalIncome.abbreviateNumber(context)).setTextAlignment(
+                    TextAlignment.CENTER
+                )
+            )
+            totalExpenseTable.addCell(
+                Paragraph("Total Expenditure").setBold().setTextAlignment(TextAlignment.CENTER)
+            )
+            totalExpenseTable.addCell(
+                Paragraph(totalExpenditure.abbreviateNumber(context)).setTextAlignment(
+                    TextAlignment.CENTER
+                )
+            )
 
 
             layoutDocument.add(table)
