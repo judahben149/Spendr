@@ -1,12 +1,12 @@
 name: Spendr Build Release Workflow
 
 on:
-  push:
+  pull_request:
     branches:
-      [ master ]
+      - master
 
     jobs:
-      apk:
+      build_apk:
         permissions:
           contents: write
         name: Generate and release APK
