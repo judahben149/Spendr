@@ -5,8 +5,11 @@ Built with Modern Android Development practices in mind, it adheres to clean arc
 <!-- ## About the App
 Spendr has a focus on simplicity and  -->
 
-<!-- ## Try out Spendr
- -->
+## Check out Spendr
+[<img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="240">](https://play.google.com/store/apps/details?id=com.judahben149.spendr) 
+
+<!-- [<img alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" width="240">](https://f-droid.org/packages/me.zhanghai.android.files) -->
+
 
 ## Screenshots
 ### Onboarding Section
