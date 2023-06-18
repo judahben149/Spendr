@@ -1,10 +1,8 @@
 name: Spendr Build Release Workflow
-
-on:
+'on':
   push:
     branches:
-      [ master ]
-
+      - master
 jobs:
   build_apk:
     permissions:
@@ -14,57 +12,35 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-
-#        - name: Access TMDB_API_KEY
-#          env:
-#            TMDB_API_KEY: $
-#          run: echo TMDB_API_KEY=\"TMDB_API_KEY\" > ./local.properties
-
       - name: Setup JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
+          distribution: adopt
           java-version: '11'
           cache: gradle
-
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
-
       - name: Build with Gradle
         run: ./gradlew build
-
       - name: Build APK
         run: ./gradlew assembleDebug
-
       - name: Print APK directory contents
         run: ls -R app/build/outputs/apk/debug/
-
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
           name: Spendr
           path: app/build/outputs/apk/debug/app-debug.apk
-
       - name: Download Apk from build
         uses: actions/download-artifact@v1
         with:
           name: Spendr
           path: artifacts
-
       - name: Get APK path
         id: get_apk_path
         run: |
           apk_path=$(find app/build/outputs/apk/ -name "*.apk" -type f)
           echo "::set-output name=apk_path::$apk_path"
-
-      #      - name: Delete Previous Release
-      #        uses: ahebrank/delete-release@v1.2.0
-      #        with:
-      #          token: ${{ secrets.TOKEN }}
-      #          tag_name: v0-latest
-      #          owner: judahben149
-      #          repo: Flix_Fix
-
       - name: Create Another Release
         id: create_release
         uses: actions/create-release@v1
@@ -72,11 +48,10 @@ jobs:
           tag_name: v0-latest
           release_name: Latest apk
           files: Spendr/Spendr.apk
-
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ steps.get_apk_path.outputs.apk_path }}
+          upload_url: '${{ steps.create_release.outputs.upload_url }}'
+          asset_path: '${{ steps.get_apk_path.outputs.apk_path }}'
           asset_name: Spendr.apk
           asset_content_type: application/zip
