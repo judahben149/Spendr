@@ -1,9 +1,9 @@
 name: Spendr Build Release Workflow
 
 on:
-  pull_request:
+  push:
     branches:
-      - master
+      [ master ]
 
 jobs:
   build_apk:
