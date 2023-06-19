@@ -31,6 +31,27 @@
     public static *** bind(android.view.View);
 }
 
+#-keep class com.itextpdf.** { *; }
+#-dontwarn com.itextpdf.*
+#-keep class javax.xml.crypto.dsig.** { *; }
+#-dontwarn javax.xml.crypto.dsig.**
+#-keep class javax.xml.crypto.** { *; }
+#-dontwarn javax.xml.crypto.**
+#
+#-keep class org.spongycastle.** { *; }
+#-dontwarn org.spongycastle.**
+
+-dontwarn java.awt.Canvas
+-dontwarn java.awt.Color
+-dontwarn java.awt.Image
+-dontwarn java.awt.image.BufferedImage
+-dontwarn java.awt.image.ColorModel
+-dontwarn java.awt.image.ImageProducer
+-dontwarn java.awt.image.MemoryImageSource
+-dontwarn java.awt.image.PixelGrabber
+-dontwarn javax.imageio.ImageIO
+-dontwarn org.slf4j.impl.StaticLoggerBinder
+
 #
 #-keepclassmembers class com.judahben149.spendr.databinding.**  {
 #    public <methods>;
