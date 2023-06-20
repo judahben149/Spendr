@@ -9,31 +9,31 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolBar"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:elevation="8dp"
         android:paddingTop="8dp"
-        android:elevation="8dp" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_toolbar_title"
+            style="@style/spendrTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hi, Judah"
-            android:textColor="@color/md_theme_light_onSecondaryContainer"
-            android:textSize="20sp"
+            android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
-            android:layout_marginStart="30dp" />
+            android:text="Hi, Judah"
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/iv_theme_icon"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/ic_day"
-            android:padding="5dp"
             android:layout_gravity="end"
-            android:visibility="invisible"
-            android:layout_marginEnd="30dp" />
+            android:layout_marginEnd="30dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_day"
+            android:visibility="invisible" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -41,12 +41,14 @@
         android:id="@+id/item_summary_neumorphic_card"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolBar"
         app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
         app:neumorph_shapeType="flat">
@@ -58,15 +60,15 @@
 
             <TextView
                 android:id="@+id/tv_balance_text"
+                style="@style/spendrTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
                 android:text="Balance:"
-                app:layout_constraintHorizontal_bias="0.8"
-                android:textColor="@color/md_theme_light_onSecondaryContainer"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/tv_amount_balance"
                 app:layout_constraintEnd_toStartOf="@id/tv_amount_balance"
+                app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_amount_balance" />
 
@@ -76,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
                 android:text="N500"
-                android:textColor="@color/pigment_green"
+                android:textColor="@color/balance_positive_text_color"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -85,17 +87,17 @@
 
             <TextView
                 android:id="@+id/tv_date"
+                style="@style/spendrTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="2nd June, 2023"
-                app:layout_constraintHorizontal_bias="0.8"
-                android:textColor="@color/md_theme_light_onSecondaryContainer"
-                android:textSize="12sp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="2nd June, 2023"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -107,10 +109,12 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/card_budget"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_summary_neumorphic_card"
         app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
 
@@ -121,21 +125,21 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/icon_color"
+            app:lottie_fileName="ic_calculate.json"
             app:lottie_loop="true"
-            app:lottie_speed="0.6"
             app:lottie_repeatMode="restart"
-            app:lottie_fileName="ic_calculate.json" />
+            app:lottie_speed="0.6" />
 
         <TextView
+            style="@style/spendrTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
-            android:textSize="13sp"
-            android:text="Activity" />
+            android:text="@string/activity"
+            android:textSize="13sp" />
     </soup.neumorphism.NeumorphCardView>
-
-
 
 
     <soup.neumorphism.NeumorphCardView
@@ -146,6 +150,8 @@
         app:layout_constraintStart_toEndOf="@+id/card_transactions"
         app:layout_constraintTop_toTopOf="@+id/card_transactions"
         app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
 
@@ -155,12 +161,14 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/icon_color"
             app:lottie_fileName="ic_piggy.json"
             app:lottie_loop="true"
-            app:lottie_speed="0.6"
-            app:lottie_repeatMode="restart" />
+            app:lottie_repeatMode="restart"
+            app:lottie_speed="0.6" />
 
         <TextView
+            style="@style/spendrTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
@@ -173,12 +181,14 @@
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/card_extras"
         android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toStartOf="@id/card_settings"
-        android:layout_height="150dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_transactions"
         app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
 
@@ -188,18 +198,20 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/icon_color"
+            app:lottie_fileName="ic_add.json"
             app:lottie_loop="true"
-            app:lottie_speed="0.7"
             app:lottie_repeatMode="restart"
-            app:lottie_fileName="ic_add.json" />
+            app:lottie_speed="0.7" />
 
         <TextView
+            style="@style/spendrTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
-            android:textSize="13sp"
-            android:text="Extras" />
+            android:text="Extras"
+            android:textSize="13sp" />
     </soup.neumorphism.NeumorphCardView>
 
 
@@ -212,6 +224,8 @@
         app:layout_constraintStart_toEndOf="@id/card_extras"
         app:layout_constraintTop_toBottomOf="@id/card_budget"
         app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
 
@@ -221,12 +235,14 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/icon_color"
             app:lottie_fileName="ic_settings.json"
             app:lottie_loop="true"
-            app:lottie_speed="0.65"
-            app:lottie_repeatMode="restart" />
+            app:lottie_repeatMode="restart"
+            app:lottie_speed="0.65" />
 
         <TextView
+            style="@style/spendrTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
@@ -239,14 +255,16 @@
         android:id="@+id/card_add_entry"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_settings"
-        app:neumorph_lightSource="leftTop"
-        app:neumorph_shadowElevation="4dp"
         app:layout_constraintVertical_bias="0.9"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
+        app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
 
         <ImageView
@@ -254,15 +272,15 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:src="@drawable/plus"/>
+            android:src="@drawable/plus" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center|bottom"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:text="New Entry"-->
-<!--            android:textSize="13sp" />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center|bottom"-->
+        <!--            android:layout_marginBottom="20dp"-->
+        <!--            android:text="New Entry"-->
+        <!--            android:textSize="13sp" />-->
     </soup.neumorphism.NeumorphCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.extras.reminders.RemindersFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolBar"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:elevation="10dp" >
+        android:elevation="10dp"
+        app:layout_constraintTop_toTopOf="parent">
 
         <soup.neumorphism.NeumorphCardView
             android:id="@+id/btn_back"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="-7dp"
             android:layout_marginStart="-5dp"
+            android:layout_marginTop="-7dp"
             android:layout_marginEnd="-5dp"
             android:layout_marginBottom="-7dp"
+            app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+            app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
             app:neumorph_shadowElevation="4dp"
             app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
             app:neumorph_shapeType="flat">
@@ -37,19 +39,19 @@
             android:id="@+id/tv_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/roboto_regular"
             android:text="Reminders"
             android:textColor="@color/md_theme_light_onSecondaryContainer"
-            android:textSize="20sp"
-            android:fontFamily="@font/roboto_regular"
-            android:layout_marginStart="30dp"/>
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/iv_new_reminder"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical|end"
-            android:src="@drawable/plus"
-            android:layout_marginEnd="20dp"/>
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/plus" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -58,44 +60,41 @@
         android:id="@+id/rv_reminder_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toolBar"
         android:paddingTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_rv_reminders"
-        />
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        tools:listitem="@layout/item_rv_reminders" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/anim_empty_reminder"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:layout_constraintVertical_bias="0.4"
         android:alpha="0.4"
-        app:lottie_speed="0.35"
-        app:lottie_renderMode="automatic"
         android:visibility="invisible"
-        app:lottie_colorFilter="@color/md_theme_light_onSecondaryContainer"
-        app:lottie_fileName="empty_reminder.json"
-        app:layout_constraintTop_toBottomOf="@id/toolBar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        app:layout_constraintVertical_bias="0.4"
         app:lottie_autoPlay="true"
+        app:lottie_colorFilter="@color/icon_color"
+        app:lottie_fileName="empty_reminder.json"
         app:lottie_loop="true"
-        />
+        app:lottie_renderMode="automatic"
+        app:lottie_speed="0.35" />
 
     <TextView
         android:id="@+id/tv_empty_reminder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:alpha="0.6"
-        android:visibility="invisible"
-        android:text="@string/tv_empty_reminder_text"
-        app:layout_constraintTop_toBottomOf="@id/anim_empty_reminder"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
+        android:alpha="0.6"
+        android:text="@string/tv_empty_reminder_text"
         android:textColor="@color/md_theme_light_onSecondaryContainer"
-        />
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/anim_empty_reminder" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

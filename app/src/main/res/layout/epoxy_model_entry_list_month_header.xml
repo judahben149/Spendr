@@ -14,7 +14,7 @@
         android:layout_marginStart="14dp"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="January"
-        android:textColor="@color/md_theme_light_onSecondaryContainer"
+        android:textColor="@color/monthHeaderTextColor"
         android:fontFamily="@font/roboto_regular"
         android:textSize="13sp"
         app:layout_constraintTop_toTopOf="parent"

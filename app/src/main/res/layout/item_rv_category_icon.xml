@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/item_rv_category"
@@ -15,16 +15,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
         app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
         app:neumorph_shapeType="pressed">
 
-    <ImageView
-        android:id="@+id/image_item_category"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="6dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp" />
+        <ImageView
+            android:id="@+id/image_item_category"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="5dp" />
     </soup.neumorphism.NeumorphCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

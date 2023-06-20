@@ -10,12 +10,11 @@
         android:id="@+id/iv_btn_back"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_save"
@@ -34,10 +33,10 @@
         android:id="@+id/layout_new_category"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_marginEnd="20dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="20dp"
         android:hint="Enter category name"
         app:layout_constraintEnd_toStartOf="@+id/iv_category_type_icon"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +57,8 @@
         app:layout_constraintBottom_toBottomOf="@id/layout_new_category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/layout_new_category"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
         app:neumorph_shapeType="basin">
@@ -76,13 +77,12 @@
         android:id="@+id/tv_choose_icon_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Icon"
-        android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/layout_new_category"
-        app:layout_constraintStart_toStartOf="@id/layout_new_category"
         android:layout_marginTop="24dp"
+        android:text="Choose Icon"
         android:textColor="#99001E2B"
-        />
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/layout_new_category"
+        app:layout_constraintTop_toBottomOf="@id/layout_new_category" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_choose_icon"
@@ -90,10 +90,10 @@
         android:layout_height="200dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.2"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_choose_icon_text"
+        app:layout_constraintVertical_bias="0.2"
         app:spanCount="6"
         tools:layout_editor_absoluteX="10dp"
         tools:listitem="@layout/item_rv_category_icon" />

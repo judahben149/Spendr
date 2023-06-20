@@ -13,9 +13,9 @@
         android:id="@+id/pgBar_export"
         android:layout_width="match_parent"
         android:layout_height="6dp"
-        android:indeterminate="true"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="48dp"
+        android:indeterminate="true"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,6 @@
 
     <TextView
         android:id="@+id/tv_dialog_body"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
@@ -48,21 +47,24 @@
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="14sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_dialog_header" />
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/btn_negative"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:minWidth="120dp"
         android:minHeight="64dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@id/btn_positive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_dialog_body"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="3dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
         app:neumorph_shapeType="basin">
@@ -91,26 +93,28 @@
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/btn_positive"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="120dp"
         android:minHeight="64dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_negative"
         app:layout_constraintTop_toTopOf="@id/btn_negative"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="3dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
         app:neumorph_shapeType="basin">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:scaleX="1.2"
-            android:scaleY="1.2"
             android:id="@+id/anim_delete"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_gravity="center_vertical|start"
             android:layout_marginStart="4dp"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
             app:lottie_autoPlay="true"
             app:lottie_fileName="ic_view.json"
             app:lottie_loop="true"

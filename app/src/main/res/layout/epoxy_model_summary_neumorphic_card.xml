@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/item_summary_neumorphic_card"
@@ -14,6 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
         app:neumorph_shapeType="flat">
@@ -97,8 +99,5 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_outflow_amount" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </soup.neumorphism.NeumorphCardView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
