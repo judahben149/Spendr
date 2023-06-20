@@ -1,11 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Spendr" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Spendr" parent="AppTheme.Spendr.Material3">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="preferenceTheme">@style/AppPreferenceTheme</item>
     </style>
 
     <style name="Theme.Spendr" parent="Base.Theme.Spendr" />
+
+    <style name="AppPreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="preferenceFragmentCompatStyle">@style/AppPreferenceFragmentCompatStyle</item>
+    </style>
+
+    <style name="AppPreferenceFragmentCompatStyle" parent="@style/PreferenceFragment.Material">
+        <item name="android:layout">@layout/screen_prefs</item>
+    </style>
+
+<!--     Style for all dialogs used in the app -->
+    <style name="RoundedCornersDialog" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
 
     <style name="AppTheme.Spendr.Material3" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
@@ -34,5 +48,41 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
+    </style>
+
+
+    <style name="CustomShapeAppearance">
+        <!--        <item name="neumorph_cornerFamily">{rounded|oval}</item>-->
+        <item name="neumorph_cornerSize">32dp</item>
+        <item name="neumorph_shadowColorLight">@color/neumorph_card_light_shadow_color</item>
+        <item name="neumorph_shadowColorDark">@color/neumorph_card_dark_shadow_color</item>
+
+        <!-- Or if wants different radii depending on the corner. -->
+        <item name="neumorph_cornerSizeTopLeft">8dp</item>
+        <item name="neumorph_cornerSizeTopRight">8dp</item>
+        <item name="neumorph_cornerSizeBottomLeft">8dp</item>
+        <item name="neumorph_cornerSizeBottomRight">8dp</item>
+    </style>
+
+    <style name="HighlightedNeuMorphicButton" >
+        <item name="neumorph_backgroundColor">#D8E8F1</item>
+        <item name="neumorph_shadowColorDark">#ADC7D2</item>
+
+        <item name="neumorph_cornerSize">32dp</item>
+
+        <!-- Or if wants different radii depending on the corner. -->
+        <item name="neumorph_cornerSizeTopLeft">8dp</item>
+        <item name="neumorph_cornerSizeTopRight">8dp</item>
+        <item name="neumorph_cornerSizeBottomLeft">8dp</item>
+        <item name="neumorph_cornerSizeBottomRight">8dp</item>
+    </style>
+
+
+    <style name="ComponentColorsLight" parent="AppTheme.Spendr.Material3">
+<!--        <item name="cardTextColor">@color/balance_text_color</item>-->
+    </style>
+
+    <style name="spendrTextViewStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/card_text_color</item>
     </style>
 </resources>

@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolBarPrefs"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="8dp" >
+        android:elevation="8dp"
+        app:layout_constraintTop_toTopOf="parent">
 
         <soup.neumorphism.NeumorphCardView
             android:id="@+id/btn_back"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="-7dp"
             android:layout_marginStart="-5dp"
+            android:layout_marginTop="-7dp"
             android:layout_marginEnd="-5dp"
             android:layout_marginBottom="-7dp"
+            app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+            app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
             app:neumorph_shadowElevation="4dp"
             app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
             app:neumorph_shapeType="flat">
@@ -36,16 +38,16 @@
             android:id="@+id/tv_toolbar_title_prefs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/roboto_regular"
             android:text="Settings"
             android:textColor="@color/md_theme_light_onSecondaryContainer"
-            android:textSize="20sp"
-            android:fontFamily="@font/roboto_regular"
-            android:layout_marginStart="30dp"/>
+            android:textSize="20sp" />
     </com.google.android.material.appbar.MaterialToolbar>
 
     <FrameLayout
+        android:id="@android:id/list_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@android:id/list_container"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

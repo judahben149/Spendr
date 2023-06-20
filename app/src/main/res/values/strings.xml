@@ -20,4 +20,5 @@
     <string name="delete">Delete</string>
     <string name="delete_expired_reminders">Expired</string>
     <string name="delete_all_reminders">All</string>
+    <string name="activity">Activity</string>
 </resources>

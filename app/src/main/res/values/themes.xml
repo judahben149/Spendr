@@ -16,6 +16,7 @@
         <item name="android:layout">@layout/screen_prefs</item>
     </style>
 
+    <!--     Style for all dialogs used in the app -->
     <style name="RoundedCornersDialog" parent="@style/Theme.MaterialComponents.Dialog">
         <item name="dialogCornerRadius">12dp</item>
     </style>
@@ -52,6 +53,8 @@
     <style name="CustomShapeAppearance">
 <!--        <item name="neumorph_cornerFamily">{rounded|oval}</item>-->
         <item name="neumorph_cornerSize">32dp</item>
+        <item name="neumorph_shadowColorLight">@color/neumorph_card_light_shadow_color</item>
+        <item name="neumorph_shadowColorDark">@color/neumorph_card_dark_shadow_color</item>
 
         <!-- Or if wants different radii depending on the corner. -->
         <item name="neumorph_cornerSizeTopLeft">8dp</item>
@@ -71,5 +74,13 @@
         <item name="neumorph_cornerSizeTopRight">8dp</item>
         <item name="neumorph_cornerSizeBottomLeft">8dp</item>
         <item name="neumorph_cornerSizeBottomRight">8dp</item>
+    </style>
+
+    <style name="ComponentColorsLight" parent="AppTheme.Spendr.Material3">
+<!--        <item name="cardTextColor">@color/balance_text_color</item>-->
+    </style>
+
+    <style name="spendrTextViewStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/card_text_color</item>
     </style>
 </resources>

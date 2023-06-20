@@ -6,4 +6,5 @@
     <string name="tv_delete_entries_body">All entries in your Spendr budget will be completely lost. This action cannot be undone</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
+    <string name="activity">Activity</string>
 </resources>
