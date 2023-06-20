@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources>
+
     <color name="seed">#00435a</color>
     <color name="md_theme_light_primary">#006687</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
@@ -48,7 +48,7 @@
     <color name="md_theme_dark_errorContainer">#93000A</color>
     <color name="md_theme_dark_onError">#690005</color>
     <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
-    <color name="md_theme_dark_background">#191C1E</color>
+    <color name="md_theme_dark_background">#121212</color>
     <color name="md_theme_dark_onBackground">#E1E2E5</color>
     <color name="md_theme_dark_surface">#191C1E</color>
     <color name="md_theme_dark_onSurface">#E1E2E5</color>
@@ -69,29 +69,29 @@
     <color name="syracuse_red_orange">#D74E09</color>
 
 <!--    //highlighted color for neu-morphic button-->
-    <color name="neu_btn_highlighted_background">#D8E8F1</color>
-    <color name="neu_btn_highlighted_shadow_color_dark">#ADC7D2</color>
-    <color name="neu_btn_highlighted_shadow_color_light">#F6FCFF</color>
+    <color name="neu_btn_highlighted_background">#000000</color>
+    <color name="neu_btn_highlighted_shadow_color_dark">#000000</color>
+    <color name="neu_btn_highlighted_shadow_color_light">#333333</color>
 
 <!--    un-highlighted colour for neu-morphic button-->
     <color name="neu_btn_unHighlighted_background">#FFFFFF</color>
-    <color name="neu_btn_unHighlighted_shadow_color_dark">#E8E8E8</color>
-    <color name="neu_btn_unHighlighted_shadow_color_light">#FCFCFC</color>
+    <color name="neu_btn_unHighlighted_shadow_color_dark">#DEDFDF</color>
+    <color name="neu_btn_unHighlighted_shadow_color_light">#FDFDFD</color>
 
 <!--    Component color-->
-    <color name="icon_color">#003548</color>
+    <color name="icon_color">#2BD9FE</color>
     <color name="balance_positive_text_color">#52AA5E</color>
     <color name="balance_negative_text_color">#D74E09</color>
-    <color name="card_text_color">#001E2B</color>
-    <color name="neumorph_card_light_shadow_color">#FCFCFC</color>
-    <color name="neumorph_card_dark_shadow_color">#E8E8E8</color>
-    <color name="bottom_sheet_background">#F0FDFF</color>
-    <color name="bottom_sheet_neumorph_card_light_shadow_color">#D6F9FF</color>
-    <color name="bottom_sheet_neumorph_card_dark_shadow_color">#A8F4FF</color>
-    <color name="textViewBorderColor">#003548</color>
-    <color name="toolBarTextColor">#001E2B</color>
-    <color name="faintHeaderTextColor">#80001E2B</color>
-    <color name="chooserTextViewTextColor">#B3001E2B</color>
-    <color name="chooserTextViewHintColor">#70001E2B</color>
-    <color name="monthHeaderTextColor">#001E2B</color>
+    <color name="card_text_color">#0087C4</color>
+    <color name="neumorph_card_light_shadow_color">#1F1F1F</color>
+    <color name="neumorph_card_dark_shadow_color">#0E0E0E</color>
+    <color name="bottom_sheet_background">#0A0A0A</color>
+    <color name="bottom_sheet_neumorph_card_light_shadow_color">#222222</color>
+    <color name="bottom_sheet_neumorph_card_dark_shadow_color">#000000</color>
+    <color name="textViewBorderColor">#2BD9FE</color>
+    <color name="toolBarTextColor">#0087C4</color>
+    <color name="faintHeaderTextColor">#802BD9FE</color>
+    <color name="chooserTextViewTextColor">#6D6D6D</color>
+    <color name="chooserTextViewHintColor">#706D6D6D</color>
+    <color name="monthHeaderTextColor">#0087C4</color>
 </resources>
