@@ -7,8 +7,8 @@ Spendr has a focus on simplicity and  -->
 
 ## Features
 * Clean and simple UI.
-* Create notification reminders for intending payments.
 * Dark mode.
+* Create notification reminders for intending payments.
 * Visualize expenses with charts.
 * Export single budget entry or entire budget.
 
