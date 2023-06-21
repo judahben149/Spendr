@@ -69,7 +69,7 @@
     <color name="syracuse_red_orange">#D74E09</color>
 
 <!--    //highlighted color for neu-morphic button-->
-    <color name="neu_btn_highlighted_background">#000000</color>
+    <color name="neu_btn_highlighted_background">#1E1E1E</color>
     <color name="neu_btn_highlighted_shadow_color_dark">#000000</color>
     <color name="neu_btn_highlighted_shadow_color_light">#333333</color>
 
@@ -85,6 +85,8 @@
     <color name="card_text_color">#0087C4</color>
     <color name="neumorph_card_light_shadow_color">#1F1F1F</color>
     <color name="neumorph_card_dark_shadow_color">#0E0E0E</color>
+    <color name="neumorph_btn_pressed_light_shadow_color">#0E0E0E</color>
+    <color name="neumorph_btn_pressed_dark_shadow_color">#171717</color>
     <color name="bottom_sheet_background">#0A0A0A</color>
     <color name="bottom_sheet_neumorph_card_light_shadow_color">#222222</color>
     <color name="bottom_sheet_neumorph_card_dark_shadow_color">#000000</color>
