@@ -15,8 +15,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
         app:neumorph_lightSource="leftTop"
-        app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
-        app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
+        app:neumorph_shadowColorDark="@color/neumorph_btn_pressed_dark_shadow_color"
+        app:neumorph_shadowColorLight="@color/neumorph_btn_pressed_light_shadow_color"
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
         app:neumorph_shapeType="pressed">

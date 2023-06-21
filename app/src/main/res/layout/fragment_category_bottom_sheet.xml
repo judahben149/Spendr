@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:text="Done"
-        android:textColor="@color/md_theme_light_onSecondaryContainer"
+        android:textColor="@color/card_text_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -89,7 +89,7 @@
                     android:singleLine="true"
                     android:text="New"
                     android:textAlignment="center"
-                    android:textColor="@color/md_theme_light_onSecondaryContainer"
+                    android:textColor="@color/card_text_color"
                     android:textSize="10sp" />
             </soup.neumorphism.NeumorphCardView>
 
