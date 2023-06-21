@@ -5,10 +5,85 @@ Built with Modern Android Development practices in mind, it adheres to clean arc
 <!-- ## About the App
 Spendr has a focus on simplicity and  -->
 
-## Check out Spendr
+## Features
+* Clean and simple UI.
+* Create notification reminders for intending payments.
+* Dark mode.
+* Visualize expenses with charts.
+* Export single budget entry or entire budget.
+
+### Check out Spendr
 [<img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="240">](https://play.google.com/store/apps/details?id=com.judahben149.spendr) 
 
 <!-- [<img alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" width="240">](https://f-droid.org/packages/me.zhanghai.android.files) -->
+
+## Prerequisites
+* Android Studio Flamingo | 2022.2.1
+* Min SDK 23
+* Target SDK 33
+* Java 17
+* AGP 8.0.0
+* Kotlin 1.8.0
+
+
+## Setup 🛠️
+1. Clone the repository ```git clone https://github.com/judahben149/Spendr.git```
+2. Open in Android Studio.
+3. Configure prerequisites if any errors.
+4. Sync the project.
+
+## Build Tools and Patterns
+* [Kotlin](https://kotlinlang.org/docs/android-overview.html) - 100% kotlin.
+
+* [Neumorphism UI](https://github.com/fornewid/neumorphism) - Provides neumorphic-style views and UI elements.
+
+* [MVVM](https://developer.android.com/topic/architecture) - Employs the officially recommended MVVM design pattern.
+
+* [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - Uses clean architecture to structure and abstract code, encouraging reusability.
+
+* [Dagger-Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Simplifies managing and providing dependencies which promotes modularity and testability.
+
+* [Navigation Component](https://developer.android.com/guide/navigation/get-started) - Simplifies screen transitions, handles navigation automatically to provide a consistent user experience.
+
+* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) & [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Presenter for persisting view state across config changes. LiveData is used to observe this state.
+
+* [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) - Library support for coroutines, a lightweight framework for asynchronous programming in Kotlin.
+
+* [Kotlin Flows](https://kotlinlang.org/docs/flow.html) - A reactive stream library in Kotlin for handling asynchronous data streams.
+
+* [Room persistence library](https://developer.android.com/training/data-storage/room) - Provides abstraction layer over SQLite for working with databases
+
+* [Paging-3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - Library for retrieving data in chunks/pages from either network or database, database in this case.
+
+* [ViewPager-2](https://developer.android.com/reference/kotlin/androidx/viewpager2/widget/ViewPager2) - Used for creating swipeable screens and slide-based UIs in Android.
+
+* ViewPager Dot Indicator - Library that adds a stylish dot indicator to ViewPager screens, mostly for visual appeal.
+ 
+* [Epoxy](https://airbnb.io/projects/epoxy/) - Simplifies the creation of complex RecyclerView layouts by providing a more declarative approach. Great for handling dynamic data as well.
+
+* [Lottie Animations](https://airbnb.io/projects/lottie-android/) - Enables seamless integration of vector-based animations.
+
+* [MP Charts](https://github.com/PhilJay/MPAndroidChart) - Powerful charting library for Android. Supports various chart types with extensive customization.
+
+* [Alarm Manager](https://developer.android.com/reference/android/app/AlarmManager) - Android component for scheduling time-based tasks and events.
+
+* [Braodcast Receiver](https://developer.android.com/reference/android/content/BroadcastReceiver) -  Used to listen for system-wide or app-specific events.
+
+* [Splash Screen API](https://developer.android.com/develop/ui/views/launch/splash-screen) - Provides a seamless and consistent way of applying splash screens in app.
+
+* [Timber](https://github.com/JakeWharton/timber) - Lightweight and flexible logging library.
+
+* [Shared Preferences](https://developer.android.com/reference/android/content/SharedPreferences) - Lightweight storage mechanism in Android for storing key-value pairs, such as user preferences, settings, and application state.
+
+* [Preferences API](https://developer.android.com/reference/androidx/preference/package-summary) - Convenient API for managing and persisting user preferences in Android applications, particularly in settings screens.
+
+* [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics) - A crash reporting tool for tracking and analyzing real-time app crashes.
+
+* [Firebase Performance Monitor](https://firebase.google.com/docs/perf-mon) - A powerful tool for measuring, analyzing, and optimizing app performance.
+
+
+## Architecture/Flow
+![Spendr Architecture Flow](https://github.com/judahben149/Spendr/assets/71103838/6305b5e1-c617-4d7f-ba4a-1f06307ad008)
 
 
 ## Screenshots
@@ -59,55 +134,3 @@ Spendr has a focus on simplicity and  -->
 
 
  ‎
- ## Architecture Flow
- ![Spendr Architecture Flow](https://github.com/judahben149/Spendr/assets/71103838/6305b5e1-c617-4d7f-ba4a-1f06307ad008)
-
-
-## Build Tools
-* [Kotlin](https://kotlinlang.org/docs/android-overview.html) - Kotlin is officially supported by Google as a first-class language for Android development and Spendr is 100% kotlin.
-
-* [Neumorphism UI](https://github.com/fornewid/neumorphism) - Spendr makes use of Neumorphism UI, a popular design trend, which brings a modern and sleek look to user interfaces. Inspired by skeuomorphism and flat design, Neumorphism combines subtle shadows, soft gradients, and rounded shapes to create visually appealing and tactile user interfaces. This design approach aims to provide a sense of depth and realism while maintaining a minimalistic and clean aesthetic. Neumorphism UI elements add a touch of elegance to applications, enhancing the overall user experience and making them visually engaging.
-
-* [MVVM](https://developer.android.com/topic/architecture) - MVVM (Model-View-ViewModel) is a popular architectural pattern for Android development. It separates the data (Model), UI (View), and logic (ViewModel) for better organization and maintainability. In Spendr, data is completely separated from the UI layer with the proper use of State and ViewModels. It is observed and made available using Kotlin FLows and Live Data.
-
-* [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - Clean Architecture is a software design principle that emphasizes separation of concerns and independence of external frameworks. It promotes a modular and maintainable codebase by dividing the application into distinct layers: Presentation, Domain, and Data. This architecture allows for easier testing, scalability, and flexibility. It helps in achieving code that is decoupled, reusable, and focused on business logic, making it suitable for various platforms, including Android development.
-
-* [Dagger-Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Dagger-Hilt is a streamlined dependency injection framework for Android. It simplifies managing dependencies and promotes modularity and testability in your projects.
-
-* [Navigation Component](https://developer.android.com/guide/navigation/get-started) - Navigation Component is a powerful library in Android Jetpack for managing app navigation. It simplifies screen transitions, handles navigation automatically, and promotes a consistent user experience.
-
-* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) & [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - ViewModel and LiveData are key components of Android Architecture. ViewModel separates data handling from UI components, preserving data during configuration changes. As mentioned above, Spendr use of ViewModels and LiveData to deliver reactive UIs.
-
-* [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) - Kotlin Coroutines is a lightweight framework for asynchronous programming in Kotlin. To avoid blocking the main thread, calls to the database and other expensive operations are handled on a background thread, ensuring fluent user operations and enhanced performance.
-
-* [Kotlin Flows](https://kotlinlang.org/docs/flow.html) - Kotlin Flows is a reactive stream library in Kotlin for handling asynchronous data streams. Spendr uses Flows with Coroutines to ensure asynchronous operations.
-
-* [Room persistence library](https://developer.android.com/training/data-storage/room) - Room is a powerful persistence library in Android that simplifies working with databases. It offers convenient APIs and annotations for seamless data storage and retrieval. Entries in Spendr are stored and persisted in the local database.
-
-* [Paging-3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - Paging 3 is a powerful library for efficient handling of large datasets in Android apps. All calls to retrieve multiple entries from the database is paged. This makes for faster retrieval times and a smoother UI feel for the user.
-
-* ViewPager-2 - ViewPager 2 is a powerful library for creating swipeable screens and slide-based UI in Android. It simplifies navigation between fragments or views, enabling interactive and engaging experiences. In Spendr, Viewpager2 is used on the Activity screen for swiping between Income and Expenditure categories. It is also used for the Onboarding screens of the app.
-
-* ViewPager Dot Indicator - ViewPager Dot Indicator is an Android library that adds a stylish dot indicator to ViewPager screens. It is used in the Onboarding section to enhance the visual appeal of the app.
-
-* Epoxy - Epoxy is an Android library that simplifies the creation of complex RecyclerView layouts. It provides a more declarative approach to building UIs, making it easier to handle dynamic data and efficiently update your views. Epoxy is used in the Overview, Entry list and Entry detail Sections of the app. This approach is chosen over vanilla Recycler view because of the availability of complex items and states.
-
-* Lottie Animations - Lottie Animations is an Android library for seamless integration of vector-based animations in your app. Lottie is used for all resource animations in Spendr.
-
-* MP Charts - Powerful charting library for Android. Supports various chart types with extensive customization. Visualize data effectively and create engaging charts. This is used in the Visualize Fragment.
-
-* Alarm Manager - Alarm Manager is a crucial Android component for scheduling time-based tasks and events, ensuring timely execution of app functionalities.
-
-* Braodcast Receiver -  Listens to system-wide or app-specific events, like incoming calls or network changes, allowing apps to respond accordingly.
-
-* Splash Screen API - This API provides a seamless and visually appealing launch experience for Android apps by displaying a branded or customized screen while the app initializes in the background.
-
-* Timber - A lightweight and flexible logging library for Android that makes logging messages and debugging easier.
-
-* Shared Preferences - A simple and lightweight storage mechanism in Android for storing key-value pairs. It allows you to persistently store small amounts of data, such as user preferences, settings, and application state.
-
-* Preferences API - A convenient and efficient tool for managing and persisting user preferences in Android applications, particularly in settings screens. With the Preferences API, you can effortlessly handle user preferences, store them securely, and provide a seamless and personalized user experience.
-
-* Firebase Crashlytics - A crash reporting tool by Firebase that helps you track and analyze app crashes in real-time, providing valuable insights for quick issue resolution and enhanced app stability.
-
-* Firebase Performance Monitor - A powerful tool offered by Firebase that allows you to measure, analyze, and optimize the performance of your app. It helps you identify performance bottlenecks, track key metrics, and make data-driven optimizations for a smoother and faster user experience.
