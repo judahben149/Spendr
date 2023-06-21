@@ -15,7 +15,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_medium"
         android:text="Enable Notifications"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@color/card_text_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
         android:padding="8dp"
         android:text="You'll need to enable notifications to set payment reminders"
         android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@color/card_text_color"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +70,7 @@
                 app:lottie_fileName="ic_settings.json"
                 app:lottie_loop="true"
                 app:lottie_repeatMode="restart"
+                app:lottie_colorFilter="@color/icon_color"
                 app:lottie_speed="0.8" />
 
             <TextView
@@ -80,7 +81,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="16dp"
                 android:text="Open settings"
-                android:textColor="@android:color/background_dark" />
+                android:textColor="@color/card_text_color" />
         </LinearLayout>
     </soup.neumorphism.NeumorphCardView>
 

@@ -15,7 +15,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/tv_delete_entries_header"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@color/card_text_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
         android:padding="8dp"
         android:text="@string/tv_delete_entries_body"
         android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@color/card_text_color"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +58,7 @@
             android:layout_gravity="center_vertical|start"
             android:layout_marginStart="12dp"
             app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/icon_color"
             app:lottie_fileName="anim_cross.json"
             app:lottie_loop="true"
             app:lottie_repeatMode="restart"
@@ -70,7 +71,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="12dp"
             android:text="@string/cancel"
-            android:textColor="@android:color/background_dark" />
+            android:textColor="@color/card_text_color" />
     </soup.neumorphism.NeumorphCardView>
 
     <soup.neumorphism.NeumorphCardView
@@ -97,6 +98,7 @@
             app:lottie_autoPlay="true"
             app:lottie_fileName="anim_tick.json"
             app:lottie_loop="true"
+            app:lottie_colorFilter="@color/icon_color"
             app:lottie_repeatMode="restart"
             app:lottie_speed="0.57" />
 
@@ -107,7 +109,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="12dp"
             android:text="@string/delete"
-            android:textColor="@android:color/background_dark" />
+            android:textColor="@color/card_text_color" />
     </soup.neumorphism.NeumorphCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

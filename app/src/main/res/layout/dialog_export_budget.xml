@@ -16,6 +16,7 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="48dp"
         android:indeterminate="true"
+        app:trackColor="@color/icon_color"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +32,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_medium"
         android:text="Exporting PDF..."
-        android:textColor="@android:color/background_dark"
+        android:textColor="@color/card_text_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

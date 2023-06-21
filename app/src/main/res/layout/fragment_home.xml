@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/toolBarTextColor"
             android:text="Hi, Judah"
             android:textSize="20sp" />
 
@@ -77,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                android:text="N500"
+                tools:text="N500"
                 android:textColor="@color/balance_positive_text_color"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"

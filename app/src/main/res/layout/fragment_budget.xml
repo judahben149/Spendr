@@ -21,6 +21,8 @@
             android:layout_marginTop="-7dp"
             android:layout_marginEnd="-5dp"
             android:layout_marginBottom="-7dp"
+            app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+            app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
             app:neumorph_shadowElevation="4dp"
             app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
             app:neumorph_shapeType="flat">
@@ -40,7 +42,7 @@
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
             android:text="Budget"
-            android:textColor="@color/md_theme_light_onSecondaryContainer"
+            android:textColor="@color/toolBarTextColor"
             android:textSize="20sp" />
 
     </com.google.android.material.appbar.MaterialToolbar>
