@@ -34,7 +34,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="28dp"
             android:textColor="@color/card_text_color"
-            android:text="Text"
+            android:text="@string/text"
             android:textSize="15sp" />
     </soup.neumorphism.NeumorphCardView>
 
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="28dp"
-            android:text="PDF"
+            android:text="@string/pdf"
             android:textColor="@color/card_text_color"
             android:textSize="15sp" />
     </soup.neumorphism.NeumorphCardView>

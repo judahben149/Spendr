@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Visualizer"
+            android:text="@string/visualizer"
             android:textColor="@color/toolBarTextColor"
             android:textSize="20sp" />
     </com.google.android.material.appbar.MaterialToolbar>
@@ -69,5 +69,4 @@
             android:layout_marginHorizontal="30dp" />
 
     </soup.neumorphism.NeumorphCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

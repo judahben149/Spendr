@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="10dp">
-
 
     <TextView
         android:id="@+id/tv_expenditure_header_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="Expenditure"
+        android:paddingVertical="5dp"
+        android:text="@string/expenditure"
         android:textColor="@color/md_theme_light_onSecondaryContainer"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:layout_marginStart="20dp"
-        android:paddingVertical="5dp"/>
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/tv_expenditure_header_text"
         android:layout_width="150dp"
-        android:textAlignment="gravity"
-        android:gravity="center|right"
         android:layout_height="0dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="See All"
+        android:gravity="center|right"
+        android:paddingEnd="20dp"
+        android:text="@string/see_all"
+        android:textAlignment="gravity"
         android:textColor="@color/syracuse_red_orange"
         android:textSize="13sp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:paddingEnd="20dp"/>
+        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

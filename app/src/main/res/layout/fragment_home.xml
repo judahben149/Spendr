@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".presentation.home.HomeFragment">
 
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
@@ -23,8 +22,8 @@
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/toolBarTextColor"
-            android:text="Hi, Judah"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:text="Hi, Judah" />
 
         <ImageView
             android:id="@+id/iv_theme_icon"
@@ -58,14 +57,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <TextView
                 android:id="@+id/tv_balance_text"
                 style="@style/spendrTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Balance:"
+                android:text="@string/balance"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/tv_amount_balance"
                 app:layout_constraintEnd_toStartOf="@id/tv_amount_balance"
@@ -78,13 +76,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                tools:text="N500"
                 android:textColor="@color/balance_positive_text_color"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="N500" />
 
             <TextView
                 android:id="@+id/tv_date"
@@ -94,14 +92,13 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="2nd June, 2023"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.8" />
+                app:layout_constraintHorizontal_bias="0.8"
+                tools:text="2nd June, 2023" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </soup.neumorphism.NeumorphCardView>
 
 
@@ -174,10 +171,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
-            android:text="Budget"
+            android:text="@string/budget"
             android:textSize="13sp" />
     </soup.neumorphism.NeumorphCardView>
-
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/card_extras"
@@ -211,10 +207,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
-            android:text="Extras"
+            android:text="@string/extras"
             android:textSize="13sp" />
     </soup.neumorphism.NeumorphCardView>
-
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/card_settings"
@@ -248,7 +243,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
-            android:text="Settings"
+            android:text="@string/settings"
             android:textSize="13sp" />
     </soup.neumorphism.NeumorphCardView>
 
@@ -275,13 +270,5 @@
             android:layout_gravity="center"
             android:src="@drawable/plus" />
 
-        <!--        <TextView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="center|bottom"-->
-        <!--            android:layout_marginBottom="20dp"-->
-        <!--            android:text="New Entry"-->
-        <!--            android:textSize="13sp" />-->
     </soup.neumorphism.NeumorphCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

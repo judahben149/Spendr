@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.onboarding.OnboardingContentFragment">
 
 
@@ -11,88 +11,82 @@
         android:id="@+id/anim_onboarding"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="320dp"
         android:layout_marginStart="70dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="70dp"
+        android:layout_marginBottom="320dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        />
+        app:lottie_loop="true" />
 
     <TextView
         android:id="@+id/tv_onboarding_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/anim_onboarding"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="22sp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/roboto_black_italic"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="This is page 1"
-        android:layout_marginTop="24dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/anim_onboarding"
+        tools:text="This is page 1" />
 
     <TextView
         android:id="@+id/tv_onboarding_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="24dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_onboarding_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/roboto_light"
-        tools:text="This is page 1"
-        android:textSize="16sp"
-        android:gravity="center"
         android:layout_marginTop="8dp"
-        />
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
+        android:paddingHorizontal="24dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_onboarding_title"
+        tools:text="This is page 1" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_tv_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_onboarding_text"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="64dp"
-        android:hint="Enter name">
+        android:layout_marginTop="24dp"
+        android:hint="@string/enter_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_onboarding_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tv_user_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tv_left_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="14dp"
-        android:text="Previous"
-        android:textSize="15sp"
         android:padding="10dp"
-        />
+        android:text="@string/previous"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_right_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="14dp"
-        android:text="Next"
-        android:textSize="15sp"
         android:padding="10dp"
-        />
+        android:text="@string/next"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

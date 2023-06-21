@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Budget"
+            android:text="@string/budget"
             android:textColor="@color/toolBarTextColor"
             android:textSize="20sp" />
 
@@ -61,7 +61,6 @@
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
 
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_visualizer"
             android:layout_width="30dp"
@@ -77,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
-            android:text="Visualizer"
+            android:text="@string/visualizer"
             android:textSize="13sp" />
     </soup.neumorphism.NeumorphCardView>
 

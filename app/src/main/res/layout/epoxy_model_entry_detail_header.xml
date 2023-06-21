@@ -58,7 +58,7 @@
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Savings"
+            android:text="@string/savings"
             android:textColor="@color/card_text_color"
             android:textSize="11sp" />
     </soup.neumorphism.NeumorphCardView>

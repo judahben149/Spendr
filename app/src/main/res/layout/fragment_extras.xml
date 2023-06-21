@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".presentation.extras.ExtrasFragment">
 
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
@@ -42,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Extras"
+            android:text="@string/extras"
             android:textColor="@color/toolBarTextColor"
             android:textSize="20sp" />
 
@@ -62,15 +61,14 @@
         app:neumorph_shadowElevation="4dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
 
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_transaction"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="ic_bell.json"
             app:lottie_colorFilter="@color/icon_color"
+            app:lottie_fileName="ic_bell.json"
             app:lottie_loop="true"
             app:lottie_repeatMode="restart"
             app:lottie_speed="0.8" />
@@ -80,8 +78,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
-            android:text="Reminders"
+            android:text="@string/reminders"
             android:textSize="13sp" />
-    </soup.neumorphism.NeumorphCardView>
 
+    </soup.neumorphism.NeumorphCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

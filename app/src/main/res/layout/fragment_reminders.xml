@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Reminders"
+            android:text="@string/reminders"
             android:textColor="@color/toolBarTextColor"
             android:textSize="20sp" />
 
@@ -95,6 +95,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/anim_empty_reminder" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

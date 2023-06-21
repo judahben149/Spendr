@@ -28,5 +28,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="5dp" />
+
     </soup.neumorphism.NeumorphCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

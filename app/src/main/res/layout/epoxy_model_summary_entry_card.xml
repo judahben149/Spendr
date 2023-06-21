@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_entry"
     android:layout_width="match_parent"
     android:layout_height="100dp"
@@ -32,13 +33,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="N500"
+            tools:text="N500"
             android:textColor="@color/md_theme_light_onSecondaryContainer"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_entry_date"
@@ -47,12 +46,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="13th May, 2023"
+            tools:text="13th May, 2023"
             android:textColor="@color/md_theme_light_onSecondaryContainer"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_entry_amount" />
-
 
         <ImageView
             android:id="@+id/image_category_icon"
@@ -64,7 +62,6 @@
             app:layout_constraintEnd_toEndOf="@+id/tv_entry_category"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <TextView
             android:id="@+id/tv_entry_category"
             android:layout_width="wrap_content"
@@ -73,12 +70,11 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Transport"
+            tools:text="Transport"
             android:textColor="@color/md_theme_light_onSecondaryContainer"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_category_icon" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </soup.neumorphism.NeumorphCardView>

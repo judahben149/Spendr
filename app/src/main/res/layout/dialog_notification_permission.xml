@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Enable Notifications"
+        android:text="@string/enable_notifications"
         android:textColor="@color/card_text_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
         android:padding="8dp"
-        android:text="You'll need to enable notifications to set payment reminders"
+        android:text="@string/you_ll_need_to_enable_notifications_to_set_payment_reminders"
         android:textAlignment="center"
         android:textColor="@color/card_text_color"
         android:textSize="14sp"
@@ -58,7 +58,6 @@
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
 
-
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/anim_cancel"
                 android:layout_width="24dp"
@@ -67,10 +66,10 @@
                 android:layout_marginStart="16dp"
                 android:alpha="1.0"
                 app:lottie_autoPlay="true"
+                app:lottie_colorFilter="@color/icon_color"
                 app:lottie_fileName="ic_settings.json"
                 app:lottie_loop="true"
                 app:lottie_repeatMode="restart"
-                app:lottie_colorFilter="@color/icon_color"
                 app:lottie_speed="0.8" />
 
             <TextView
@@ -80,10 +79,8 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="16dp"
-                android:text="Open settings"
+                android:text="@string/open_settings"
                 android:textColor="@color/card_text_color" />
         </LinearLayout>
     </soup.neumorphism.NeumorphCardView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

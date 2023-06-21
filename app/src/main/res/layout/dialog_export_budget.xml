@@ -16,14 +16,13 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="48dp"
         android:indeterminate="true"
-        app:trackColor="@color/icon_color"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.9"
+        app:trackColor="@color/icon_color" />
 
     <TextView
         android:id="@+id/tv_dialog_header"
@@ -31,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Exporting PDF..."
+        android:text="@string/exporting_pdf"
         android:textColor="@color/card_text_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +43,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
         android:padding="8dp"
-        android:text="Click to locate file in File Explorer or open with PDF viewer"
+        android:text="@string/click_to_locate_file_in_file_explorer_or_open_with_pdf_viewer"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="14sp"
@@ -88,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="12dp"
-            android:text="Locate"
+            android:text="@string/locate"
             android:textColor="@android:color/background_dark" />
     </soup.neumorphism.NeumorphCardView>
 
@@ -128,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:text="View"
+            android:text="@string/view"
             android:textColor="@android:color/background_dark" />
     </soup.neumorphism.NeumorphCardView>
 
