@@ -74,12 +74,12 @@
     <color name="neu_btn_highlighted_shadow_color_light">#333333</color>
 
 <!--    un-highlighted colour for neu-morphic button-->
-    <color name="neu_btn_unHighlighted_background">#FFFFFF</color>
-    <color name="neu_btn_unHighlighted_shadow_color_dark">#DEDFDF</color>
-    <color name="neu_btn_unHighlighted_shadow_color_light">#FDFDFD</color>
+    <color name="neu_btn_unHighlighted_background">#121212</color>
+    <color name="neu_btn_unHighlighted_shadow_color_dark">#000000</color>
+    <color name="neu_btn_unHighlighted_shadow_color_light">#1F1F1F</color>
 
 <!--    Component color-->
-    <color name="icon_color">#2BD9FE</color>
+    <color name="icon_color">#902BD9FE</color>
     <color name="balance_positive_text_color">#52AA5E</color>
     <color name="balance_negative_text_color">#D74E09</color>
     <color name="card_text_color">#0087C4</color>
@@ -94,4 +94,5 @@
     <color name="chooserTextViewTextColor">#6D6D6D</color>
     <color name="chooserTextViewHintColor">#706D6D6D</color>
     <color name="monthHeaderTextColor">#0087C4</color>
+    <color name="backgroundTextColor">#0087C4</color>
 </resources>

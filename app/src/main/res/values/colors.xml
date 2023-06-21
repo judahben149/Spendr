@@ -94,4 +94,5 @@
     <color name="chooserTextViewTextColor">#B3001E2B</color>
     <color name="chooserTextViewHintColor">#70001E2B</color>
     <color name="monthHeaderTextColor">#001E2B</color>
+    <color name="backgroundTextColor">#001E2B</color>
 </resources>
