@@ -6,7 +6,7 @@ Built with Modern Android Development practices in mind, it adheres to clean arc
 Spendr has a focus on simplicity and  -->
 
 ## Features
-* Clean and simple UI.
+* Clean and focused UI.
 * Dark mode.
 * Create notification reminders for intending payments.
 * Visualize expenses with charts.
