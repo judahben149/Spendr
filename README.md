@@ -57,7 +57,7 @@ Spendr has a focus on simplicity and  -->
 
 * [ViewPager-2](https://developer.android.com/reference/kotlin/androidx/viewpager2/widget/ViewPager2) - Used for creating swipeable screens and slide-based UIs in Android.
 
-* ViewPager Dot Indicator - Library that adds a stylish dot indicator to ViewPager screens, mostly for visual appeal.
+* [ViewPager Dot Indicator](https://github.com/tommybuonomo/dotsindicator) - Library that adds a stylish dot indicator to ViewPager screens, mostly for visual appeal.
  
 * [Epoxy](https://airbnb.io/projects/epoxy/) - Simplifies the creation of complex RecyclerView layouts by providing a more declarative approach. Great for handling dynamic data as well.
 
