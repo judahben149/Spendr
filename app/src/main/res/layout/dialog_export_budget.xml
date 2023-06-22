@@ -20,9 +20,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        style="@style/Widget.Material3.LinearProgressIndicator"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9"
-        app:trackColor="@color/icon_color" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
         android:id="@+id/tv_dialog_header"

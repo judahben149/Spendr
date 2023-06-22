@@ -98,4 +98,5 @@
     <color name="monthHeaderTextColor">#0087C4</color>
     <color name="backgroundTextColor">#0087C4</color>
     <color name="tabBackgroundColor">#121212</color>
+    <color name="statusBarColor">#07181B</color>
 </resources>

@@ -48,8 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Settings"
-            android:textColor="@color/md_theme_light_onSecondaryContainer"
+            android:text="@string/settings"
+            android:textColor="@color/toolBarTextColor"
             android:textSize="20sp" />
     </com.google.android.material.appbar.MaterialToolbar>
 
