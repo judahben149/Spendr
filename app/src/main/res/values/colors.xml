@@ -99,4 +99,7 @@
     <color name="backgroundTextColor">#001E2B</color>
     <color name="tabBackgroundColor">#FBFCFE</color>
     <color name="statusBarColor">#004D66</color>
+
+    <color name="splashScreenBackgroundColor">#FFFFFF</color>
+    <color name="splashScreenIconColor">#00171E</color>
 </resources>

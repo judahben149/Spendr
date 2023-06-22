@@ -69,9 +69,9 @@
     <color name="syracuse_red_orange">#D74E09</color>
 
 <!--    //highlighted color for neu-morphic button-->
-    <color name="neu_btn_highlighted_background">#1E1E1E</color>
+    <color name="neu_btn_highlighted_background">#191919</color>
     <color name="neu_btn_highlighted_shadow_color_dark">#000000</color>
-    <color name="neu_btn_highlighted_shadow_color_light">#333333</color>
+    <color name="neu_btn_highlighted_shadow_color_light">#2D2D2D</color>
 
 <!--    un-highlighted colour for neu-morphic button-->
     <color name="neu_btn_unHighlighted_background">#121212</color>
@@ -91,12 +91,15 @@
     <color name="bottom_sheet_neumorph_card_light_shadow_color">#222222</color>
     <color name="bottom_sheet_neumorph_card_dark_shadow_color">#000000</color>
     <color name="textViewBorderColor">#702BD9FE</color>
-    <color name="toolBarTextColor">#2BD9FE</color>
+    <color name="toolBarTextColor">#902BD9FE</color>
     <color name="faintHeaderTextColor">#802BD9FE</color>
     <color name="chooserTextViewTextColor">#6D6D6D</color>
     <color name="chooserTextViewHintColor">#706D6D6D</color>
-    <color name="monthHeaderTextColor">#0087C4</color>
+    <color name="monthHeaderTextColor">#952BD9FE</color>
     <color name="backgroundTextColor">#0087C4</color>
     <color name="tabBackgroundColor">#121212</color>
     <color name="statusBarColor">#07181B</color>
+
+    <color name="splashScreenBackgroundColor">#121212</color>
+    <color name="splashScreenIconColor">#902BD9FE</color>
 </resources>
