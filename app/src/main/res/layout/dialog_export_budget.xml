@@ -45,7 +45,7 @@
         android:padding="8dp"
         android:text="@string/click_to_locate_file_in_file_explorer_or_open_with_pdf_viewer"
         android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@color/card_text_color"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,6 +77,7 @@
             android:layout_marginStart="12dp"
             app:lottie_autoPlay="true"
             app:lottie_fileName="ic_folder.json"
+            app:lottie_colorFilter="@color/icon_color"
             app:lottie_loop="true"
             app:lottie_repeatMode="restart"
             app:lottie_speed="1.0" />
@@ -88,7 +89,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="12dp"
             android:text="@string/locate"
-            android:textColor="@android:color/background_dark" />
+            android:textColor="@color/card_text_color" />
     </soup.neumorphism.NeumorphCardView>
 
     <soup.neumorphism.NeumorphCardView
@@ -113,6 +114,7 @@
             android:layout_height="36dp"
             android:layout_gravity="center_vertical|start"
             android:layout_marginStart="4dp"
+            app:lottie_colorFilter="@color/icon_color"
             android:scaleX="1.2"
             android:scaleY="1.2"
             app:lottie_autoPlay="true"
@@ -128,7 +130,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:text="@string/view"
-            android:textColor="@android:color/background_dark" />
+            android:textColor="@color/card_text_color" />
     </soup.neumorphism.NeumorphCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

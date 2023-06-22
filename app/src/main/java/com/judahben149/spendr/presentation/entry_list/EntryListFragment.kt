@@ -95,10 +95,12 @@ class EntryListFragment : Fragment() {
         isIncomeEntryType?.let {
             if (isIncomeEntryType) {
                 showOrHideToolBar("Income")
+                binding.tvToolbarTitle.setTextColor(resources.getColor(R.color.pigment_green))
                 Timber.tag(Constants.TIMBER_TAG).d("Fragment update- is Income? - $isIncomeEntryType")
                 viewModel.updateEntryListType(EntryListType.IncomeEntry)
             } else if (!isIncomeEntryType) {
                 showOrHideToolBar("Expenditure")
+                binding.tvToolbarTitle.setTextColor(resources.getColor(R.color.syracuse_red_orange))
                 Timber.tag(Constants.TIMBER_TAG).d("Fragment update- is Income? - $isIncomeEntryType")
                 viewModel.updateEntryListType(EntryListType.ExpenditureEntry)
             }

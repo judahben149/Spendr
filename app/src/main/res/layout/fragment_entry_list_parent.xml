@@ -50,7 +50,6 @@
         android:id="@+id/tab_layout_entry_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabBackground="@color/tabBackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

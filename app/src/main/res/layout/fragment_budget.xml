@@ -67,6 +67,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/icon_color"
             app:lottie_fileName="ic_analytics.json"
             app:lottie_loop="true"
             app:lottie_repeatMode="reverse" />

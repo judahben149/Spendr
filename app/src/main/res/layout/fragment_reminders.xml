@@ -90,7 +90,7 @@
         android:layout_marginTop="16dp"
         android:alpha="0.6"
         android:text="@string/tv_empty_reminder_text"
-        android:textColor="@color/md_theme_light_onSecondaryContainer"
+        android:textColor="@color/card_text_color"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

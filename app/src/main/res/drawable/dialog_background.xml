@@ -5,5 +5,5 @@
     <solid
         android:color="@color/bottom_sheet_background" />
     <corners
-        android:radius="12dp" />
+        android:radius="16dp" />
 </shape>

@@ -13,7 +13,7 @@
         android:fontFamily="@font/roboto_regular"
         android:paddingVertical="5dp"
         android:text="@string/expenditure"
-        android:textColor="@color/md_theme_light_onSecondaryContainer"
+        android:textColor="@color/card_text_color"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

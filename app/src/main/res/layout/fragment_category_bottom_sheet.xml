@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="400dp"
-    android:background="@color/bottom_sheet_background"
+    android:background="@drawable/dialog_background"
     tools:context=".presentation.add_cash_entry.category_bottom_sheet.CategoryBottomSheetFragment">
 
 
