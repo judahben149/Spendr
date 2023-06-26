@@ -60,6 +60,8 @@ Spendr has a focus on simplicity and  -->
 * [ViewPager Dot Indicator](https://github.com/tommybuonomo/dotsindicator) - Library that adds a stylish dot indicator to ViewPager screens, mostly for visual appeal.
  
 * [Epoxy](https://airbnb.io/projects/epoxy/) - Simplifies the creation of complex RecyclerView layouts by providing a more declarative approach. Great for handling dynamic data as well.
+  
+* [iText-PDF](https://github.com/itext) - Enables generation of PDF documents
 
 * [Lottie Animations](https://airbnb.io/projects/lottie-android/) - Enables seamless integration of vector-based animations.
 
