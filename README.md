@@ -135,4 +135,7 @@ Spendr has a focus on simplicity and  -->
 ![Spendr - Flow](https://github.com/judahben149/Spendr/assets/71103838/d41bf832-adaa-4a3b-9332-c4f0feea142a)
 
 
- ‎
+ ### ToDo
+ * Modularize app (architecture)
+ * Integrate receipt manager feature
+ * Integrate a financial calculator feature‎
