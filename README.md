@@ -7,7 +7,7 @@ Spendr has a focus on simplicity and  -->
 
 ## Features
 * Clean and focused UI.
-* Dark mode.
+* Dark mode support.
 * Create notification reminders for intending payments.
 * Visualize expenses with charts.
 * Export single budget entry or entire budget as PDF.
@@ -60,6 +60,8 @@ Spendr has a focus on simplicity and  -->
 * [ViewPager Dot Indicator](https://github.com/tommybuonomo/dotsindicator) - Library that adds a stylish dot indicator to ViewPager screens, mostly for visual appeal.
  
 * [Epoxy](https://airbnb.io/projects/epoxy/) - Simplifies the creation of complex RecyclerView layouts by providing a more declarative approach. Great for handling dynamic data as well.
+  
+* [iText-PDF](https://github.com/itext) - Enables generation of PDF documents
 
 * [Lottie Animations](https://airbnb.io/projects/lottie-android/) - Enables seamless integration of vector-based animations.
 
@@ -133,4 +135,7 @@ Spendr has a focus on simplicity and  -->
 ![Spendr - Flow](https://github.com/judahben149/Spendr/assets/71103838/d41bf832-adaa-4a3b-9332-c4f0feea142a)
 
 
- ‎
+ ### ToDo
+ * Modularize app (architecture)
+ * Integrate receipt manager feature
+ * Integrate a financial calculator feature‎
