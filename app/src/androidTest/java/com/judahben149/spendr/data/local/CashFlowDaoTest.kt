@@ -42,7 +42,7 @@ class CashFlowDaoTest {
     }
 
     @Test
-    fun saveEntry_shouldReturn_theItem_inFlow() = runTest {
+    fun saveEntry_shouldReturnSavedEntryItem() = runTest {
         val entry = CashEntryEntity(
             id = 10,
             amount = 123.0,
@@ -64,7 +64,7 @@ class CashFlowDaoTest {
     }
 
     @Test
-    fun saveCategory_shouldReturn_theItem_inFlow() = runTest {
+    fun saveNewCategory_shouldReturnSameCategoryItem() = runTest {
         val category = CategoryEntity(
             categoryId = 12,
             categoryName = "Salary",
@@ -82,7 +82,7 @@ class CashFlowDaoTest {
     }
 
     @Test
-    fun getEntry_byID_shouldReturn_sameItem() = runTest {
+    fun getEntryDetail_shouldReturnSameItem() = runTest {
         val entry = CashEntryEntity(
             id = 10,
             amount = 123.0,
@@ -101,7 +101,7 @@ class CashFlowDaoTest {
     }
 
     @Test
-    fun deleteEntries_ShouldReturn_emptyList() = runTest {
+    fun deleteAllEntries_ShouldReturnEmptyList() = runTest {
         val entry = CashEntryEntity(
             id = 10,
             amount = 123.0,
