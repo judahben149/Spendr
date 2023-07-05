@@ -16,8 +16,8 @@ android {
         applicationId "com.judahben149.spendr"
         minSdk 23
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -123,4 +123,21 @@ dependencies {
 
     //iText PDF Generator
     implementation 'com.itextpdf:itext7-core:7.1.12'
+
+    //test dependencies
+
+    //Room
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+    testImplementation 'io.mockk:mockk:1.13.4'
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+
+    //Turbine
+    androidTestImplementation 'app.cash.turbine:turbine:0.9.0'
+    androidTestImplementation 'androidx.arch.core:core-testing:2.2.0'
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+
+    androidTestImplementation "androidx.room:room-testing:$room_version"
+
 }
