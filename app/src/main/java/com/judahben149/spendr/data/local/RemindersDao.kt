@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RemindersDao {
 
-    @Upsert()
+    @Upsert
     suspend fun saveReminder(reminderEntity: ReminderEntity)
 
     @Query("SELECT * FROM reminders ORDER BY targetDate ASC")
