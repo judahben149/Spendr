@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Theme.SpendrSplash" parent="Theme.SplashScreen" >
-        <item name="windowSplashScreenBackground">#FFFFFF</item>
+        <item name="windowSplashScreenBackground">@color/splashScreenBackgroundColor</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/splash_piggy</item>
         <item name="postSplashScreenTheme">@style/Theme.Spendr</item>
 
