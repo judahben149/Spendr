@@ -1,5 +1,5 @@
 # Spendr
-Spendr is a neat-looking budgeting app based on the neumorphic design style.
+Spendr is a stylish budgeting app with a clean, notebook-like UI. This design is mostly based on the neumorphic design style.
 Built with Modern Android Development practices in mind, it adheres to clean architecture and keeps up with latest industry standards.
 
 <!-- ## About the App
