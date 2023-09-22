@@ -51,6 +51,33 @@
 -dontwarn java.awt.image.PixelGrabber
 -dontwarn javax.imageio.ImageIO
 -dontwarn org.slf4j.impl.StaticLoggerBinder
+-dontwarn org.slf4j.impl.StaticMDCBinder
+-dontwarn org.slf4j.impl.StaticMarkerBinder
+
+-keep class com.itextpdf.** { *; }
+-keepclassmembers class com.itextpdf.** { *; }
+-keepnames class com.itextpdf.** { *; }
+
+-keep class com.itextpdf.text.pdf.** {*;}
+-keep class org.slf4j.** { *; }
+-dontwarn com.itextpdf.text.pdf.**
+
+-keep class org.spongycastle.** { *; }
+-dontwarn org.spongycastle.**
+
+-keep class com.itextpdf.text.** { *; }
+-dontwarn com.itextpdf.text.**
+
+# For using reflection
+-keepclassmembers class * {
+    @com.itextpdf.* <fields>;
+}
+
+# For using annotation-based APIs
+-keepattributes *Annotation*
+-keepclasseswithmembers class * {
+    @com.itextpdf.* <methods>;
+}
 
 #
 #-keepclassmembers class com.judahben149.spendr.databinding.**  {

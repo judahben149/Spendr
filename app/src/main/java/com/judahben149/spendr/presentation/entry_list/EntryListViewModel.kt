@@ -38,12 +38,6 @@ class EntryListViewModel @Inject constructor(private val cashFlowRepository: Cas
         }.cachedIn(viewModelScope)
 
 
-    private fun updatePagedListState(pagedList: PagingData<CashEntry>) {
-        _state.value = _state.value!!.copy(
-            entryPagedList = pagedList
-        )
-    }
-
     fun updateEntryListType(entryListType: EntryListType) {
         _state.value = _state.value!!.copy(
             entryListType = entryListType
