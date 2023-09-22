@@ -4,12 +4,15 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.annotation.Keep
 import androidx.core.content.FileProvider
 import com.google.android.material.snackbar.Snackbar
 import java.io.File
 
+@Keep
 object FileUtils {
 
+    @Keep
     fun openPdfFile(context: Context, incomingFile: File, onError:(message: String) -> Unit) {
         val file = File(incomingFile.path)
         val fileUri: Uri =
@@ -27,6 +30,7 @@ object FileUtils {
         }
     }
 
+    @Keep
     fun locatePdfFile(context: Context, incomingFile: File, onError:(message: String) -> Unit) {
         val file = File(incomingFile.path)
         val fileUri: Uri =
