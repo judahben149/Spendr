@@ -13,6 +13,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/roboto_medium_italic"
         android:text="@string/app_name"
+        android:textColor="@color/card_text_color"
         android:textSize="26dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
-        app:dotsColor="@color/md_theme_light_onTertiaryContainer"
+        app:dotsColor="@color/icon_color"
         app:dotsCornerRadius="8dp"
         app:dotsSize="8dp"
         app:dotsSpacing="4dp"
@@ -41,6 +42,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:progressMode="true"
-        app:selectedDotColor="@color/md_theme_light_onTertiaryContainer" />
+        app:selectedDotColor="@color/icon_color" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
