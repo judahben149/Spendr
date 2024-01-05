@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -86,7 +87,7 @@ class AddCashEntryFragment : Fragment() {
             override fun afterTextChanged(editable: Editable?) {
                 textChangedByListener = true
                 viewModel.updateAmount(
-                    if (editable.isNullOrEmpty()) 0 else editable.toString().toInt()
+                    if (editable.isNullOrEmpty() || !editable.toString().isDigitsOnly()) 0 else editable.toString().toInt()
                 )
             }
         })
