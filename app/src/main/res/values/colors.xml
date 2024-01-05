@@ -87,9 +87,9 @@
     <color name="neumorph_card_dark_shadow_color">#E8E8E8</color>
     <color name="neumorph_btn_pressed_light_shadow_color">#FCFCFC</color>
     <color name="neumorph_btn_pressed_dark_shadow_color">#E8E8E8</color>
-    <color name="bottom_sheet_background">#F5FDFF</color>
-    <color name="bottom_sheet_neumorph_card_light_shadow_color">#D8E8F1</color>
-    <color name="bottom_sheet_neumorph_card_dark_shadow_color">#ADC7D2</color>
+    <color name="bottom_sheet_background">#F5FAFF</color>
+    <color name="bottom_sheet_neumorph_card_light_shadow_color">#C3D9E4</color>
+    <color name="bottom_sheet_neumorph_card_dark_shadow_color">#91AEB9</color>
     <color name="textViewBorderColor">#003548</color>
     <color name="toolBarTextColor">#001E2B</color>
     <color name="faintHeaderTextColor">#80001E2B</color>
