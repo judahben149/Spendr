@@ -79,6 +79,9 @@
     @com.itextpdf.* <methods>;
 }
 
+#For firebase crashlytics
+-keepattributes SourceFile, LineNumberTable #keep file names and line numbers
+-keep public class * extends java.lang.Exception # Optional: keep custom exceptions
 #
 #-keepclassmembers class com.judahben149.spendr.databinding.**  {
 #    public <methods>;
