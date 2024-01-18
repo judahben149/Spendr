@@ -25,6 +25,7 @@ class OnboardingFragment : Fragment() {
     val navController by lazy {
         findNavController()
     }
+
     @Inject
     lateinit var appPrefs: SharedPreferences
 

@@ -2,10 +2,10 @@ package com.judahben149.spendr.presentation.home
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val isFirstLaunch = appPrefs.getBoolean(Constants.IS_FIRST_LAUNCH, true)
+
         if (isFirstLaunch)
             navController.navigate(R.id.action_homeFragment_to_onboardingFragment)
 
@@ -53,37 +54,63 @@ class HomeFragment : Fragment() {
         binding.tvDate.text = DateUtils.getCurrentFriendlyDate()
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
-            binding.tvAmountBalance.text =
+            binding.tvAmountBalance.text = if (state.isBalanceHidden) {
+                "*****"
+            } else {
                 state.inflowBalance.minus(state.outflowBalance).abbreviateNumber(requireContext())
+            }
 
             binding.tvAmountBalance.setTextColor(
                 if (state.inflowBalance.minus(state.outflowBalance) < 0.0) resources.getColor(
                     R.color.syracuse_red_orange
                 ) else resources.getColor(R.color.pigment_green)
             )
+
+            toggleBalanceVisibility(state.isBalanceHidden)
         }
 
-        binding.itemSummaryNeumorphicCard.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_cashFlowSummaryFragment)
-        }
-        binding.cardTransactions.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_entryListParentFragment)
-        }
-        binding.cardBudget.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_budgetFragment)
-        }
-        binding.cardAddEntry.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_addCashEntryFragment)
-        }
-        binding.cardExtras.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_extrasFragment)
-        }
-        binding.cardSettings.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_settingsFragment)
+        binding.run {
+            itemSummaryNeumorphicCard.setOnClickListener {
+                navController.navigate(R.id.action_homeFragment_to_cashFlowSummaryFragment)
+            }
+
+            cardTransactions.setOnClickListener {
+                navController.navigate(R.id.action_homeFragment_to_entryListParentFragment)
+            }
+
+            cardBudget.setOnClickListener {
+                navController.navigate(R.id.action_homeFragment_to_budgetFragment)
+            }
+
+            cardAddEntry.setOnClickListener {
+                navController.navigate(R.id.action_homeFragment_to_addCashEntryFragment)
+            }
+
+            cardExtras.setOnClickListener {
+                navController.navigate(R.id.action_homeFragment_to_extrasFragment)
+            }
+
+            cardSettings.setOnClickListener {
+                navController.navigate(R.id.action_homeFragment_to_settingsFragment)
+            }
+
+            binding.btnBalanceVisibility.setOnClickListener {
+                viewModel.toggleBalanceVisibility()
+            }
         }
     }
 
-    fun getUserName(): String {
+    private fun toggleBalanceVisibility(shouldHide: Boolean) {
+        if (shouldHide) {
+            binding.animEyeOpened.visibility = View.INVISIBLE
+            binding.animEyeClosed.visibility = View.VISIBLE
+        } else {
+            binding.animEyeOpened.visibility = View.VISIBLE
+            binding.animEyeClosed.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun getUserName(): String {
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         return prefs.getString(Constants.USER_NAME, "there") ?: "there"
     }
