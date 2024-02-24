@@ -1,6 +1,8 @@
 package com.judahben149.spendr.di.module
 
 import android.content.Context
+import android.content.SharedPreferences
+import com.judahben149.spendr.utils.SessionManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +18,11 @@ object AppModule {
     @Singleton
     fun providesContext(@ApplicationContext context: Context): Context {
         return context
+    }
+
+    @Provides
+    @Singleton
+    fun providesSessionManager(sharedPreferences: SharedPreferences): SessionManager {
+        return SessionManager(sharedPreferences)
     }
 }

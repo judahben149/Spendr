@@ -65,24 +65,32 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/balance"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_amount_balance"
-                app:layout_constraintEnd_toStartOf="@id/tv_amount_balance"
+                app:layout_constraintBottom_toBottomOf="@id/layout_amount_balance"
+                app:layout_constraintEnd_toStartOf="@id/layout_amount_balance"
                 app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_amount_balance" />
+                app:layout_constraintTop_toTopOf="@id/layout_amount_balance" />
 
-            <TextView
-                android:id="@+id/tv_amount_balance"
+            <LinearLayout
+                android:id="@+id/layout_amount_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/balance_positive_text_color"
-                android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="N500" />
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <TextView
+                    android:id="@+id/tv_amount_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/balance_positive_text_color"
+                    android:textSize="30sp"
+                    tools:text="N500" />
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_date"
@@ -97,6 +105,47 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.8"
                 tools:text="2nd June, 2023" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_balance_visibility"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/anim_eye_opened"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    app:lottie_autoPlay="true"
+                    app:lottie_colorFilter="@color/icon_color"
+                    app:lottie_fileName="eye_anim.json"
+                    app:lottie_loop="true"
+                    app:lottie_repeatMode="restart"
+                    app:lottie_speed="0.3"
+                    />
+
+                <ImageView
+                    android:id="@+id/anim_eye_closed"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_gravity="center"
+                    android:src="@drawable/eye_closed"
+                    android:visibility="visible"
+                    android:contentDescription="Balance Hidden" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </soup.neumorphism.NeumorphCardView>
