@@ -138,11 +138,35 @@ object DateUtils {
         return millis
     }
 
-    fun formatAccessBankDate(dateString: String): Long {
-        val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    fun formatUbaBankDate(dateString: String): Long {
+        val format = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
         val date = format.parse(dateString)
 
         val millis = date?.time ?: 0
         return millis
+    }
+
+    fun formatFirstBankDate(dateString: String): Long {
+        val format = SimpleDateFormat("dd-MMM-yyyy HH:mm:ss", Locale.getDefault())
+        val date = format.parse(dateString)
+
+        val millis = date?.time ?: 0
+        return millis
+    }
+
+    fun formatAccessBankDate(dateString: String): Long {
+        val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val providedDate = format.parse(dateString)
+
+        val calendar = Calendar.getInstance()
+        calendar.time = providedDate ?: Date()
+
+        // Set the time components of the calendar to current time
+        calendar.set(Calendar.HOUR_OF_DAY, Calendar.getInstance().get(Calendar.HOUR_OF_DAY))
+        calendar.set(Calendar.MINUTE, Calendar.getInstance().get(Calendar.MINUTE))
+        calendar.set(Calendar.SECOND, Calendar.getInstance().get(Calendar.SECOND))
+
+        val resultDate = calendar.time
+        return resultDate.time
     }
 }

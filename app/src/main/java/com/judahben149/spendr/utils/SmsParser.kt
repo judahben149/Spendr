@@ -10,8 +10,9 @@ object SmsParser {
         val parser: BankParser? = when (bankType) {
             BankType.ACCESS_BANK -> AccessBankParser()
             BankType.GT_BANK -> GTBankParser()
+            BankType.FIRST_BANK -> FirstBankParser()
+            BankType.UBA_BANK -> UbaBankParser()
             BankType.UNKNOWN -> null
-            else -> null
         }
 
         return parser?.parse(content)
@@ -21,6 +22,8 @@ object SmsParser {
         return when(originatingAddress) {
             "AccessBank" -> BankType.ACCESS_BANK
             "GTBank" -> BankType.GT_BANK
+            "FirstBank" -> BankType.FIRST_BANK
+            "UBA" -> BankType.UBA_BANK
             else -> BankType.UNKNOWN
         }
     }
@@ -108,6 +111,90 @@ class GTBankParser: BankParser {
                 line.startsWith("Date:") -> {
                     val date = line.substringAfter("Date:").removeSurrounding(" ")
                     smsInfo = smsInfo.copy(dateTime = DateUtils.formatGTBankDate(date))
+                }
+            }
+        }
+
+        val cashEntry = CashEntry(
+            amount = smsInfo.amount.toDouble(),
+            isIncome = smsInfo.type == AlertType.CREDIT,
+            categoryName = smsInfo.description,
+            transactionDate = smsInfo.dateTime
+        )
+
+        return cashEntry
+    }
+}
+
+class FirstBankParser: BankParser {
+
+    override fun parse(content: String): CashEntry {
+        var smsInfo = SmsInfo()
+
+        val alertType = if (content.contains("Credit:")) AlertType.CREDIT else AlertType.DEBIT
+
+        val amount = content.substringAfter("Amt: ")
+            .substringBefore("Date:")
+            .removeSurrounding(" ")
+            .removePrefix("NGN")
+            .replace(",", "")
+
+        val date = content.substringAfter("Date: ")
+            .substringBefore(" ")
+            .removeSurrounding(" ")
+            .let { DateUtils.formatFirstBankDate(it) }
+
+        val description = content.substringAfter("Desc: ")
+            .substringBefore(". ")
+            .removeSurrounding(" ")
+
+        smsInfo = smsInfo.copy(
+            amount = amount,
+            type = alertType,
+            description = description,
+            dateTime = date
+        )
+
+        return CashEntry(
+            amount = smsInfo.amount.toDouble(),
+            isIncome = smsInfo.type == AlertType.CREDIT,
+            categoryName = smsInfo.description,
+            transactionDate = smsInfo.dateTime
+        )
+    }
+}
+
+class UbaBankParser : BankParser {
+
+    override fun parse(content: String): CashEntry {
+        var smsInfo = SmsInfo()
+        val lines = content.split("\n")
+
+        for (line in lines) {
+            when {
+                line.startsWith("Txn:") -> {
+                    val alertType = if (line.contains("Credit", false)) AlertType.CREDIT else AlertType.DEBIT
+                    smsInfo = smsInfo.copy(type = alertType)
+                }
+
+                line.startsWith("Amt:") -> {
+                    val amount = line.substringAfter("Amt:")
+                        .removeSurrounding(" ")
+                        .removePrefix("NGN")
+                        .removeSurrounding(" ")
+                        .replace(",", "")
+
+                    smsInfo = smsInfo.copy(amount = amount)
+                }
+
+                line.startsWith("Des:") -> {
+                    val description = line.substringAfter("Des:")
+                    smsInfo = smsInfo.copy(description = description)
+                }
+
+                line.startsWith("Date:") -> {
+                    val date = line.substringAfter("Date:").removeSurrounding(" ")
+                    smsInfo = smsInfo.copy(dateTime = DateUtils.formatUbaBankDate(date))
                 }
             }
         }
