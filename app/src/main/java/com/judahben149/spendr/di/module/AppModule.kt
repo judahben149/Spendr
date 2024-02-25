@@ -2,6 +2,7 @@ package com.judahben149.spendr.di.module
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.judahben149.spendr.utils.PermissionHelper
 import com.judahben149.spendr.utils.SessionManager
 import dagger.Module
 import dagger.Provides
@@ -24,5 +25,11 @@ object AppModule {
     @Singleton
     fun providesSessionManager(sharedPreferences: SharedPreferences): SessionManager {
         return SessionManager(sharedPreferences)
+    }
+
+    @Provides
+    @Singleton
+    fun providesPermissionHelper(context: Context): PermissionHelper {
+        return PermissionHelper(context)
     }
 }

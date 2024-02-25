@@ -7,8 +7,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.judahben149.spendr.databinding.ActivityMainBinding
+import com.judahben149.spendr.utils.PermissionHelper
 import com.judahben149.spendr.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 const val SMS_REQUEST_CODE = 10000
 
@@ -18,13 +20,25 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     val binding get() = _binding!!
 
+    @Inject
+    lateinit var permissionHelper: PermissionHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        requestNeededPermissions()
+        if (!permissionHelper.isSmsPermissionGranted()) {
+            requestNeededPermissions()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!permissionHelper.isSmsPermissionGranted()) {
+            requestNeededPermissions()
+        }
     }
 
     private fun requestNeededPermissions() {

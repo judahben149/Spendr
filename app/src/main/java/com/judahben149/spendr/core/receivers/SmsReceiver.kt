@@ -6,12 +6,12 @@ import android.content.Intent
 import android.telephony.SmsMessage
 import com.judahben149.spendr.data.repository.CashFlowRepositoryImpl
 import com.judahben149.spendr.domain.mappers.CashEntryMapperImpl
+import com.judahben149.spendr.utils.PermissionHelper
+import com.judahben149.spendr.utils.SessionManager
 import com.judahben149.spendr.utils.SmsParser
-import com.judahben149.spendr.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,9 +21,24 @@ class SmsReceiver: BroadcastReceiver() {
     @Inject
     lateinit var repository: CashFlowRepositoryImpl
 
+    @Inject
+    lateinit var sessionManager: SessionManager
+
+    @Inject
+    lateinit var permissionHelper: PermissionHelper
+
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     override fun onReceive(context: Context?, intent: Intent?) {
+
+        if (!permissionHelper.isSmsPermissionGranted()) {
+            return
+        }
+
+        if (!sessionManager.canReceiveSmsEntries()) {
+            return
+        }
+
         if (intent?.action != null && intent.action == "android.provider.Telephony.SMS_RECEIVED") {
             val bundle = intent.extras
 

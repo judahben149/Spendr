@@ -16,9 +16,11 @@ import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.ScreenPrefsBinding
 import com.judahben149.spendr.utils.Constants.EXPORT_BUDGET_DIALOG
 import com.judahben149.spendr.utils.Constants.SETTINGS_DIALOG
+import com.judahben149.spendr.utils.SessionManager
 import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import dagger.hilt.android.AndroidEntryPoint
 import soup.neumorphism.NeumorphCardView
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsFragment: PreferenceFragmentCompat() {
@@ -27,6 +29,9 @@ class SettingsFragment: PreferenceFragmentCompat() {
     val navController by lazy {
         findNavController()
     }
+
+    @Inject
+    lateinit var sessionManager: SessionManager
 
     private val viewModel: SettingsViewModel by viewModels()
 
@@ -45,6 +50,19 @@ class SettingsFragment: PreferenceFragmentCompat() {
 //        backButton.setOnClickListener {
 //            navController.navigateUp()
 //        }
+
+        val readSmsPreference = findPreference<Preference?>("READ_SMS")
+        readSmsPreference?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { pref, newValue ->
+            val switched = newValue as? Boolean ?: false
+
+            if (switched) {
+                sessionManager.toggleSmsEntryFunctionality(true)
+            } else {
+                sessionManager.toggleSmsEntryFunctionality(false)
+            }
+
+            true
+        }
 
         val deleteEntriesPreference = findPreference<Preference?>("deleteEntries")
         deleteEntriesPreference?.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
