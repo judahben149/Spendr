@@ -19,6 +19,13 @@
         android:icon="@drawable/ic_currency"
         />
 
+    <SwitchPreference
+        android:key="READ_SMS"
+        android:title="Input entries from SMS"
+        android:summary="Requires Receive-SMS permission"
+        android:icon="@drawable/ic_tag"
+        />
+
     <Preference android:title="Delete reminders"
         android:key="deleteReminders"
         android:icon="@drawable/ic_trash"/>
