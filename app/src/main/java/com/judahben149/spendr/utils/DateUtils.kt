@@ -1,7 +1,6 @@
 package com.judahben149.spendr.utils
 
 
-import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -129,5 +128,21 @@ object DateUtils {
 
         val format = SimpleDateFormat("hh-mm_dd-MM-yyyy", Locale.getDefault())
         return format.format(givenDate.time)
+    }
+
+    fun formatGTBankDate(dateString: String): Long {
+        val format = SimpleDateFormat("dd-MMM-yyyy HH:mm", Locale.getDefault())
+        val date = format.parse(dateString)
+
+        val millis = date?.time ?: 0
+        return millis
+    }
+
+    fun formatAccessBankDate(dateString: String): Long {
+        val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val date = format.parse(dateString)
+
+        val millis = date?.time ?: 0
+        return millis
     }
 }
