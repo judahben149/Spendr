@@ -1,7 +1,5 @@
 package com.judahben149.spendr.data.repository
 
-import android.util.Log
-import androidx.annotation.WorkerThread
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -11,18 +9,9 @@ import com.judahben149.spendr.data.local.entity.CashEntryEntity
 import com.judahben149.spendr.data.local.entity.CategoryEntity
 import com.judahben149.spendr.data.paging.CashEntryPagingSource
 import com.judahben149.spendr.domain.model.EntryListData
-import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.Constants.INITIAL_LOAD_SIZE
 import com.judahben149.spendr.utils.Constants.PAGE_SIZE
-import com.judahben149.spendr.utils.Constants.PREFETCH_DISTANCE
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 class CashFlowRepositoryImpl @Inject constructor(
