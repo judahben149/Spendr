@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.preference.PreferenceManager
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentHomeBinding
-import com.judahben149.spendr.utils.Constants
 import com.judahben149.spendr.utils.DateUtils
+import com.judahben149.spendr.utils.SessionManager
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -30,6 +29,9 @@ class HomeFragment : Fragment() {
     @Inject
     lateinit var appPrefs: SharedPreferences
 
+    @Inject
+    lateinit var sessionManager: SessionManager
+
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
@@ -43,12 +45,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val isFirstLaunch = appPrefs.getBoolean(Constants.IS_FIRST_LAUNCH, true)
-
-        if (isFirstLaunch)
+        if (sessionManager.isFirstLaunch())
             navController.navigate(R.id.action_homeFragment_to_onboardingFragment)
 
-        binding.tvToolbarTitle.setText("Hi, ".plus(getUserName()))
+        binding.tvToolbarTitle.setText("Hi, ".plus(sessionManager.getUserName()))
         viewModel.getBalance()
 
         binding.tvDate.text = DateUtils.getCurrentFriendlyDate()
@@ -108,11 +108,6 @@ class HomeFragment : Fragment() {
             binding.animEyeOpened.visibility = View.VISIBLE
             binding.animEyeClosed.visibility = View.INVISIBLE
         }
-    }
-
-    private fun getUserName(): String {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        return prefs.getString(Constants.USER_NAME, "there") ?: "there"
     }
 
     override fun onDestroy() {
