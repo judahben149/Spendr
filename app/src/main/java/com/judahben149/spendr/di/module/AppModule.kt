@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -23,8 +24,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesSessionManager(sharedPreferences: SharedPreferences): SessionManager {
-        return SessionManager(sharedPreferences)
+    fun providesSessionManager(
+        sharedPreferences: SharedPreferences,
+        @Named("defaultSharedPref") defaultSharedPreferences: SharedPreferences
+    ): SessionManager {
+        return SessionManager(sharedPreferences, defaultSharedPreferences)
     }
 
     @Provides
