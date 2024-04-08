@@ -15,6 +15,7 @@ import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummaryP
 import com.judahben149.spendr.presentation.cashflow_summary.epoxy.model.SummarySpacer
 import com.judahben149.spendr.utils.DateUtils
 import com.judahben149.spendr.utils.extensions.abbreviateNumber
+import timber.log.Timber
 
 @Keep
 class SummaryEpoxyController(
@@ -46,12 +47,16 @@ class SummaryEpoxyController(
 
         SummaryCardEpoxyModel(income, expenditure, "All").id("card_summary").addTo(this)
 
-        SummaryIncomeHeaderEpoxyModel(
-            incomeTitle = "Income",
-            onSeeAllIncomeClicked = {
-                onSeeAllIncomeClicked()
-            }
-        ).id(-3).addTo(this)
+        if (latestThreeIncome.isNotEmpty()) {
+
+            SummaryIncomeHeaderEpoxyModel(
+                incomeTitle = "Income",
+                onSeeAllIncomeClicked = {
+                    onSeeAllIncomeClicked()
+                }
+            ).id(-3).addTo(this)
+
+        }
 
         latestThreeIncome.forEach { cashEntry ->
             SummaryEntryItemEpoxyModel(
@@ -64,11 +69,15 @@ class SummaryEpoxyController(
 
 //        SummarySpacer(spacerHeight = 100)
 
-        SummaryExpenditureHeaderEpoxyModel(
-            "Expenditure"
-        ) {
-            onSeeAllExpenditureClicked()
-        }.id(-4).addTo(this)
+        if (latestThreeExpenditure.isNotEmpty()) {
+
+            SummaryExpenditureHeaderEpoxyModel(
+                "Expenditure"
+            ) {
+                onSeeAllExpenditureClicked()
+            }.id(-4).addTo(this)
+
+        }
 
         latestThreeExpenditure.forEach { cashEntry ->
             SummaryEntryItemEpoxyModel(
@@ -89,7 +98,7 @@ class SummaryEpoxyController(
         }.map { cashEntry ->
             totalIncome += cashEntry.amount
         }
-        Log.d("TAGM", "getTotalIncome: $totalIncome")
+
         return totalIncome
     }
 
@@ -101,7 +110,7 @@ class SummaryEpoxyController(
         }.map { cashEntry ->
             totalExpenditure += cashEntry.amount
         }
-        Log.d("TAGM", "getTotalExpenditure: $totalExpenditure")
+
         return totalExpenditure
     }
 
@@ -112,7 +121,6 @@ class SummaryEpoxyController(
             it.transactionDate
         }
 
-        Log.d("TAGM", "getLastThreeIncomes: ${sortedList.take(3)}")
         return sortedList.take(3)
     }
 
@@ -123,8 +131,6 @@ class SummaryEpoxyController(
             it.transactionDate
         }
 
-        Log.d("TAGM", "getLastThreeExpenditures: ${sortedList.take(3)}")
         return sortedList.take(3)
     }
-
 }
