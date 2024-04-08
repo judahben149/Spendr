@@ -51,7 +51,8 @@ class CashFlowDaoTest {
             transactionDate = 1200000L,
             categoryName = "Salary",
             categoryIconId = 11,
-            isIncomeCategory = true
+            isIncomeCategory = true,
+            reason = "Some reason"
         )
 
         cashFlowDao.saveEntry(entry)
@@ -91,7 +92,8 @@ class CashFlowDaoTest {
             transactionDate = 1200000L,
             categoryName = "Salary",
             categoryIconId = 11,
-            isIncomeCategory = true
+            isIncomeCategory = true,
+            reason = "Some reason"
         )
 
         cashFlowDao.saveEntry(entry)
@@ -110,7 +112,8 @@ class CashFlowDaoTest {
             transactionDate = 1200000L,
             categoryName = "Salary",
             categoryIconId = 11,
-            isIncomeCategory = true
+            isIncomeCategory = true,
+            reason = "Some reason"
         )
 
         val entry2 = CashEntryEntity(
@@ -121,7 +124,8 @@ class CashFlowDaoTest {
             transactionDate = 12056700L,
             categoryName = "Charity",
             categoryIconId = 16,
-            isIncomeCategory = false
+            isIncomeCategory = false,
+            reason = "Some reason"
         )
 
         cashFlowDao.saveEntry(entry)
@@ -152,7 +156,8 @@ class CashFlowDaoTest {
             transactionDate = 1200000L,
             categoryName = "Salary",
             categoryIconId = 11,
-            isIncomeCategory = true
+            isIncomeCategory = true,
+            reason = "Some reason"
         )
 
         val expectedList = listOf(
@@ -186,7 +191,8 @@ class CashFlowDaoTest {
             transactionDate = 1200000L,
             categoryName = "Salary",
             categoryIconId = 11,
-            isIncomeCategory = false
+            isIncomeCategory = false,
+            reason = "Some reason"
         )
 
         val expectedList = listOf(
