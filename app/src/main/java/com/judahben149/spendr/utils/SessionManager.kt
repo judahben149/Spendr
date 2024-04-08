@@ -23,6 +23,7 @@ class SessionManager @Inject constructor(
 
     fun toggleSmsEntryFunctionality(canReceive: Boolean) {
         sharedPrefs.saveToPreferences(RECEIVE_SMS_ENTRIES, canReceive)
+        defaultSharedPrefs.saveToPreferences("READ_SMS", canReceive)
     }
 
     fun canReceiveSmsEntries(): Boolean {
