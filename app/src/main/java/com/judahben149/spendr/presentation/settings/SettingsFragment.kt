@@ -5,21 +5,20 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.google.android.material.appbar.MaterialToolbar
 import com.judahben149.spendr.R
-import com.judahben149.spendr.databinding.ScreenPrefsBinding
 import com.judahben149.spendr.utils.Constants.EXPORT_BUDGET_DIALOG
 import com.judahben149.spendr.utils.Constants.SETTINGS_DIALOG
 import com.judahben149.spendr.utils.SessionManager
 import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import dagger.hilt.android.AndroidEntryPoint
-import soup.neumorphism.NeumorphCardView
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,14 +41,18 @@ class SettingsFragment: PreferenceFragmentCompat() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val toolBarTitle = view.findViewById<TextView>(R.id.tv_toolbar_title_prefs)
-        val backButton = view.findViewById<FrameLayout>(R.id.fl_back_btn_prefs)
+
+        val rootView = ((listView.parent as FrameLayout).parent as LinearLayout)
+        val toolbar = LayoutInflater.from(requireContext()).inflate(R.layout.layout_preference_toolbar, rootView, false) as MaterialToolbar
+        rootView.addView(toolbar, 0)
+
+        val toolBarTitle = toolbar.findViewById<TextView>(R.id.tv_toolbar_title_prefs)
+        val backButton = toolbar.findViewById<FrameLayout>(R.id.fl_back_btn_prefs)
 
         toolBarTitle.animateToolBarTitle()
-
-//        backButton.setOnClickListener {
-//            navController.navigateUp()
-//        }
+        backButton.setOnClickListener {
+            navController.navigateUp()
+        }
 
         val readSmsPreference = findPreference<Preference?>("READ_SMS")
         readSmsPreference?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { pref, newValue ->
