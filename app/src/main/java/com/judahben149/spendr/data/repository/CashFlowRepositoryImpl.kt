@@ -67,6 +67,10 @@ class CashFlowRepositoryImpl @Inject constructor(
        return cashFlowDao.getEntryDetail(entryId)
     }
 
+    override suspend fun deleteEntry(entryId: Int) {
+        cashFlowDao.deleteEntry(entryId)
+    }
+
     override suspend fun deleteAllEntries() {
         cashFlowDao.deleteAllEntries()
     }

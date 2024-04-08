@@ -22,6 +22,8 @@ interface CashFlowRepository {
 
     suspend fun getEntryDetail(entryId: Int): CashEntryEntity
 
+    suspend fun deleteEntry(entryId: Int)
+
     suspend fun deleteAllEntries()
 
     suspend fun deleteAllReminders()

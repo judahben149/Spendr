@@ -40,6 +40,9 @@ interface CashFlowDao {
     suspend fun deleteAllEntries()
 
 
+    @Query("DELETE FROM cashEntry WHERE id = :entryId")
+    suspend fun deleteEntry(entryId: Int)
+
 //    @Query("DELETE FROM category")
 //    suspend fun deleteAllCategories()
 }
