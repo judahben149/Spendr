@@ -90,8 +90,8 @@ class EntryDetailFragment : Fragment(), ReusableCustomDialogCallBack {
     }
 
     override fun onPositiveAction() {
-        viewModel.deleteEntry()
         navController.popBackStack()
+        viewModel.deleteEntry()
     }
 
     override fun onNegativeAction() {

@@ -44,6 +44,12 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
         )
     }
 
+    fun updateReason(reason: String) {
+        _state.value = _state.value?.copy(
+            reason = reason
+        )
+    }
+
     fun saveEntry() {
         viewModelScope.launch {
             val cashEntry = CashEntry(
@@ -53,7 +59,8 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
                 categoryId = _selectedCategory.value!!.categoryId,
                 categoryName = _state.value!!.categoryName,
                 categoryIconId = _state.value!!.categoryIconId,
-                isIncomeCategory = _state.value!!.isIncomeCategory
+                isIncomeCategory = _state.value!!.isIncomeCategory,
+                reason = _state.value!!.reason
             )
 
             val entity = CashEntryMapperImpl().cashEntryToCashEntryEntity(cashEntry)

@@ -13,5 +13,6 @@ data class CashEntryEntity(
     val transactionDate: Long,
     val categoryName: String,
     val categoryIconId: Int,
-    val isIncomeCategory: Boolean
+    val isIncomeCategory: Boolean,
+    val reason: String
 )

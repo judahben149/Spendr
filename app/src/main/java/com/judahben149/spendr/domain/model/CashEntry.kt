@@ -8,5 +8,6 @@ data class CashEntry(
     val transactionDate: Long = 0L,
     val categoryName: String = "",
     val categoryIconId: Int = 0,
-    val isIncomeCategory: Boolean = false
+    val isIncomeCategory: Boolean = false,
+    val reason: String = ""
 )

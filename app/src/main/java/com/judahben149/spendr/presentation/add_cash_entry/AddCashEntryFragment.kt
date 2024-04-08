@@ -96,6 +96,7 @@ class AddCashEntryFragment : Fragment() {
         })
 
         binding.btnSave.setOnClickListener {
+            viewModel.updateReason(binding.tvReason.text?.toString() ?: "")
             viewModel.saveEntry()
             navController.popBackStack()
         }

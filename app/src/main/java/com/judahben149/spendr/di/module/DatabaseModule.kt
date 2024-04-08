@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.judahben149.spendr.data.local.AppDatabase
 import com.judahben149.spendr.data.local.CashFlowDao
+import com.judahben149.spendr.data.local.Migration_1_2
 import com.judahben149.spendr.data.local.RemindersDao
 import com.judahben149.spendr.utils.Constants.APP_DATABASE_NAME
 import dagger.Module
@@ -25,7 +26,9 @@ object DatabaseModule {
             context,
             AppDatabase::class.java,
             APP_DATABASE_NAME
-        ).build()
+        )
+            .addMigrations(Migration_1_2)
+            .build()
     }
 
     @Provides
