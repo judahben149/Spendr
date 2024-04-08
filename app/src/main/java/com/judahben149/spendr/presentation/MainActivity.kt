@@ -1,13 +1,18 @@
 package com.judahben149.spendr.presentation
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.judahben149.spendr.databinding.ActivityMainBinding
 import com.judahben149.spendr.utils.PermissionHelper
+import com.judahben149.spendr.utils.SessionManager
 import com.judahben149.spendr.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -23,20 +28,21 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var permissionHelper: PermissionHelper
 
+    @Inject
+    lateinit var sessionManager: SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (!permissionHelper.isSmsPermissionGranted()) {
-            requestNeededPermissions()
-        }
+        requestNeededPermissions()
     }
 
     override fun onResume() {
         super.onResume()
-        if (!permissionHelper.isSmsPermissionGranted()) {
+        if (sessionManager.canReceiveSmsEntries() && !permissionHelper.isSmsPermissionGranted()) {
             requestNeededPermissions()
         }
     }
@@ -50,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray,
+        grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
@@ -61,6 +67,31 @@ class MainActivity : AppCompatActivity() {
                 showToast(applicationContext, "Sms Permission NOT Granted")
             }
         }
+    }
+
+
+    private fun showPermissionInfoDialog() {
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle("Grant SMS Permission")
+        builder.setMessage("SMS Permission is required to create entries from alerts")
+
+        builder.setPositiveButton("Grant"){ dialog, which ->
+            // Request permission to receive sms
+            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            intent.putExtra(Settings.EXTRA_APP_PACKAGE, applicationContext.packageName)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+            applicationContext.startActivity(intent)
+        }
+
+        builder.setCancelable(false)
+        builder.setNegativeButton("Ignore") { dialog, which ->
+            sessionManager.toggleSmsEntryFunctionality(false)
+            dialog.dismiss()
+        }
+
+        builder.create().show()
     }
 
     override fun onDestroy() {
