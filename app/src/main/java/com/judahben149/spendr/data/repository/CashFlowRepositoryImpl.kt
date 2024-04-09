@@ -23,6 +23,10 @@ class CashFlowRepositoryImpl @Inject constructor(
         cashFlowDao.saveEntry(cashEntryEntity)
     }
 
+    override suspend fun updateEntry(cashEntryEntity: CashEntryEntity) {
+        cashFlowDao.updateEntry(cashEntryEntity)
+    }
+
     override suspend fun saveNewCategory(categoryEntity: CategoryEntity) {
         cashFlowDao.saveNewCategory(categoryEntity)
     }
@@ -65,6 +69,10 @@ class CashFlowRepositoryImpl @Inject constructor(
 
     override suspend fun getEntryDetail(entryId: Int): CashEntryEntity {
        return cashFlowDao.getEntryDetail(entryId)
+    }
+
+    override suspend fun deleteEntry(entryId: Int) {
+        cashFlowDao.deleteEntry(entryId)
     }
 
     override suspend fun deleteAllEntries() {

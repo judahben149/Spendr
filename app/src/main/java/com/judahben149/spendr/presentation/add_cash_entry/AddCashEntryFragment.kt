@@ -17,6 +17,7 @@ import com.judahben149.spendr.utils.Constants.CATEGORY_BOTTOM_SHEET
 import com.judahben149.spendr.utils.Constants.DATE_PICKER_ADD_CASH_ENTRY
 import com.judahben149.spendr.utils.DateUtils.formatFriendlyDateTime
 import com.judahben149.spendr.utils.DateUtils.getCurrentDateInMillis
+import com.judahben149.spendr.utils.TextUtils
 import com.judahben149.spendr.utils.extensions.animateToolBarTitle
 import com.judahben149.spendr.utils.extensions.highlight
 import com.judahben149.spendr.utils.extensions.mapCategoryIcon
@@ -51,6 +52,8 @@ class AddCashEntryFragment : Fragment() {
         binding.btnBack.setOnClickListener { navController.popBackStack() }
         viewModel.reset()
         setTodayDate()
+
+        binding.tvReason.hint = TextUtils.reasonRandomizer()
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
             if (!textChangedByListener) {
@@ -93,6 +96,7 @@ class AddCashEntryFragment : Fragment() {
         })
 
         binding.btnSave.setOnClickListener {
+            viewModel.updateReason(binding.tvReason.text?.toString() ?: "")
             viewModel.saveEntry()
             navController.popBackStack()
         }

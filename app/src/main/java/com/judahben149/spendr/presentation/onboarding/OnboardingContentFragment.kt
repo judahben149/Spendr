@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2
 import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentOnboardingContentBinding
 import com.judahben149.spendr.utils.Constants
+import com.judahben149.spendr.utils.SessionManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,6 +27,9 @@ class OnboardingContentFragment : Fragment() {
 
     @Inject
     lateinit var appPrefs: SharedPreferences
+
+    @Inject
+    lateinit var sessionManager: SessionManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -103,11 +106,11 @@ class OnboardingContentFragment : Fragment() {
                 binding.tvRightText.setOnClickListener {
                     val userName = binding.tvUserName.text.toString()
 
-                    val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
-                    val editor = appPrefs.edit()
-                    val prefsEditor = prefs.edit()
-                    prefsEditor?.putString(Constants.USER_NAME, userName)?.apply()
-                    editor?.putBoolean(Constants.IS_FIRST_LAUNCH, false)?.apply()
+                    sessionManager.apply {
+                        updateUserName(userName)
+                        updateIsFirstLaunch(false)
+                    }
+
                     navController.navigate(R.id.homeFragment)
                 }
             }

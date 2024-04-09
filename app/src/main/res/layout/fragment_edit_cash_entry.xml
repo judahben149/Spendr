@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="New Entry"
+            android:text="Edit Entry"
             android:textColor="@color/toolBarTextColor"
             android:textSize="20sp" />
 
@@ -334,7 +334,6 @@
             </soup.neumorphism.NeumorphCardView>
 
 
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_notes_section"
                 android:layout_width="match_parent"
@@ -383,7 +382,7 @@
 
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tv_reason"
+                android:id="@+id/et_reason"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -405,7 +404,7 @@
                 app:layout_constraintTop_toBottomOf="@id/layout_notes_section" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
@@ -438,7 +437,7 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/plus"
+            android:src="@drawable/ic_tick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -450,7 +449,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="@string/save"
+            android:text="Update"
             android:textColor="@color/card_text_color"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"

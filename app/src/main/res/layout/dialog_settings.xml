@@ -35,16 +35,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_dialog_header" />
 
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_textField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textview_border"
+            app:layout_constraintTop_toBottomOf="@id/tv_dialog_header"
+            android:layout_marginTop="8dp"
+            android:hint="Enter Name"
+            android:visibility="invisible"
+            android:textColor="@color/card_text_color"
+            android:textColorHint="@color/hint_text_color"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="16sp"
+            android:paddingVertical="12dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            />
+
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/btn_negative"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:minWidth="120dp"
         android:minHeight="64dp"
         app:layout_constraintEnd_toStartOf="@id/btn_positive"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_dialog_body"
+        app:layout_constraintTop_toBottomOf="@id/et_textField"
         app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
         app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
         app:neumorph_shadowElevation="3dp"

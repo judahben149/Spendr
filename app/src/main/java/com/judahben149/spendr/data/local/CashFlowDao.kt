@@ -5,6 +5,8 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
+import androidx.room.Upsert
 import com.judahben149.spendr.data.local.entity.CashEntryEntity
 import com.judahben149.spendr.data.local.entity.CategoryEntity
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +16,10 @@ interface CashFlowDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun saveEntry(cashEntryEntity: CashEntryEntity)
+
+    @Update()
+    suspend fun updateEntry(cashEntryEntity: CashEntryEntity)
+
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun saveNewCategory(categoryEntity: CategoryEntity)
@@ -39,6 +45,9 @@ interface CashFlowDao {
     @Query("DELETE FROM cashEntry")
     suspend fun deleteAllEntries()
 
+
+    @Query("DELETE FROM cashEntry WHERE id = :entryId")
+    suspend fun deleteEntry(entryId: Int)
 
 //    @Query("DELETE FROM category")
 //    suspend fun deleteAllCategories()

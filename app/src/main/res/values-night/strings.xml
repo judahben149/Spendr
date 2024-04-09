@@ -47,4 +47,5 @@
     <string name="subject">Subject</string>
     <string name="amount">Amount</string>
     <string name="repeating_reminder">Repeating reminder?</string>
+    <string name="reason_e_g_groceries_in_march">Reason (e.g., \'Groceries in March\')</string>
 </resources>

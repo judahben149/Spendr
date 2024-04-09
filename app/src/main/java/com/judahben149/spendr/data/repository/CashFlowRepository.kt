@@ -10,6 +10,8 @@ interface CashFlowRepository {
 
     suspend fun saveEntry(cashEntryEntity: CashEntryEntity)
 
+    suspend fun updateEntry(cashEntryEntity: CashEntryEntity)
+
     suspend fun saveNewCategory(categoryEntity: CategoryEntity)
 
     fun getCategories(): Flow<List<CategoryEntity>>
@@ -21,6 +23,8 @@ interface CashFlowRepository {
     fun getAllPagedExpenditure(): Flow<PagingData<EntryListData>>
 
     suspend fun getEntryDetail(entryId: Int): CashEntryEntity
+
+    suspend fun deleteEntry(entryId: Int)
 
     suspend fun deleteAllEntries()
 

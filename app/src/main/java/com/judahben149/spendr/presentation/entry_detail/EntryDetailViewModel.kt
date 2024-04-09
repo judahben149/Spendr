@@ -23,13 +23,25 @@ class EntryDetailViewModel @Inject constructor(private val cashFlowRepository: C
 
         viewModelScope.launch {
             val entryDetailEntity = cashFlowRepository.getEntryDetail(entryId)
-            val entryDetail = entryDetailEntity?.let { CashEntryMapperImpl().cashEntryEntityToCashEntry(entryDetailEntity) }
+            val entryDetail = entryDetailEntity.let { CashEntryMapperImpl().cashEntryEntityToCashEntry(entryDetailEntity) }
 
                 _state.value = _state.value?.copy(
                     cashEntry = entryDetail,
                     isLoading = false
                 )
         }
+    }
+
+    fun deleteEntry() {
+        viewModelScope.launch {
+            state.value?.cashEntry?.id?.let {  entryId ->
+                cashFlowRepository.deleteEntry(entryId)
+            }
+        }
+    }
+
+    fun getEntryId(): Int? {
+        return state.value?.cashEntry?.id
     }
 
     fun reset() {

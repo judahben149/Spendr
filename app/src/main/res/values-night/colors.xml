@@ -82,7 +82,8 @@
     <color name="icon_color">#902BD9FE</color>
     <color name="balance_positive_text_color">#52AA5E</color>
     <color name="balance_negative_text_color">#D74E09</color>
-    <color name="card_text_color">#902BD9FE</color>
+    <color name="card_text_color">#FFFFFF</color>
+    <color name="hint_text_color">#9A9A9A</color>
     <color name="neumorph_card_light_shadow_color">#1F1F1F</color>
     <color name="neumorph_card_dark_shadow_color">#0E0E0E</color>
     <color name="neumorph_btn_pressed_light_shadow_color">#0E0E0E</color>

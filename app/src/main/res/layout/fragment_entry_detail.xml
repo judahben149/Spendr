@@ -46,11 +46,20 @@
             android:textSize="20sp" />
 
         <ImageView
-            android:id="@+id/btn_share"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
+            android:id="@+id/btn_delete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="end"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_trash" />
+
+        <ImageView
+            android:id="@+id/btn_share"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
             android:padding="8dp"
             android:src="@drawable/ic_share" />
     </com.google.android.material.appbar.MaterialToolbar>
@@ -63,4 +72,56 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolBar" />
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <soup.neumorphism.NeumorphButton
+            android:id="@+id/btn_edit"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+            app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.45" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Edit"
+            android:textColor="@color/card_text_color"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

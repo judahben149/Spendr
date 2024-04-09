@@ -1,13 +1,19 @@
 package com.judahben149.spendr.presentation
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.judahben149.spendr.databinding.ActivityMainBinding
+import com.judahben149.spendr.presentation.settings.PermissionResultCallback
 import com.judahben149.spendr.utils.PermissionHelper
+import com.judahben149.spendr.utils.SessionManager
 import com.judahben149.spendr.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -23,44 +29,37 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var permissionHelper: PermissionHelper
 
+    @Inject
+    lateinit var sessionManager: SessionManager
+
+    private var callback: PermissionResultCallback? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
+
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        if (!permissionHelper.isSmsPermissionGranted()) {
-            requestNeededPermissions()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (!permissionHelper.isSmsPermissionGranted()) {
-            requestNeededPermissions()
-        }
-    }
-
-    private fun requestNeededPermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.RECEIVE_SMS), SMS_REQUEST_CODE)
-        }
     }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray,
+        grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == SMS_REQUEST_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                showToast(applicationContext, "Sms Permission Granted")
+                callback?.onSmsPermissionGranted()
             } else {
-                showToast(applicationContext, "Sms Permission NOT Granted")
+                callback?.onSmsPermissionDenied()
             }
         }
+    }
+
+    fun setPermissionResultCallBack(callback: PermissionResultCallback) {
+        this.callback = callback
     }
 
     override fun onDestroy() {

@@ -15,7 +15,8 @@ class CashEntryMapperImpl: CashEntryMapper {
             transactionDate = cashEntry.transactionDate,
             categoryName = cashEntry.categoryName,
             categoryIconId = cashEntry.categoryIconId,
-            isIncomeCategory = cashEntry.isIncomeCategory
+            isIncomeCategory = cashEntry.isIncomeCategory,
+            reason = cashEntry.reason
         )
     }
 
@@ -28,7 +29,8 @@ class CashEntryMapperImpl: CashEntryMapper {
             transactionDate = cashEntryEntity.transactionDate,
             categoryName = cashEntryEntity.categoryName,
             categoryIconId = cashEntryEntity.categoryIconId,
-            isIncomeCategory = cashEntryEntity.isIncomeCategory
+            isIncomeCategory = cashEntryEntity.isIncomeCategory,
+            reason = cashEntryEntity.reason
         )
     }
 

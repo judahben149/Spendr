@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.MaterialToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolBarPrefs"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <FrameLayout
+        android:id="@+id/fl_back_btn_prefs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="-7dp"
+        android:layout_marginEnd="-5dp"
+        android:layout_marginBottom="-7dp">
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/btn_back_prefs"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:neumorph_shadowColorDark="@color/neumorph_card_dark_shadow_color"
+            app:neumorph_shadowColorLight="@color/neumorph_card_light_shadow_color"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat">
+
+            <ImageView
+                android:id="@+id/iv_back_arrow"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_back" />
+        </soup.neumorphism.NeumorphCardView>
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tv_toolbar_title_prefs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/settings"
+        android:textColor="@color/toolBarTextColor"
+        android:textSize="20sp" />
+</com.google.android.material.appbar.MaterialToolbar>
