@@ -1,8 +1,6 @@
 package com.judahben149.spendr.presentation.settings
 
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -11,7 +9,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
@@ -20,7 +17,6 @@ import androidx.preference.SwitchPreference
 import com.google.android.material.appbar.MaterialToolbar
 import com.judahben149.spendr.R
 import com.judahben149.spendr.presentation.MainActivity
-import com.judahben149.spendr.presentation.SMS_REQUEST_CODE
 import com.judahben149.spendr.presentation.components.ReusableCustomDialog
 import com.judahben149.spendr.presentation.components.ReusableCustomDialogCallBack
 import com.judahben149.spendr.utils.Constants
@@ -33,10 +29,12 @@ import com.judahben149.spendr.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+const val SMS_DIALOG_REQUEST_CODE = 10
+const val NAME_DIALOG_REQUEST_CODE = 20
+
 @AndroidEntryPoint
 class SettingsFragment: PreferenceFragmentCompat(), PermissionResultCallback,
     ReusableCustomDialogCallBack {
-
 
     val navController by lazy {
         findNavController()
@@ -68,6 +66,23 @@ class SettingsFragment: PreferenceFragmentCompat(), PermissionResultCallback,
         toolBarTitle.animateToolBarTitle()
         backButton.setOnClickListener {
             navController.navigateUp()
+        }
+
+        val changeNamePreference = findPreference<Preference?>("USER_NAME")
+
+        changeNamePreference?.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
+            val changeNameDialog = ReusableCustomDialog.newInstance(
+                this@SettingsFragment,
+                "Change Name",
+                "",
+                "Update",
+                "Cancel",
+                true,
+                NAME_DIALOG_REQUEST_CODE
+            )
+
+            changeNameDialog.show(childFragmentManager, Constants.GRANT_SMS_PERMISSION_DIALOG)
+            true
         }
 
         val readSmsPreference = findPreference<Preference?>("READ_SMS")
@@ -130,7 +145,9 @@ class SettingsFragment: PreferenceFragmentCompat(), PermissionResultCallback,
         "Grant SMS Permission",
         "SMS Permission is required to create entries from alerts",
         "Grant",
-        "Ignore"
+        "Ignore",
+            false,
+            SMS_DIALOG_REQUEST_CODE
         )
 
         deleteDialog.show(childFragmentManager, Constants.GRANT_SMS_PERMISSION_DIALOG)
@@ -155,10 +172,24 @@ class SettingsFragment: PreferenceFragmentCompat(), PermissionResultCallback,
         startActivity(intent)
     }
 
-    override fun onPositiveAction() { openSettings() }
+    override fun onPositiveAction(requestCode: Int, text: String) {
+        when (requestCode) {
+            SMS_DIALOG_REQUEST_CODE -> {
+                openSettings()
+            }
 
-    override fun onNegativeAction() {
-        sessionManager.toggleSmsEntryFunctionality(false)
+            NAME_DIALOG_REQUEST_CODE -> {
+                sessionManager.updateUserName(text)
+            }
+        }
+    }
+
+    override fun onNegativeAction(requestCode: Int) {
+        when (requestCode) {
+            SMS_DIALOG_REQUEST_CODE -> {
+                sessionManager.toggleSmsEntryFunctionality(false)
+            }
+        }
     }
 }
 

@@ -2,7 +2,7 @@ package com.judahben149.spendr.presentation.components
 
 interface ReusableCustomDialogCallBack {
 
-    fun onPositiveAction()
+    fun onPositiveAction(requestCode: Int, text: String)
 
-    fun onNegativeAction()
+    fun onNegativeAction(requestCode: Int)
 }
