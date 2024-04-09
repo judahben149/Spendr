@@ -9,7 +9,9 @@ import com.judahben149.spendr.domain.model.Category
 import com.judahben149.spendr.presentation.entry_detail.epoxy.model.EntryDetailBodyEpoxyModel
 import com.judahben149.spendr.presentation.entry_detail.epoxy.model.EntryDetailHeaderEpoxyModel
 
-class EntryDetailEpoxyController(private val context: Context): TypedEpoxyController<CashEntry>() {
+class EntryDetailEpoxyController(
+    private val context: Context
+): TypedEpoxyController<CashEntry>() {
 
 
     override fun buildModels(cashEntry: CashEntry?) {

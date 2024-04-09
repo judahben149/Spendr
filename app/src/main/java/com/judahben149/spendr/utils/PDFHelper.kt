@@ -49,15 +49,20 @@ object PDFHelper {
             addLogo(context, layoutDocument, R.drawable.splash_piggy_pdf, "Spendr")
             addTitle(layoutDocument, "Spendr Entry Detail")
             addEmptyLine(layoutDocument, 2)
+
             addLineLeftFontSize18(
                 layoutDocument,
                 "Amount: ${cashEntry.amount.abbreviateNumber(context)}"
             )
+
             addLineLeftFontSize18(layoutDocument, "Category: ${cashEntry.categoryName}")
+            addLineLeftFontSize18(layoutDocument, "Reason: ${cashEntry.reason}")
+
             addLineLeftFontSize18(
                 layoutDocument,
                 "Date: ${DateUtils.formatStandardDateTime(cashEntry.transactionDate)}"
             )
+
             addLineLeftFontSize18(
                 layoutDocument,
                 "Entry Type: ${if (cashEntry.isIncome) "Income" else "Expenditure"}"
@@ -194,7 +199,7 @@ object PDFHelper {
             addLine(
                 layoutDocument,
                 "Date exported - ${DateUtils.getCurrentFriendlyDateWithTime()}",
-                12f
+                10f
             )
             addEmptyLine(layoutDocument, 1)
 
@@ -202,7 +207,8 @@ object PDFHelper {
                 UnitValue.createPointArray(
                     floatArrayOf(
                         100f,
-                        120f,
+                        80f,
+                        80f,
                         100f,
                         120f
                     )
@@ -210,18 +216,22 @@ object PDFHelper {
             )
 
             table.addCell(
-                Paragraph("Date").setBold().setFontSize(12f).setTextAlignment(TextAlignment.CENTER)
+                Paragraph("Date").setBold().setFontSize(10f).setTextAlignment(TextAlignment.CENTER)
             )
             table.addCell(
-                Paragraph("Amount").setBold().setFontSize(12f)
+                Paragraph("Amount").setBold().setFontSize(10f)
                     .setTextAlignment(TextAlignment.CENTER)
             )
             table.addCell(
-                Paragraph("Entry Type").setBold().setFontSize(12f)
+                Paragraph("Entry Type").setBold().setFontSize(10f)
                     .setTextAlignment(TextAlignment.CENTER)
             )
             table.addCell(
-                Paragraph("Category").setBold().setFontSize(12f)
+                Paragraph("Category").setBold().setFontSize(10f)
+                    .setTextAlignment(TextAlignment.CENTER)
+            )
+            table.addCell(
+                Paragraph("Reason").setBold().setFontSize(10f)
                     .setTextAlignment(TextAlignment.CENTER)
             )
 
@@ -239,22 +249,27 @@ object PDFHelper {
 
                 table.addCell(
                     Paragraph(DateUtils.formatStandardDateTime(entry.transactionDate) + "")
-                        .setFontSize(12f)
+                        .setFontSize(10f)
                         .setTextAlignment(TextAlignment.CENTER)
                 )
                 table.addCell(
                     Paragraph(entry.amount.abbreviateNumber(context) + "")
-                        .setFontSize(12f)
+                        .setFontSize(10f)
                         .setTextAlignment(TextAlignment.CENTER)
                 )
                 table.addCell(
                     Paragraph(if (entry.isIncome) "Income" else "Expenditure" + "")
-                        .setFontSize(12f)
+                        .setFontSize(10f)
                         .setTextAlignment(TextAlignment.CENTER)
                 )
                 table.addCell(
                     Paragraph(entry.categoryName + "")
-                        .setFontSize(12f)
+                        .setFontSize(10f)
+                        .setTextAlignment(TextAlignment.CENTER)
+                )
+                table.addCell(
+                    Paragraph(entry.reason + "")
+                        .setFontSize(10f)
                         .setTextAlignment(TextAlignment.CENTER)
                 )
             }
@@ -262,8 +277,9 @@ object PDFHelper {
             val totalExpenseTable = Table(
                 UnitValue.createPointArray(
                     floatArrayOf(
-                        100f,
-                        120f,
+                        80f,
+                        80f,
+                        80f,
                         100f,
                         120f
                     )

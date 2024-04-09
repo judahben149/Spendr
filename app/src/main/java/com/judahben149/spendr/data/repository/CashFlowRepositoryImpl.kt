@@ -23,6 +23,10 @@ class CashFlowRepositoryImpl @Inject constructor(
         cashFlowDao.saveEntry(cashEntryEntity)
     }
 
+    override suspend fun updateEntry(cashEntryEntity: CashEntryEntity) {
+        cashFlowDao.updateEntry(cashEntryEntity)
+    }
+
     override suspend fun saveNewCategory(categoryEntity: CategoryEntity) {
         cashFlowDao.saveNewCategory(categoryEntity)
     }

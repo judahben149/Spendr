@@ -83,9 +83,13 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
 
     fun updateSelectedCategoryId(category: Category) {
         _selectedCategoryId.value = category.categoryId
-        _selectedCategory.value = _selectedCategoryList.value?.find { currentCategory ->
+
+        //If the entry had no category, initialize it with a default empty one
+        val currentCategory = _selectedCategoryList.value?.find { currentCategory ->
             currentCategory.categoryId == category.categoryId
-        }
+        } ?: Category()
+
+        _selectedCategory.value = currentCategory
 
         _state.value = _state.value?.copy(
             categoryName = category.categoryName,
@@ -108,6 +112,8 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
     }
 
     fun setCashEntryType(isIncome: Boolean) {
+        clearSelectedCategory()
+
         _categoryState.value = _categoryState.value!!.copy(
             isIncomeSelected = isIncome
         )
@@ -124,5 +130,20 @@ class AddCashEntryViewModel @Inject constructor(private val repository: CashFlow
         _selectedCategoryList.value = emptyList()
         _selectedCategory.value = Category()
         getCategoryList()
+    }
+
+    private fun clearSelectedCategory() {
+        _categoryState.value = CategoryListState()
+        _selectedCategory.value = Category()
+    }
+
+    fun updateCashEntry(
+        cashEntry: CashEntry
+    ) {
+        viewModelScope.launch {
+
+            val entity = CashEntryMapperImpl().cashEntryToCashEntryEntity(cashEntry)
+            repository.updateEntry(entity)
+        }
     }
 }

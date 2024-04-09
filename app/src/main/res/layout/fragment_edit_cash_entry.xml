@@ -381,12 +381,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_reason"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_reason"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="64dp"
                 android:background="@drawable/textview_border"
                 android:hint="@string/reason_e_g_groceries_in_march"
                 android:paddingVertical="15dp"

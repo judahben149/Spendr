@@ -56,6 +56,7 @@ class ShareSheetBottomDialog : BottomSheetDialogFragment() {
                         .plus("\n")
                 )
                 .append("Category: ".plus(entry.categoryName).plus("\n"))
+                .append("Reason: ".plus(entry.reason).plus("\n"))
                 .append("\n")
                 .append("With love, from Spendr.")
                 .toString()

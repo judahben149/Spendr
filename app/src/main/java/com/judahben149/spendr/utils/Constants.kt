@@ -32,6 +32,7 @@ object Constants {
     //Keys
     const val IS_INCOME_ENTRY_TYPE = "IS_INCOME_ENTRY_TYPE"
     const val ENTRY_ID = "ENTRY_ID"
+    const val ENTRY_DETAIL_ID = "ENTRY_DETAIL_ID"
     const val REMINDER_TITLE = "REMINDER_TITLE"
     const val REMINDER_TEXT = "REMINDER_TEXT"
     const val NOTIFICATION_BUNDLE = "NOTIFICATION_BUNDLE"

@@ -40,6 +40,10 @@ class EntryDetailViewModel @Inject constructor(private val cashFlowRepository: C
         }
     }
 
+    fun getEntryId(): Int? {
+        return state.value?.cashEntry?.id
+    }
+
     fun reset() {
         _state.value = EntryDetailState()
     }

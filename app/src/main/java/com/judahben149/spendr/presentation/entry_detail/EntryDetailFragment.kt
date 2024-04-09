@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyRecyclerView
+import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.FragmentEntryDetailBinding
 import com.judahben149.spendr.presentation.components.ReusableCustomDialog
 import com.judahben149.spendr.presentation.components.ReusableCustomDialogCallBack
@@ -74,12 +75,30 @@ class EntryDetailFragment : Fragment(), ReusableCustomDialogCallBack {
 
                 deleteDialog.show(childFragmentManager, DELETE_ENTRY_DIALOG)
             }
+
+            btnEdit.setOnClickListener {
+                navigateToEditScreen()
+            }
+        }
+    }
+
+    private fun navigateToEditScreen() {
+        val entryId = viewModel.getEntryId()
+
+        entryId?.let { id ->
+            val bundle = Bundle().apply {
+                putInt(Constants.ENTRY_DETAIL_ID, id)
+            }
+
+            navController.navigate(R.id.editCashEntryFragment, bundle)
         }
     }
 
     private fun setupEpoxyController() {
         epoxyRecyclerView = binding.epoxyRvEntryDetail
-        entryDetailEpoxyController = EntryDetailEpoxyController(requireContext())
+        entryDetailEpoxyController = EntryDetailEpoxyController(
+            requireContext()
+        )
 
         epoxyRecyclerView.setController(entryDetailEpoxyController)
     }
