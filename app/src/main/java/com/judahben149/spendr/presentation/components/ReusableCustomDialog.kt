@@ -11,7 +11,6 @@ import com.judahben149.spendr.R
 import com.judahben149.spendr.databinding.DialogSettingsBinding
 import com.judahben149.spendr.presentation.entry_detail.EntryDetailViewModel
 import com.judahben149.spendr.utils.Constants
-import com.judahben149.spendr.utils.showSoftKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
